@@ -1,0 +1,9 @@
+{
+    ...
+}: {
+    xdg = {
+        icons = {
+            enable = true;
+        };
+    };
+}

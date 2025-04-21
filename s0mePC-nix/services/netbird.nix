@@ -1,0 +1,9 @@
+{
+  ...
+}: {
+    services = {
+        netbird = {
+            enable = true;
+        };
+    };
+}

@@ -1,0 +1,7 @@
+{ 
+    ...
+}: {
+    console = {      
+        useXkbConfig = true;
+    }; 
+}
