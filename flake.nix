@@ -1,8 +1,8 @@
 {
     description = "main flake.";
-    
+
     inputs = {
-        nixpkgs = { 
+        nixpkgs = {
             url = "github:nixos/nixpkgs/nixos-unstable";
         };
 
@@ -52,14 +52,14 @@
                 };
             };
         };
-        
+
         lanzaboote = {
             url = "github:nix-community/lanzaboote/v0.4.2";
             inputs = {
                 nixpkgs = {
                     follows = "nixpkgs";
                 };
-            };  
+            };
         };
 
         vscserver = {
@@ -80,7 +80,7 @@
         };
 
         freesm = {
-            url = "github:FreesmTeam/FreesmLauncher";  
+            url = "github:FreesmTeam/FreesmLauncher";
         };
 
         agenix = {
@@ -88,7 +88,7 @@
         };
 
         chaotic = {
-           url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+            url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
         };
 
         nix-darwin = {
@@ -107,7 +107,7 @@
         homebrew-core = {
             url = "github:homebrew/homebrew-core";
             flake = false;
-            };
+        };
 
         homebrew-cask = {
             url = "github:homebrew/homebrew-cask";
@@ -171,20 +171,20 @@
             };
         };
     };
-    
-    outputs = { 
-        self, 
+
+    outputs = {
+        self,
         nixpkgs,
         home-manager,
-        ... 
+        ...
     } @ inputs: {
         homeConfigurations = {
             hand7s = home-manager.lib.homeManagerConfiguration {
                 pkgs = nixpkgs.legacyPackages.x86_64-linux;
-                extraSpecialArgs = { 
-                    inherit inputs;
+                extraSpecialArgs = {
+                    inherit inputs self;
                 };
-                
+
                 modules = [
                     ./hand7s/standalone.nix
                     inputs.stylix.homeManagerModules.stylix
@@ -200,8 +200,8 @@
         nixosConfigurations = {
             s0mePC-nix = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
-                specialArgs = { 
-                    inherit inputs; 
+                specialArgs = {
+                    inherit inputs;
                 };
                 modules = [
                     ./s0mePC-nix/default.nix
@@ -217,8 +217,8 @@
 
             s0melapt0p-nix = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
-                specialArgs = { 
-                    inherit inputs; 
+                specialArgs = {
+                    inherit inputs;
                 };
                 modules = [
                     ./s0melapt0p-nix/default.nix
