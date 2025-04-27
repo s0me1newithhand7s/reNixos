@@ -8,7 +8,7 @@
 
 <h1 align="center"> re:Nixos <img src="https://github.com/user-attachments/assets/5f064ed3-b558-426d-afef-d33940636c9d" width="32" alt="nixos"> </h1>
 
-![image](https://github.com/user-attachments/assets/367f636c-50ba-4e78-b2a3-65a26bba7922)
+![image](doc/screen.png)
 
 
 <div>
