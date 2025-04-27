@@ -19,7 +19,6 @@
 
             xkb = {
                 layout = "us, ru";
-                variant = "qwerty";
                 options = "grp:caps_toggle";
             };
         };
