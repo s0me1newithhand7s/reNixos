@@ -1,6 +1,9 @@
 <div align="center">
 
-  [![GHA](https://github.com/s0me1newithhand7s/reNixos/actions/workflows/flake-lock-action.yaml/badge.svg?branch=master)](https://github.com/s0me1newithhand7s/reNixos/actions/workflows/flake-lock-action.yaml)
+  [![nfu](https://github.com/s0me1newithhand7s/reNixos/actions/workflows/flake-update-action.yaml/badge.svg)](https://github.com/s0me1newithhand7s/reNixos/actions/workflows/flake-update-action.yaml)
+
+  [![nfc](https://github.com/s0me1newithhand7s/reNixos/actions/workflows/flake-check-action.yaml/badge.svg)](https://github.com/s0me1newithhand7s/reNixos/actions/workflows/flake-check-action.yaml)
+
 </div>
 
 <h1 align="center"> re:Nixos <img src="https://github.com/user-attachments/assets/5f064ed3-b558-426d-afef-d33940636c9d" width="32" alt="nixos"> </h1>
