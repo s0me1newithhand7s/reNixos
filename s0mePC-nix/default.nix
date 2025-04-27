@@ -69,6 +69,7 @@
         ./services/sunshine.nix
         ./services/usbmuxd.nix
         ./services/irqbalance.nix
+        ./services/yubikey-agent.nix
 
         ./sops/defaults.nix
         ./sops/secrets.nix

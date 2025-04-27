@@ -64,6 +64,7 @@
         ./services/zerotier.nix
         ./services/yggdrasil.nix
         ./services/netbird.nix
+        ./services/yubikey-agent.nix
 
         ./sops/defaults.nix
         ./sops/secrets.nix
