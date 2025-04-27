@@ -16,6 +16,6 @@ jobs:
       - name: "flake check"
         uses: "DeterminateSystems/flake-checker-action@v5"
       - name: "Deadnix check"
-        run: "nix run github:astro/deadnix#deadnix -- -f"
+        run: "nix run flake:nixpkgs#deadnix -- -f ."
       - name: "Alejandra check"
-        run: "nix run github:kamadorueda/alejandra#alejandra -- -c  --experimental-config ./alejandra.toml"
+        run: "nix run flake:nixpkgs#alejandra -- --check  --experimental-config .github/workflows/alejandra.toml ."
