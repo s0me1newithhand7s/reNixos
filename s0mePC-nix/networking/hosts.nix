@@ -1,7 +1,5 @@
-{ 
-    ...
-}: {
-    networking ={
+{...}: {
+    networking = {
         hosts = {
             # Nope
         };

@@ -1,7 +1,4 @@
-{
-    inputs,
-    ...
-}: {
+{inputs, ...}: {
     home-manager = {
         users = {
             hand7s = {
@@ -15,7 +12,7 @@
         };
 
         backupFileExtension = "backup";
-        
+
         extraSpecialArgs = {
             inherit inputs;
         };

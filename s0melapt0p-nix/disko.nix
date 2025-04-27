@@ -7,18 +7,18 @@
                     type = "disk";
                     content = {
                         type = "gpt";
-                        partitions = { 
+                        partitions = {
                             ESP = {
                                 type = "EF00";
                                 size = "1024M";
                                 name = "boot";
-                                content = { 
+                                content = {
                                     type = "filesystem";
                                     format = "vfat";
                                     mountpoint = "/boot";
                                     mountOptions = [
                                         "fmask=0022"
-                                        "dmask=0022"  
+                                        "dmask=0022"
                                     ];
                                 };
                             };
@@ -31,7 +31,7 @@
                                     settings = {
                                         allowDiscards = true;
                                     };
-                                    
+
                                     content = {
                                         type = "lvm_pv";
                                         vg = "pool";
@@ -58,7 +58,7 @@
                                 subvolumes = {
                                     "/root" = {
                                         mountpoint = "/";
-                                        mountOptions = [ 
+                                        mountOptions = [
                                             "compress=zstd"
                                             "commit=100"
                                             "max_inline=256"
@@ -69,7 +69,7 @@
 
                                     "/home" = {
                                         mountpoint = "/home";
-                                        mountOptions = [ 
+                                        mountOptions = [
                                             "compress=zstd"
                                             "max_inline=256"
                                             "commit=100"
@@ -80,11 +80,11 @@
 
                                     "/nix" = {
                                         mountpoint = "/nix";
-                                        mountOptions = [ 
+                                        mountOptions = [
                                             "compress=zstd"
                                             "commit=100"
                                             "max_inline=256"
-                                            "ssd_spread" 
+                                            "ssd_spread"
                                             "noatime"
                                         ];
                                     };

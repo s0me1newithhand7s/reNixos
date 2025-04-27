@@ -1,6 +1,4 @@
-{
-    ...
-}: {
+{...}: {
     home = {
         keyboard = {
             variant = "qwerty";

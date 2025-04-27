@@ -1,7 +1,4 @@
-{
-    pkgs,
-    ...
-}: {
+{pkgs, ...}: {
     boot = {
         zfs = {
             package = pkgs.zfs_cachyos;

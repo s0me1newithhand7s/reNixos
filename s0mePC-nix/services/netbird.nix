@@ -1,6 +1,4 @@
-{
-  ...
-}: {
+{...}: {
     services = {
         netbird = {
             enable = true;

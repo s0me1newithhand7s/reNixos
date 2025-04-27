@@ -1,10 +1,8 @@
-{
-    ...
-}: {
+{...}: {
     hardware = {
         keyboard = {
             qmk = {
-                enable = true; 
+                enable = true;
             };
         };
     };

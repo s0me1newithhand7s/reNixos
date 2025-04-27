@@ -1,6 +1,4 @@
-{
-    ...
-}: {
+{...}: {
     programs = {
         starship = {
             enable = true;
@@ -11,7 +9,7 @@
                 format = ''
                     [╭──╼](bold blue) $hostname $os
                     [┆](bold blue) $directory$git_branch$git_commit$git_state$git_metrics$git_status
-                    [╰─>](bold blue) 
+                    [╰─>](bold blue)
                 '';
 
                 right_format = ''$cmd_duration ($character) at ❗$time'';
@@ -28,7 +26,7 @@
                     style = "bold red";
                     disabled = false;
                 };
-                
+
                 character = {
                     success_symbol = "[✓](bold green)";
                     error_symbol = "[✗](bold red)";

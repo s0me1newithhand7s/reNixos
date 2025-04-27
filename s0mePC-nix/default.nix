@@ -38,12 +38,12 @@
         ./nix/settings/experimental-features.nix
         ./nix/settings/substituters.nix
         ./nix/settings/trusted-public-keys.nix
-        ./nix/settings/trusted-users.nix  
+        ./nix/settings/trusted-users.nix
         ./nix/settings/auto-optimise-store.nix
 
         ./nixpkgs/config.nix
         ./nixpkgs/system.nix
-        
+
         ./programs/gamescope.nix
         ./programs/gamemode.nix
         ./programs/nh.nix
@@ -77,7 +77,7 @@
         ./stylix/defaults.nix
         ./stylix/fonts.nix
         ./stylix/image.nix
-        
+
         ./system/name.nix
         ./system/stateVersion.nix
 

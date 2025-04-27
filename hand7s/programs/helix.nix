@@ -1,7 +1,4 @@
-{
-    pkgs,
-    ...
-}: {
+{pkgs, ...}: {
     programs = {
         helix = {
             enable = true;
@@ -10,17 +7,17 @@
                 nixd
                 nixfmt-rfc-style
             ];
-            
+
             settings = {
                 editor = {
                     line-number = "relative";
-                    cursorline = true;    
+                    cursorline = true;
                     lsp = {
                         display-messages = true;
                     };
                 };
             };
-            
+
             languages = {
                 language-servers = {
                     nixd = {
@@ -30,7 +27,7 @@
                         ];
                     };
                 };
-                
+
                 language = [
                     {
                         name = "nix";
@@ -38,7 +35,7 @@
                         injection-regex = "nix";
                         indent = {
                             tab-width = 4;
-                            unit = "  ";    
+                            unit = "  ";
                         };
 
                         formatter = {
@@ -47,13 +44,13 @@
                                 "--indent=4"
                             ];
                         };
-                                                
+
                         file-types = [
-                            "nix"  
+                            "nix"
                         ];
-                        
+
                         language-servers = [
-                            "nixd"  
+                            "nixd"
                         ];
                     }
                 ];

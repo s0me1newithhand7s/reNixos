@@ -1,6 +1,4 @@
-{
-    ...
-}: {
+{...}: {
     programs = {
         bat = {
             enable = true;

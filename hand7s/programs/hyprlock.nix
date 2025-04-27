@@ -7,8 +7,9 @@
         hyprlock = {
             enable = lib.mkIf (
                 config.home.gui.sessionType == "Hyprland"
-            ) true;
-            
+            )
+            true;
+
             settings = {
                 general = {
                     hide_cursor = true;
@@ -30,7 +31,7 @@
                         valign = "center";
 
                         shadow_passes = 1;
-                        shadow_size	= 2;
+                        shadow_size = 2;
                         shadow_color = "rgba(38, 3, 4, 1)";
                         shadow_boost = 2;
                     }
@@ -49,7 +50,7 @@
                         valign = "center";
 
                         shadow_passes = 1;
-                        shadow_size	= 2;
+                        shadow_size = 2;
                         shadow_color = "rgba(38, 3, 4, 1)";
                         shadow_boost = 2;
                     }
@@ -67,7 +68,7 @@
 
                         fade_on_empty = false;
                         fade_timeout = 0;
-                        placeholder_text = " ";                    
+                        placeholder_text = " ";
                         hide_input = false;
                         rounding = -0.3;
 
@@ -84,7 +85,7 @@
                         valign = "center";
 
                         shadow_passes = 1;
-                        shadow_size	= 5;
+                        shadow_size = 5;
                         shadow_boost = 1;
                     }
                 ];

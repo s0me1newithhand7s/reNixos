@@ -1,8 +1,8 @@
 {
     config,
-    pkgs, 
+    pkgs,
     lib,
-    ... 
+    ...
 }: {
     boot = {
         kernel = {
@@ -16,17 +16,17 @@
                 "vm.max_map_count" = 1048576;
             };
         };
-    
-        kernelPackages = pkgs.linuxPackages_cachyos; 
+
+        kernelPackages = pkgs.linuxPackages_cachyos;
         extraModulePackages = [
             config.boot.kernelPackages.zenpower
         ];
-        
+
         kernelModules = [
-            "amdgpu" 
+            "amdgpu"
             "zenpower"
         ];
-        
+
         kernelParams = [
             "amd_pstate=guided"
             "udev.log_priority=3"
@@ -44,7 +44,7 @@
             "kernel.watchdog=0"
             "oops=panic"
         ];
-        
+
         blacklistedKernelModules = [
             "k10temp"
             "ax25"
@@ -80,7 +80,7 @@
             btrfs = true;
             zfs = lib.mkForce true;
         };
-        
+
         consoleLogLevel = 0;
     };
 }

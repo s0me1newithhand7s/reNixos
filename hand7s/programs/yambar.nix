@@ -1,10 +1,8 @@
 {
     config,
-    pkgs,
     lib,
     ...
-}:
-{
+}: {
     programs = {
         yambar = {
             enable = lib.mkIf (config.home.gui.sessionType == "Sway") true;
@@ -174,7 +172,7 @@
 
                                             conditions = {
                                                 "mode == default" = {
-                                                    empty = { };
+                                                    empty = {};
                                                 };
                                             };
                                         };
@@ -231,7 +229,7 @@
                                                         };
                                                     };
                                                 };
-                                                
+
                                                 "state == invisible" = {
                                                     string = {
                                                         "<<" = [
@@ -244,7 +242,7 @@
                                                             }
 
                                                             {
-                                                                foreground = "ffffff55"; 
+                                                                foreground = "ffffff55";
                                                             }
                                                         ];
                                                     };
@@ -337,7 +335,6 @@
                                                                 margin = 5;
                                                                 on-click = "swaymsg --quiet workspace {name}";
                                                             };
-                                                            
                                                         };
                                                     };
                                                 };
@@ -354,8 +351,8 @@
                                                                 };
                                                             }
 
-                                                            { 
-                                                                foreground = "ffffff55"; 
+                                                            {
+                                                                foreground = "ffffff55";
                                                             }
                                                         ];
                                                     };
@@ -370,7 +367,7 @@
                                                                 "<<" = {
                                                                     margin = 5;
                                                                     on-click = "swaymsg --quiet workspace {name}";
-                                                                }; 
+                                                                };
                                                             }
 
                                                             {
@@ -465,8 +462,8 @@
                                                                 };
                                                             }
 
-                                                            { 
-                                                                foreground = "ffffff55"; 
+                                                            {
+                                                                foreground = "ffffff55";
                                                             }
                                                         ];
                                                     };
@@ -576,7 +573,7 @@
                                                                 };
                                                             }
 
-                                                            { 
+                                                            {
                                                                 foreground = "ffffff55";
                                                             }
                                                         ];
@@ -687,8 +684,8 @@
                                                                 };
                                                             }
 
-                                                            { 
-                                                                foreground = "ffffff55"; 
+                                                            {
+                                                                foreground = "ffffff55";
                                                             }
                                                         ];
                                                     };
@@ -796,8 +793,8 @@
                                                                     on-click = "swaymsg --quiet workspace {name}";
                                                                 };
                                                             }
-                                                            { 
-                                                                foreground = "ffffff55"; 
+                                                            {
+                                                                foreground = "ffffff55";
                                                             }
                                                         ];
                                                     };
@@ -852,7 +849,7 @@
                                     map = {
                                         conditions = {
                                             "~activated" = {
-                                                empty = { };
+                                                empty = {};
                                             };
 
                                             activated = [
@@ -1155,7 +1152,6 @@
                                     };
                                 };
 
-                                
                                 content = {
                                     map = {
                                         conditions = {
@@ -1257,7 +1253,7 @@
 
                         {
                             sway-xkb = {
-                                identifiers = [ "1:1:AT_Translated_Set_2_keyboard" ];
+                                identifiers = ["1:1:AT_Translated_Set_2_keyboard"];
                                 content = [
                                     {
                                         string = {
@@ -1279,7 +1275,7 @@
                                 content = {
                                     map = {
                                         default = {
-                                            empty = { };
+                                            empty = {};
                                         };
 
                                         conditions = {
@@ -1287,7 +1283,7 @@
                                                 map = {
                                                     conditions = {
                                                         "~carrier" = {
-                                                            empty = { };
+                                                            empty = {};
                                                         };
 
                                                         carrier = {
@@ -1325,7 +1321,7 @@
                                 content = {
                                     map = {
                                         default = {
-                                            empty = { };
+                                            empty = {};
                                         };
 
                                         conditions = {
@@ -1929,7 +1925,7 @@
                                 ];
                             };
                         }
-                        
+
                         {
                             label = {
                                 content = {

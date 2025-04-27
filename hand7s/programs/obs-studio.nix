@@ -8,8 +8,9 @@
         obs-studio = {
             enable = lib.mkIf (
                 config.home.gui.sessionType == "Hyprland"
-            ) true;
-            
+            )
+            true;
+
             plugins = with pkgs.obs-studio-plugins; [
                 wlrobs
                 waveform

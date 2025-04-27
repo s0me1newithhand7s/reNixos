@@ -1,7 +1,4 @@
-{
-    pkgs,
-    ...
-}: {
+{pkgs, ...}: {
     programs = {
         steam = {
             enable = true;
@@ -10,17 +7,16 @@
             ];
 
             remotePlay = {
-                openFirewall =  true;  
+                openFirewall = true;
             };
 
             localNetworkGameTransfers = {
-                openFirewall =  true;
+                openFirewall = true;
             };
-            
+
             protontricks = {
                 enable = true;
             };
-            
         };
     };
 }

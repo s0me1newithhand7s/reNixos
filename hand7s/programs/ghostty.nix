@@ -1,7 +1,4 @@
-{
-    pkgs,
-    ...
-}: {
+{pkgs, ...}: {
     programs = {
         ghostty = {
             enableFishIntegration = true;

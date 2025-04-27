@@ -1,6 +1,4 @@
-{
-    ...
-}: {
+{...}: {
     security = {
         polkit = {
             enable = true;

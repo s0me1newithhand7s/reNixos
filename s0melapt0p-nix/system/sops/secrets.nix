@@ -1,6 +1,4 @@
-{
-    ...
-}: {
+{...}: {
     sops = {
         secrets = {
             sshKey = {
@@ -16,7 +14,6 @@
                 format = "yaml";
                 sopsFile = ./secrets/passwd.yaml;
             };
-            
         };
     };
 }

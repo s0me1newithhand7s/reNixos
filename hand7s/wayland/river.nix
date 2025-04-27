@@ -9,7 +9,8 @@
             river = {
                 enable = lib.mkIf (
                     config.home.gui.sessionType == "River"
-                ) true;
+                )
+                true;
 
                 settings = {
                     default-layout = "rivertile";
@@ -51,7 +52,7 @@
                             "Alt 7" = "set-focused-tags 6";
                             "Alt 8" = "set-focused-tags 7";
                             "Alt 9" = "set-focused-tags 8";
-                            "Alt H" =  "toggle-focused-tags 20";
+                            "Alt H" = "toggle-focused-tags 20";
 
                             "Alt+Shift 1" = "set-view-tags 0";
                             "Alt+Shift 2" = "set-view-tags 1";
@@ -62,7 +63,7 @@
                             "Alt+Shift 7" = "set-view-tags 6";
                             "Alt+Shift 8" = "set-view-tags 7";
                             "Alt+Shift 9" = "set-view-tags 8";
-                            "Alt+Shift H" =  "set-view-tags 20";
+                            "Alt+Shift H" = "set-view-tags 20";
 
                             "Alt+Control 1" = "toggle-focused-tags 0";
                             "Alt+Control 2" = "toggle-focused-tags 1";
@@ -73,7 +74,7 @@
                             "Alt+Control 7" = "toggle-focused-tags 6";
                             "Alt+Control 8" = "toggle-focused-tags 7";
                             "Alt+Control 9" = "toggle-focused-tags 8";
-                            "Alt+Control H" =  "toggle-focused-tags 20";
+                            "Alt+Control H" = "toggle-focused-tags 20";
 
                             "Alt+Shift+Control 1" = "toggle-view-tags 0";
                             "Alt+Shift+Control 2" = "toggle-view-tags 1";
@@ -84,7 +85,7 @@
                             "Alt+Shift+Control 7" = "toggle-view-tags 6";
                             "Alt+Shift+Control 8" = "toggle-view-tags 7";
                             "Alt+Shift+Control 9" = "toggle-view-tags 8";
-                            "Alt+Shift+Control H" =  "toggle-view-tags 20";
+                            "Alt+Shift+Control H" = "toggle-view-tags 20";
                         };
 
                         spawn = [
@@ -94,7 +95,7 @@
                             "${pkgs.wayidle}/bin/wayidle -t=300 ${pkgs.brightnessctl}/bin/brightnessctl -s set 10"
                             "${pkgs.wayidle}/bin/wayidle -t=600 ${pkgs.waylock}/bin/waylock"
                         ];
-                        
+
                         map-pointer = {
                             normal = {
                                 "Alt BTN_LEFT" = "move-view";

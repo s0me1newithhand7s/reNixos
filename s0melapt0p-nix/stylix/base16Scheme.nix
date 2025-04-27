@@ -1,6 +1,4 @@
-{
-    ...
-}: {
+{...}: {
     stylix = {
         base16Scheme = {
             base00 = "2a1617";

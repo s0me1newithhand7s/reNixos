@@ -9,7 +9,8 @@
             sway = {
                 enable = lib.mkIf (
                     config.home.gui.sessionType == "Sway"
-                ) true;
+                )
+                true;
 
                 package = pkgs.sway;
 
@@ -81,7 +82,7 @@
                         {
                             command = "${pkgs.swaykbdd}/bin/swaykbdd";
                         }
-                        
+
                         {
                             command = "${pkgs.yambar}/bin/yambar";
                         }
@@ -179,5 +180,5 @@
                 '';
             };
         };
-    };  
+    };
 }

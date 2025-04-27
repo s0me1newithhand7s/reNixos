@@ -1,10 +1,8 @@
-{
-    ...
-}: {
+{...}: {
     nixpkgs = {
         config = {
             allowBroken = true;
-            allowUnfree = true;  
+            allowUnfree = true;
         };
     };
 }

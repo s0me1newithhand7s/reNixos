@@ -1,9 +1,7 @@
-{
-    ...
-}: {
+{...}: {
     services = {
         irqbalance = {
             enable = true;
-        }; 
+        };
     };
 }

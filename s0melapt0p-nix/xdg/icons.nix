@@ -1,6 +1,4 @@
-{
-    ...
-}: {
+{...}: {
     xdg = {
         icons = {
             enable = true;

@@ -1,6 +1,4 @@
-{
-    ...
-}: {
+{...}: {
     networking = {
         firewall = {
             allowPing = true;

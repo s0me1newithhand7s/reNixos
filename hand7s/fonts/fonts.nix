@@ -1,6 +1,4 @@
-{
-    ...
-}: {
+{...}: {
     fonts = {
         fontconfig = {
             enable = true;

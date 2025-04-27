@@ -1,6 +1,4 @@
-{
-    ...
-}: {
+{...}: {
     services = {
         zapret = {
             enable = true;
@@ -10,18 +8,18 @@
                 "--wssize 1:6"
 
                 "--filter-tcp=80"
-                "--dpi-desync=multisplit" 
-                "--dpi-desync-split-pos=10" 
+                "--dpi-desync=multisplit"
+                "--dpi-desync-split-pos=10"
                 "--dpi-desync-repeats=6"
                 "--new"
 
                 "--filter-tcp=443"
                 "--dpi-desync=multidisorder"
-                "--dpi-desync-split-pos=1,midsld" 
+                "--dpi-desync-split-pos=1,midsld"
                 "--new"
 
-                "--filter-tcp=443" 
-                "--dpi-desync=syndata" 
+                "--filter-tcp=443"
+                "--dpi-desync=syndata"
                 "--dpi-desync-fake-syndata=0x00000000"
                 "--dpi-desync-ttl=10"
                 "--new"
@@ -31,13 +29,13 @@
                 "--dpi-desync-repeats=6"
                 "--dpi-desync-fake-quic=0x00000000"
                 "--new"
-                
+
                 "--filter-udp=443"
                 "--dpi-desync=fake,udplen"
                 "--dpi-desync-udplen-increment=5"
                 "--dpi-desync-fake-tls=0x00000000"
-                "--dpi-desync-cutoff=n3" 
-                "--dpi-desync-repeats=2" 
+                "--dpi-desync-cutoff=n3"
+                "--dpi-desync-repeats=2"
                 "--new"
 
                 "--filter-tcp=443"
@@ -83,7 +81,7 @@
                 "--dpi-desync-fooling=md5sig"
                 "--new"
             ];
-            
+
             whitelist = [
                 "googlevideo.com"
                 "youtu.be"

@@ -35,11 +35,11 @@
         ./nix/settings/experimental-features.nix
         ./nix/settings/substituters.nix
         ./nix/settings/trusted-public-keys.nix
-        ./nix/settings/trusted-users.nix  
+        ./nix/settings/trusted-users.nix
 
         ./nixpkgs/config.nix
         ./nixpkgs/system.nix
-        
+
         ./programs/gamemode.nix
         ./programs/nh.nix
         ./programs/steam.nix
@@ -72,7 +72,7 @@
         ./stylix/defaults.nix
         ./stylix/fonts.nix
         ./stylix/image.nix
-        
+
         ./system/name.nix
         ./system/stateVersion.nix
 

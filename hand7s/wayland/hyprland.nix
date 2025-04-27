@@ -10,7 +10,8 @@
             hyprland = {
                 enable = lib.mkIf (
                     config.home.gui.sessionType == "Hyprland"
-                ) true;
+                )
+                true;
 
                 settings = {
                     monitor = ", 2560x1440@165.00Hz, 0x0, 1";
@@ -110,7 +111,6 @@
                         "ALT, S, exec, ${pkgs.fuzzel}/bin/fuzzel"
                         "ALT, F, fullscreen, 0"
                         "ALT, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
-                       
 
                         "ALT SHIFT, E, exit,"
                         "ALT SHIFT, space, togglefloating, active"
@@ -144,7 +144,7 @@
                         "ALT SHIFT, 9, movetoworkspace, 9"
                         "ALT SHIFT, 0, movetoworkspace, 0"
                         "ALT SHIFT, H, movetoworkspace, special"
-                        
+
                         "ALT, mouse_down, workspace, e+1"
                         "ALT, mouse_up, workspace, e-1"
                     ];
@@ -156,7 +156,7 @@
                         ", XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%-"
                         ", XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set +5%"
                     ];
-                    
+
                     bindl = [
                         ", XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
                         ", XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
@@ -228,9 +228,9 @@
                         };
                     };
                 };
-                
+
                 plugins = with inputs; [
-                   # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+                    # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
                 ];
             };
         };

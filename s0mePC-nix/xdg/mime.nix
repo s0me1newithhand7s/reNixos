@@ -1,6 +1,4 @@
-{
-    ...
-}: {
+{...}: {
     xdg = {
         mime = {
             enable = true;

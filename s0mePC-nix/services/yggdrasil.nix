@@ -1,6 +1,4 @@
-{
-    ...
-}: {
+{...}: {
     services = {
         yggdrasil = {
             enable = true;
@@ -9,7 +7,6 @@
                 PrivateKey = config.sops.secrets.yggKeyPc.path;
 
                 Peers = [
-
                     # Germany :Erm:
                     "tcp://s-fra-0.sergeysedoy97.ru:65533"
                     "tls://s-fra-0.sergeysedoy97.ru:65534"
@@ -38,7 +35,6 @@
                     "tls://kzn1.neonxp.ru:7992"
                     "ws://kzn1.neonxp.ru:7993"
                     "quic://kzn1.neonxp.ru:7994"
-
                 ];
 
                 Listen = [

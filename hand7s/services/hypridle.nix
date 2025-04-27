@@ -8,8 +8,9 @@
         hypridle = {
             enable = lib.mkIf (
                 config.home.gui.sessionType == "Hyprland"
-            ) true;
-            
+            )
+            true;
+
             settings = {
                 general = {
                     before_sleep_cmd = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";

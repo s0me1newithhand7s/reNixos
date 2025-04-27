@@ -8,47 +8,51 @@
         hyprpanel = {
             enable = lib.mkIf (
                 config.home.gui.sessionType == "Hyprland"
-            ) true;
-            
+            )
+            true;
+
             hyprland = {
                 enable = lib.mkIf (
                     config.home.gui.sessionType == "Hyprland"
-                ) true;
+                )
+                true;
             };
 
             overwrite = {
                 enable = lib.mkIf (
                     config.home.gui.sessionType == "Hyprland"
-                ) true;
+                )
+                true;
             };
 
             overlay = {
                 enable = lib.mkIf (
                     config.home.gui.sessionType == "Hyprland"
-                ) true;
+                )
+                true;
             };
 
             settings = {
                 layout = {
                     "bar.layouts" = {
                         "*" = {
-                            left = [ 
-                                "dashboard" 
+                            left = [
+                                "dashboard"
                                 "workspaces"
                                 "media"
                             ];
 
                             middle = [
                                 "clock"
-                                "power" 
+                                "power"
                             ];
 
                             right = [
                                 "network"
                                 "kbinput"
-                                "volume" 
-                                "systray" 
-                                "notifications" 
+                                "volume"
+                                "systray"
+                                "notifications"
                             ];
                         };
                     };
@@ -140,7 +144,7 @@
                         spacing = 1.0;
                         workspaceMask = true;
                         ignored = "";
-                        
+
                         applicationIconEmptyWorkspace = "";
                         applicationIconFallback = "󰣆";
 
@@ -168,7 +172,6 @@
                             samplerate = 48000;
                             lowCutoff = 20;
                             highCutoff = 20000;
-                            
 
                             barCharacters = [
                                 "▁"
@@ -282,13 +285,11 @@
                             padZero = true;
                             pollingInterval = 1440000;
                             updateCommand = "nix flake update --flake ~/Projects/flake";
-                            
+
                             icon = {
                                 pending = "󰏗";
                                 updated = "󰏖";
                             };
-
-                            
                         };
 
                         weather = {
@@ -434,7 +435,7 @@
                         margin_sides = "20px";
                         margin_top = "20px";
 
-                        border_radius = "10px"; 
+                        border_radius = "10px";
 
                         border = {
                             location = "full";
@@ -458,7 +459,7 @@
                         radius = "10px";
                     };
                 };
-                
+
                 wallpaper = {
                     enable = false;
                     pywal = false;

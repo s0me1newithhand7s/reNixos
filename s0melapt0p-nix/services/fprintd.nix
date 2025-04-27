@@ -1,6 +1,4 @@
-{
-    ...
-}: {
+{...}: {
     services = {
         fprintd = {
             enable = true;

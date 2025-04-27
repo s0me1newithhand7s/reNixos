@@ -1,10 +1,7 @@
-{
-    config,
-    ... 
-}: {
+{config, ...}: {
     services = {
         openssh = {
-            enable = true; 
+            enable = true;
             allowSFTP = true;
             openFirewall = true;
             ports = [
@@ -16,7 +13,7 @@
                 PermitRootLogin = "no";
                 PasswordAuthentication = false;
             };
-            
+
             authorizedKeysFiles = [
                 config.sops.secrets.sshKey.path
             ];

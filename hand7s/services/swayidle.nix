@@ -8,7 +8,8 @@
         swayidle = {
             enable = lib.mkIf (
                 config.home.gui.sessionType == "Sway"
-            ) true;
+            )
+            true;
 
             events = [
                 {
@@ -28,8 +29,8 @@
             ];
 
             timeouts = [
-                { 
-                    timeout = 300; 
+                {
+                    timeout = 300;
                     command = "${pkgs.brightnessctl}/bin/brightnessctl -s set 10";
                     resumeCommand = "${pkgs.brightnessctl}/bin/brightnessctl -r";
                 }

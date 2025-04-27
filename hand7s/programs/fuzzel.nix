@@ -1,8 +1,5 @@
-{
-    pkgs,
-    ...
-}: {
-    programs = { 
+{pkgs, ...}: {
+    programs = {
         fuzzel = {
             settings = {
                 main = {
@@ -10,7 +7,7 @@
                     layer = "overlay";
                     prompt = "  > ";
                 };
-                
+
                 border = {
                     width = "2";
                     radius = "10";

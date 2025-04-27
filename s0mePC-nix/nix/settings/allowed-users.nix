@@ -1,12 +1,10 @@
-{
-    ...
-}: {
+{...}: {
     nix = {
         settings = {
             sandbox = true;
-            allowed-users = [ 
+            allowed-users = [
                 "@wheel"
             ];
         };
-    }; 
+    };
 }

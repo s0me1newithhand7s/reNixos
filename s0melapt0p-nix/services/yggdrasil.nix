@@ -1,6 +1,4 @@
-{
-    ...
-}: {
+{...}: {
     services = {
         yggdrasil = {
             enable = true;

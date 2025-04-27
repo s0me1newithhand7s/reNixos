@@ -11,7 +11,7 @@
                 hidePodcasts
                 shuffle
             ];
-            
+
             theme = lib.mkForce inputs.spicetify-nix.legacyPackages.${pkgs.system}.themes.text;
             colorScheme = lib.mkForce "Spotify";
         };

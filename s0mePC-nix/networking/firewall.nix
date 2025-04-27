@@ -1,6 +1,4 @@
-{
-    ...
-}: {
+{...}: {
     networking = {
         firewall = {
             allowPing = true;
@@ -10,7 +8,7 @@
                 9993
                 2080
             ];
-            
+
             allowedTCPPorts = [
                 9993
                 2080

@@ -1,6 +1,6 @@
 {
     lib,
-    pkgs, 
+    pkgs,
     ...
 }: {
     programs = {

@@ -1,7 +1,7 @@
 {
     pkgs,
     lib,
-    ... 
+    ...
 }: {
     boot = {
         kernel = {
@@ -15,12 +15,12 @@
                 "vm.max_map_count" = 1048576;
             };
         };
-        
-        kernelPackages = pkgs.linuxPackages_zen; 
+
+        kernelPackages = pkgs.linuxPackages_zen;
         extraModprobeConfig = ''
-            options thinkpad_acpi  fan_control=1 
+            options thinkpad_acpi  fan_control=1
         '';
-        
+
         kernelParams = [
             "i915.enable_rc6=7"
             "udev.log_priority=3"

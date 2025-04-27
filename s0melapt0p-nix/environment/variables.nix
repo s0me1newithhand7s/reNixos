@@ -1,7 +1,4 @@
-{
-    config,
-    ... 
-}: {
+{config, ...}: {
     environment = {
         variables = {
             HOSTNAME = config.networking.hostName;

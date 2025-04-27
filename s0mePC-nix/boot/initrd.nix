@@ -1,15 +1,12 @@
-{
-    lib,
-    ...
-}: {
+{lib, ...}: {
     boot = {
         initrd = {
-            availableKernelModules = [ 
-                "nvme" 
-                "xhci_pci" 
-                "ahci" 
-                "usbhid" 
-                "usb_storage" 
+            availableKernelModules = [
+                "nvme"
+                "xhci_pci"
+                "ahci"
+                "usbhid"
+                "usb_storage"
                 "sd_mod"
                 "btrfs"
                 "cryptd"
@@ -34,9 +31,9 @@
             };
 
             systemd = {
-                enable = true;  
+                enable = true;
             };
-            
+
             verbose = false;
         };
     };

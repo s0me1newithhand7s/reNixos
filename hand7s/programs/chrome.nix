@@ -1,7 +1,4 @@
-{
-    pkgs,
-    ...
-}: {
+{pkgs, ...}: {
     programs = {
         chromium = {
             package = (
@@ -15,7 +12,7 @@
                         "--ignore-gpu-blocklist"
                         "--enable-zero-copy"
                     ];
-                }  
+                }
             );
         };
     };

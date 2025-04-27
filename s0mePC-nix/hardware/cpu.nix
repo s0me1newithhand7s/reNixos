@@ -1,8 +1,6 @@
-{
-    ... 
-}: {
+{...}: {
     hardware = {
-        enableRedistributableFirmware = true; 
+        enableRedistributableFirmware = true;
         cpu = {
             amd = {
                 updateMicrocode = true;

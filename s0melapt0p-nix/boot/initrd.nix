@@ -1,19 +1,15 @@
-{
-    lib,
-    ...
-}: {
+{lib, ...}: {
     boot = {
-        
         initrd = {
-            availableKernelModules = [ 
+            availableKernelModules = [
                 "ehci_pci"
-                "ahci" 
-                "usbhid" 
-                "usb_storage" 
+                "ahci"
+                "usbhid"
+                "usb_storage"
                 "sd_mod"
                 "sdhci_pci"
                 "btrfs"
-                "battery" 
+                "battery"
                 "thinkpad_acpi"
                 "cryptd"
             ];

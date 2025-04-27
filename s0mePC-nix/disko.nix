@@ -7,18 +7,18 @@
                     type = "disk";
                     content = {
                         type = "gpt";
-                        partitions = { 
+                        partitions = {
                             ESP = {
                                 type = "EF00";
                                 size = "1024M";
                                 name = "boot";
-                                content = { 
+                                content = {
                                     type = "filesystem";
                                     format = "vfat";
                                     mountpoint = "/boot";
                                     mountOptions = [
                                         "fmask=0022"
-                                        "dmask=0022"  
+                                        "dmask=0022"
                                     ];
                                 };
                             };
@@ -57,8 +57,8 @@
                                 subvolumes = {
                                     "/root" = {
                                         mountpoint = "/";
-                                        mountOptions = [ 
-                                            "compress=zstd" 
+                                        mountOptions = [
+                                            "compress=zstd"
                                             "noatime"
                                             "discard=async"
                                         ];
@@ -66,17 +66,17 @@
 
                                     "/home" = {
                                         mountpoint = "/home";
-                                        mountOptions = [ 
-                                            "compress=zstd" 
+                                        mountOptions = [
+                                            "compress=zstd"
                                             "noatime"
                                             "discard=async"
                                         ];
                                     };
-                                    
+
                                     "/nix" = {
                                         mountpoint = "/nix";
-                                        mountOptions = [ 
-                                            "compress=zstd" 
+                                        mountOptions = [
+                                            "compress=zstd"
                                             "noatime"
                                             "discard=async"
                                         ];

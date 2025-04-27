@@ -12,7 +12,7 @@
         ./home/keyboard.nix
         ./home/packages.nix
         ./home/shellAliases.nix
-        
+
         ./nixpkgs/config.nix
         ./nixpkgs/overlays.nix
 

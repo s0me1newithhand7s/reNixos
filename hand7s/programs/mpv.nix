@@ -1,6 +1,4 @@
-{
-    ...
-}: {
+{...}: {
     programs = {
         mpv = {
             enable = true;

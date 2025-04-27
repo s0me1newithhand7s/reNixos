@@ -1,6 +1,4 @@
-{
-    ...
-}: {
+{...}: {
     nix = {
         settings = {
             substituters = [
@@ -17,5 +15,5 @@
                 "https://chaotic-nyx.cachix.org/"
             ];
         };
-    }; 
+    };
 }

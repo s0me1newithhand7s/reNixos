@@ -1,7 +1,4 @@
-{
-    pkgs,
-    ...
-}: { 
+{pkgs, ...}: {
     programs = {
         yazi = {
             enable = true;
@@ -13,7 +10,7 @@
                     sort_sensitive = true;
                     sort_reverse = false;
                     sort_translit = true;
-                    
+
                     linemode = "size";
 
                     show_hidden = true;
@@ -29,16 +26,16 @@
                 opener = {
                     play = [
                         {
-                            run = "${pkgs.mpv}/bin/mpv ''$@''"; 
-                            block = true;  
+                            run = "${pkgs.mpv}/bin/mpv ''$@''";
+                            block = true;
                             for = "unix";
                         }
                     ];
 
                     edit = [
                         {
-                            run = "${pkgs.helix}/bin/hx ''$@''"; 
-                            block = true; 
+                            run = "${pkgs.helix}/bin/hx ''$@''";
+                            block = true;
                             for = "unix";
                         }
                     ];

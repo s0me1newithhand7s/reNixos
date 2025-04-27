@@ -1,7 +1,4 @@
-{
-    pkgs,
-    ...
-}: {
+{pkgs, ...}: {
     stylix = {
         cursor = {
             name = "Whitesur-cursors";

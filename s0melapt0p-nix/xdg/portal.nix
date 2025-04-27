@@ -1,6 +1,4 @@
-{
-    ...
-}: {
+{...}: {
     xdg = {
         portal = {
             enable = true;
@@ -11,7 +9,7 @@
                         "hyprland"
                         "gtk"
                     ];
-                };  
+                };
             };
         };
     };

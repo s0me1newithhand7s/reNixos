@@ -7,7 +7,8 @@
         swaylock = {
             enable = lib.mkIf (
                 config.home.gui.sessionType == "Sway"
-            ) true;
+            )
+            true;
 
             settings = {
                 show-failed-attempts = true;
