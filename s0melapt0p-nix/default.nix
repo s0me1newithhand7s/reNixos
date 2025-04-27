@@ -44,6 +44,7 @@
         ./programs/nh.nix
         ./programs/steam.nix
         ./programs/ssh.nix
+        ./programs/yubikey-touch-detector.nix
 
         ./security/polkit.nix
         ./security/rtkit.nix
