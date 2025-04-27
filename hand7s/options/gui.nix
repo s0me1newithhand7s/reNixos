@@ -7,6 +7,7 @@
 }: let
     cfg = config.home.gui;
     ayugram-desktop = inputs.ayugram-desktop.packages.${pkgs.system}.ayugram-desktop;
+    freesm-launcher = inputs.freesm.packages.${pkgs.system}.freesmlauncher;
 in {
     options.home.gui = {
         enable = lib.mkEnableOption ''
@@ -56,6 +57,9 @@ in {
                     playerctl
                     lan-mouse
                     nekoray
+                    freesm-launcher
+                    yubico-piv-tool
+                    yubikey-manager
                 ]
                 ++ lib.optionals (
                     cfg.sessionType == "Sway"

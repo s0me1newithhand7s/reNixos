@@ -4,9 +4,7 @@
     pkgs,
     lib,
     ...
-}: let
-    freesm-launcher = inputs.freesm.packages.${pkgs.system}.freesmlauncher;
-in {
+}: {
     home = {
         packages = with pkgs;
             [
@@ -26,7 +24,6 @@ in {
                 yt-dlp
                 ripgrep
                 tty-clock
-                freesm-launcher
                 libimobiledevice
                 nix-output-monitor
             ]
