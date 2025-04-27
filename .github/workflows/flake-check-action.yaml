@@ -1,0 +1,21 @@
+---
+name: "Flake Check Action"
+run-name: "nfc"
+on:
+  workflow_dispatch:
+  push:
+    
+jobs:
+  checker:
+    runs-on: "ubuntu-latest"
+    steps:
+      - name: "repo checkout"
+        uses: "actions/checkout@v4"
+      - name: "nix install"
+        uses: "DeterminateSystems/nix-installer-action@v16"
+      - name: "flake check"
+        uses: "DeterminateSystems/flake-checker-action@v5"
+      - name: "Deadnix check"
+        run: "nix run github:astro/deadnix#deadnix -- -f"
+      - name: "Alejandra check"
+        run: "nix run github:kamadorueda/alejandra#alejandra -- -c  --experimental-config ./alejandra.toml"
