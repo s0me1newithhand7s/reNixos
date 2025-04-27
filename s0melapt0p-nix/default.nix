@@ -43,6 +43,7 @@
         ./programs/gamemode.nix
         ./programs/nh.nix
         ./programs/steam.nix
+        ./programs/ssh.nix
 
         ./security/polkit.nix
         ./security/rtkit.nix
