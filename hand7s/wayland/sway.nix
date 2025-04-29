@@ -82,9 +82,9 @@
                         {
                             command = "${pkgs.swaykbdd}/bin/swaykbdd";
                         }
-
+                        
                         {
-                            command = "${pkgs.yambar}/bin/yambar";
+                            command = "${pkgs.systemd}/bin/systemctl --user start yambar.service";
                         }
                     ];
 
