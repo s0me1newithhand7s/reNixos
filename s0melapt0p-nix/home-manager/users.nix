@@ -7,6 +7,7 @@
                     inputs.hyprpanel.homeManagerModules.hyprpanel
                     inputs.spicetify-nix.homeManagerModules.default
                     inputs.hyprland.homeManagerModules.default
+                    inputs.chaotic.homeManagerModules.default
                 ];
             };
         };
