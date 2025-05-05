@@ -60,6 +60,7 @@ in {
                     freesm-launcher
                     yubico-piv-tool
                     yubikey-manager
+                    anki-bin
                 ]
                 ++ lib.optionals (
                     cfg.sessionType == "Sway"
