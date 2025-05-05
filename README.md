@@ -34,5 +34,19 @@
 <hr/>
 
 <div>
-  WIP.
+
+  <h3 align="center">Special Thanks: </h3>
+
+  [TheMaxMur](https://maxmur.info/) :star:
+
+  [Askhalion](https://github.com/aski425) :star:
+
+  [kotudemo](https://github.com/kotudemo) :star:
+
+  [Vimjoyer](https://github.com/vimjoyer) and his fanbase! :star:
+
+  without you, guys, this all might not see the light of day.
+  
 </div>
+
+<hr/>
