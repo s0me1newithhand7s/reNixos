@@ -52,6 +52,20 @@
                 input = {
                     cursor_blink = true;
                 };
+
+                plugins = with pkgs.yaziPlugins; {
+                    starship = starship;
+                    rsync = rsync;
+                    git = git;
+                    chmod = chmod;
+                    full-border = full-border;
+                };
+
+                initLua = ''
+                    require("full-border"):setup({ type = ui.Border.ROUNDED })
+                    require("starship"):setup()
+                    require("git"):setup()
+                '';
             };
         };
     };
