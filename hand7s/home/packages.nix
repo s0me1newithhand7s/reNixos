@@ -23,6 +23,7 @@
                 yt-dlp
                 ripgrep
                 tty-clock
+                wireguard-tools
                 libimobiledevice
                 nix-output-monitor
             ]
