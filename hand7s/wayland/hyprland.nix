@@ -230,7 +230,7 @@
                 };
 
                 plugins = with inputs; [
-                    # inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+                    inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
                 ];
             };
         };
