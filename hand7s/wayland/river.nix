@@ -88,14 +88,6 @@
                             "Alt+Shift+Control H" = "toggle-view-tags 20";
                         };
 
-                        spawn = [
-                            "${pkgs.systemd}/bin/systemctl --user start hyprpaper.service"
-                            "${pkgs.systemd}/bin/systemctl --user start hyprpolkitagent.service"
-                            "${pkgs.yambar}/bin/yambar"
-                            "${pkgs.wayidle}/bin/wayidle -t=300 ${pkgs.brightnessctl}/bin/brightnessctl -s set 10"
-                            "${pkgs.wayidle}/bin/wayidle -t=600 ${pkgs.waylock}/bin/waylock"
-                        ];
-
                         map-pointer = {
                             normal = {
                                 "Alt BTN_LEFT" = "move-view";
@@ -106,7 +98,12 @@
                 };
 
                 extraConfig = ''
-                    riverctl keyboard-layout -options "grp:caps_toggle" "us,ru"
+                    ${pkgs.river}/bin/riverctl keyboard-layout -options "grp:caps_toggle" "us,ru"
+                    ${pkgs.river}/bin/riverctl spawn ${pkgs.systemd}/bin/systemctl --user start hyprpaper.service
+                    ${pkgs.river}/bin/riverctl spawn ${pkgs.systemd}/bin/systemctl --user start hyprpolkitagent.service
+                    ${pkgs.river}/bin/riverctl spawn ${pkgs.systemd}/bin/systemctl --user start yambar.service
+                    ${pkgs.river}/bin/riverctl spawn ${pkgs.wayidle}/bin/wayidle -t=300 ${pkgs.brightnessctl}/bin/brightnessctl -s set 10
+                    ${pkgs.river}/bin/riverctl spawn ${pkgs.wayidle}/bin/wayidle -t=600 ${pkgs.waylock}/bin/waylock
                 '';
             };
         };
