@@ -1,6 +1,5 @@
-s0melapt0p-nix/sops
+secrets/
 s0men0de-nix/
-s0mePC-nix/sops
 .sops.yaml
 .obsidian/
 .trash/
