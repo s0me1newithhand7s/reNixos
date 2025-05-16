@@ -36,7 +36,7 @@
 
                         numlock_by_default = true;
                         follow_mouse = "1";
-                        left_handed = true;
+                        left_handed = false;
                         sensitivity = "0";
 
                         special_fallthrough = true;
