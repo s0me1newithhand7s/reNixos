@@ -1,9 +1,9 @@
-{inputs, ...}: {
+{inputs, self, ...}: {
     home-manager = {
         users = {
             hand7s = {
                 imports = [
-                    ../../hand7s/default.nix
+                    ${self.outPath}/hand7s/default.nix
                     inputs.hyprpanel.homeManagerModules.hyprpanel
                     inputs.spicetify-nix.homeManagerModules.default
                     inputs.hyprland.homeManagerModules.default
@@ -15,7 +15,7 @@
         backupFileExtension = "backup";
 
         extraSpecialArgs = {
-            inherit inputs;
+            inherit inputs self;
         };
     };
 }
