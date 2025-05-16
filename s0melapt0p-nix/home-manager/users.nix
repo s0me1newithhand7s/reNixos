@@ -1,4 +1,8 @@
-{inputs, self, ...}: {
+{
+    inputs,
+    self,
+    ...
+}: {
     home-manager = {
         users = {
             hand7s = {
