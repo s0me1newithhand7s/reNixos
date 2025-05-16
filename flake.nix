@@ -186,7 +186,7 @@
                 };
 
                 modules = [
-                    ./hand7s/standalone.nix
+                    "${self.outPath}/hand7s/standalone.nix"
                     inputs.stylix.homeManagerModules.stylix
                     inputs.chaotic.homeManagerModules.default
                     inputs.sops-nix.homeManagerModules.sops
@@ -201,11 +201,11 @@
             s0mePC-nix = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
                 specialArgs = {
-                    inherit inputs;
+                    inherit inputs self;
                 };
                 modules = [
-                    ./s0mePC-nix/default.nix
-                    ./s0mePC-nix/disko.nix
+                    "${self.outPath}/s0mePC-nix/default.nix"
+                    "${self.outPath}/s0mePC-nix/disko.nix"
                     inputs.chaotic.nixosModules.default
                     inputs.stylix.nixosModules.stylix
                     inputs.sops-nix.nixosModules.sops
@@ -218,11 +218,11 @@
             s0melapt0p-nix = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
                 specialArgs = {
-                    inherit inputs;
+                    inherit inputs self;
                 };
                 modules = [
-                    ./s0melapt0p-nix/default.nix
-                    ./s0melapt0p-nix/disko.nix
+                    "${self.outPath}/s0melapt0p-nix/default.nix"
+                    "${self.outPath}/s0melapt0p-nix/disko.nix"
                     inputs.chaotic.nixosModules.default
                     inputs.stylix.nixosModules.stylix
                     inputs.sops-nix.nixosModules.sops
