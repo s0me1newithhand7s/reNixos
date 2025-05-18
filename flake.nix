@@ -79,6 +79,10 @@
             };
         };
 
+        stylix = {
+            url = "github:nix-community/stylix";
+        };
+
         freesm = {
             url = "github:FreesmTeam/FreesmLauncher";
         };
@@ -121,10 +125,6 @@
 
         sops-nix = {
             url = "github:Mic92/sops-nix";
-        };
-
-        stylix = {
-            url = "github:danth/stylix";
         };
 
         ayugram-desktop = {
