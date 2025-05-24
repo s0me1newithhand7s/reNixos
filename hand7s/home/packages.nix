@@ -7,6 +7,8 @@
     home = {
         packages = with pkgs;
             [
+                xh
+                fd
                 gh
                 sd
                 nvd
@@ -24,8 +26,11 @@
                 ripgrep
                 tty-clock
                 wireguard-tools
+                yubico-piv-tool
                 libimobiledevice
                 nix-output-monitor
+                yubikey-touch-detector
+                yubikey-personalization
             ]
             ++ lib.optionals (
                 osConfig.networking.hostName == "s0mePC-nix"

@@ -39,28 +39,25 @@ in {
             packages = with pkgs;
                 [
                     vesktop
+                    nekoray
+                    anki-bin
+                    obsidian
+                    playerctl
+                    mindustry
+                    bitwarden
+                    lan-mouse
+                    parsec-bin
+                    pwvucontrol
+                    easyeffects
+                    ayugram-desktop
+                    element-desktop
+                    hyprpolkitagent
+                    freesm-launcher
+
                     (discord.override {
                         withVencord = true;
                         withOpenASAR = false;
                     })
-
-                    ayugram-desktop
-                    element-desktop
-
-                    obsidian
-                    pwvucontrol
-                    easyeffects
-                    hyprpolkitagent
-                    parsec-bin
-                    bitwarden
-                    mindustry
-                    playerctl
-                    lan-mouse
-                    nekoray
-                    freesm-launcher
-                    yubico-piv-tool
-                    yubikey-manager
-                    anki-bin
                 ]
                 ++ lib.optionals (
                     cfg.sessionType == "Sway"
