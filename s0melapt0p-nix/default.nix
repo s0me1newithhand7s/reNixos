@@ -79,6 +79,11 @@
         ./system/name.nix
         ./system/stateVersion.nix
 
+        ./systemd/oomd.nix
+        ./systemd/slices/system-slice.nix
+        ./systemd/slices/user-slice.nix
+        ./systemd/slices/root-slice.nix
+
         ./time/timeZone.nix
 
         ./users/users/hand7s.nix
