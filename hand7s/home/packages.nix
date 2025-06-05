@@ -14,6 +14,7 @@
                 nvd
                 git
                 dust
+                comma
                 procs
                 gping
                 dconf
