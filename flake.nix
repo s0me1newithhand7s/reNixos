@@ -215,6 +215,39 @@
                 ];
             };
 
+            s0meMiniPC-nix = nixpkgs.lib.nixosSystem {
+                system = "x86_64-linux";
+                specialArgs = {
+                    inherit inputs self;
+                };
+                modules = [
+                    "${self}/s0meMiniPC-nix/default.nix"
+                    "${self}/s0meMiniPC-nix/disko.nix"
+                    inputs.chaotic.nixosModules.default
+                    inputs.stylix.nixosModules.stylix
+                    inputs.sops-nix.nixosModules.sops
+                    inputs.disko.nixosModules.disko
+                    inputs.lanzaboote.nixosModules.lanzaboote
+                    inputs.home-manager.nixosModules.default
+                ];
+            };
+
+
+            s0men0de-nix = nixpkgs.lib.nixosSystem {
+                system = "x86_64-linux";
+                specialArgs = {
+                    inherit inputs self;
+                };
+                modules = [
+                    "${self}/s0men0de-nix/default.nix"
+                    "${self}/s0men0de-nix/disko.nix"
+                    inputs.stylix.nixosModules.stylix
+                    inputs.sops-nix.nixosModules.sops
+                    inputs.disko.nixosModules.disko
+                    inputs.home-manager.nixosModules.default
+                ];
+            };
+
             s0melapt0p-nix = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
                 specialArgs = {
