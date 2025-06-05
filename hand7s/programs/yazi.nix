@@ -5,7 +5,7 @@
             enableFishIntegration = true;
             shellWrapperName = "yz";
             settings = {
-                manager = {
+                mgr = {
                     sort_by = "natural";
                     sort_sensitive = true;
                     sort_reverse = false;
