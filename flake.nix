@@ -232,7 +232,6 @@
                 ];
             };
 
-
             s0men0de-nix = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
                 specialArgs = {
