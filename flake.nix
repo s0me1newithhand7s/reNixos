@@ -186,7 +186,7 @@
                 };
 
                 modules = [
-                    "${self.outPath}/hand7s/standalone.nix"
+                    "${self}/hand7s/standalone.nix"
                     inputs.stylix.homeManagerModules.stylix
                     inputs.chaotic.homeManagerModules.default
                     inputs.sops-nix.homeManagerModules.sops
@@ -204,8 +204,8 @@
                     inherit inputs self;
                 };
                 modules = [
-                    "${self.outPath}/s0mePC-nix/default.nix"
-                    "${self.outPath}/s0mePC-nix/disko.nix"
+                    "${self}/s0mePC-nix/default.nix"
+                    "${self}/s0mePC-nix/disko.nix"
                     inputs.chaotic.nixosModules.default
                     inputs.stylix.nixosModules.stylix
                     inputs.sops-nix.nixosModules.sops
@@ -221,8 +221,8 @@
                     inherit inputs self;
                 };
                 modules = [
-                    "${self.outPath}/s0melapt0p-nix/default.nix"
-                    "${self.outPath}/s0melapt0p-nix/disko.nix"
+                    "${self}/s0melapt0p-nix/default.nix"
+                    "${self}/s0melapt0p-nix/disko.nix"
                     inputs.chaotic.nixosModules.default
                     inputs.stylix.nixosModules.stylix
                     inputs.sops-nix.nixosModules.sops
