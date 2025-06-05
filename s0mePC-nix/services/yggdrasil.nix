@@ -4,7 +4,7 @@
             enable = true;
             persistentKeys = false;
             settings = {
-                PrivateKey = config.sops.secrets.yggKeyPc.path;
+                # PrivateKey = ""; it's won't work as i thought :D;
 
                 Peers = [
                     # Germany :Erm:

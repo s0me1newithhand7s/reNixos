@@ -4,7 +4,7 @@
             enable = true;
             persistentKeys = false;
             settings = {
-                PrivateKey = config.sops.secrets.yggKeyLT.path;
+                # PrivateKey = ""; it's won't work as i thought :D
 
                 Peers = [
                     # only 1W+ peers (some exeptions are possible)
