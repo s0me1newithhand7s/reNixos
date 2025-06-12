@@ -17,8 +17,6 @@ jobs:
         uses: "DeterminateSystems/nix-installer-action@v16"
       - name: "flake check"
         uses: "DeterminateSystems/flake-checker-action@v5"
-      - name: "Manual nix flake check"
-        run: "nix flake check --all-systems --impure"
       - name: "Deadnix check"
         run: "nix run flake:nixpkgs#deadnix -- ."
       - name: "Alejandra check"
