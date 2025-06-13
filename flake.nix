@@ -154,7 +154,7 @@
         };
 
         hyprpanel = {
-            url = "github:Jas-SinghFSU/HyprPanel";
+            url = "github:hyprwm/Hyprland/v0.49.0";
             inputs = {
                 nixpkgs = {
                     follows = "nixpkgs";
