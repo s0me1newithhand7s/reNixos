@@ -7,12 +7,13 @@
             aliases = {
                 pushall = "push github; push gitlab";
                 pushall-f = "push --force github; push --force gitlab";
-                key = config.sops.secrets.sshKeyOpen.path;
+                
             };
 
             signing = {
                 format = "ssh";
                 signByDefault = true;
+                key = config.sops.secrets.sshKeyOpen.path;
             };
 
             lfs = {
