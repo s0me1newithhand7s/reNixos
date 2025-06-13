@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs,lib, ...}: {
     systemd = {
         user = {
             services = {
@@ -9,7 +9,7 @@
                     };
 
                     Service = {
-                        ExecStart = "${pkgs.hyprpanel}/bin/hyprpanel";
+                        ExecStart = "${lib.getExe pkgs.hyprpanel}";
                         Restart = "always";
                         RestartSec = 1;
                     };

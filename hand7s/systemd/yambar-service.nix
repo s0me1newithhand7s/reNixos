@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs,lib, ...}: {
     systemd = {
         user = {
             services = {
@@ -9,7 +9,7 @@
                     };
 
                     Service = {
-                        ExecStart = "${pkgs.yambar}/bin/yambar";
+                        ExecStart = "${lib.getExe pkgs.yambar}";
                         Restart = "always";
                         RestartSec = 1;
                     };

@@ -1,9 +1,9 @@
-{pkgs, ...}: {
+{pkgs,lib, ...}: {
     programs = {
         fuzzel = {
             settings = {
                 main = {
-                    terminal = "${pkgs.ghostty}/bin/ghostty";
+                    terminal = "${lib.getExe pkgs.ghostty}";
                     layer = "overlay";
                     prompt = "  > ";
                 };

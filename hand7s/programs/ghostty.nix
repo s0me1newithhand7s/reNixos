@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs,lib, ...}: {
     programs = {
         ghostty = {
             enableFishIntegration = true;
@@ -6,7 +6,7 @@
             settings = {
                 title = "spooky scary tty";
 
-                command = "${pkgs.fish}/bin/fish --login --interactive";
+                command = "${lib.getExe pkgs.fish} --login --interactive";
 
                 confirm-close-surface = false;
 

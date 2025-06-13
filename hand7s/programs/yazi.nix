@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs,lib, ...}: {
     programs = {
         yazi = {
             enable = true;
@@ -26,7 +26,7 @@
                 opener = {
                     play = [
                         {
-                            run = "${pkgs.mpv}/bin/mpv ''$@''";
+                            run = "${lib.getExe pkgs.mpv} ''$@''";
                             block = true;
                             for = "unix";
                         }
@@ -34,7 +34,7 @@
 
                     edit = [
                         {
-                            run = "${pkgs.helix}/bin/hx ''$@''";
+                            run = "${lib.getExe pkgs.helix} ''$@''";
                             block = true;
                             for = "unix";
                         }
@@ -42,7 +42,7 @@
 
                     open = [
                         {
-                            run = "${pkgs.xdg-utils}/bin/xdg-open ''$@''";
+                            run = "${lib.getExe' pkgs.xdg-utils "xdg-open"} ''$@''";
                             block = true;
                             for = "unix";
                         }

@@ -60,43 +60,43 @@
 
                     startup = [
                         {
-                            command = "${pkgs.systemd}/bin/systemctl --user start hyprpaper.service";
+                            command = "${lib.getExe' pkgs.systemd "systemctl"} --user start hyprpaper.service";
                         }
 
                         {
-                            command = "${pkgs.systemd}/bin/systemctl --user start hypridle.service";
+                            command = "${lib.getExe' pkgs.systemd "systemctl"} --user start hypridle.service";
                         }
 
                         {
-                            command = "${pkgs.systemd}/bin/systemctl --user start hyprpolkitagent.service";
+                            command = "${lib.getExe' pkgs.systemd "systemctl"} --user start hyprpolkitagent.service";
                         }
 
                         {
-                            command = "${pkgs.sway-audio-idle-inhibit}/bin/sway-audio-idle-inhibit";
+                            command = "${lib.getExe pkgs.sway-audio-idle-inhibit}";
                         }
 
                         {
-                            command = "${pkgs.autotiling-rs}/bin/autotiling-rs";
+                            command = "${lib.getExe pkgs.autotiling-rs}";
                         }
 
                         {
-                            command = "${pkgs.swaykbdd}/bin/swaykbdd";
+                            command = "${lib.getExe pkgs.swaykbdd}";
                         }
 
                         {
-                            command = "${pkgs.systemd}/bin/systemctl --user start yambar.service";
+                            command = "${lib.getExe' pkgs.systemd "systemctl"} --user start yambar.service";
                         }
                     ];
 
                     keybindings = lib.mkOptionDefault {
                         "Mod1+q" = "kill";
-                        "Mod1+s" = "exec ${pkgs.fuzzel}/bin/fuzzel";
-                        "Mod1+Return" = "exec ${pkgs.ghostty}/bin/ghostty";
-                        "Mod1+l" = "exec ${pkgs.swaylock}/bin/swaylock";
+                        "Mod1+s" = "exec ${lib.getExe pkgs.fuzzel}";
+                        "Mod1+Return" = "exec ${lib.getExe pkgs.ghostty}";
+                        "Mod1+l" = "exec ${lib.getExe pkgs.swaylock}";
                         "Mod1+f" = "fullscreen toggle";
-                        "Mod1+Shift+s" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot --notify copy area /home/hand7s/Pictures/Screenshots/$(date '+%y%m%d_%H-%M-%s').png";
+                        "Mod1+Shift+s" = "exec ${lib.getExe pkgs.sway-contrib.grimshot} --notify copy area /home/hand7s/Pictures/Screenshots/$(date '+%y%m%d_%H-%M-%s').png";
 
-                        "Mod1+Shift+e" = "exec ${pkgs.sway}/bin/swaymsg exit";
+                        "Mod1+Shift+e" = "exec ${lib.getExe' pkgs.sway "swaymsg"} exit";
                         "Mod1+Space" = "floating toggle";
                         "Mod1+r" = "mode resize";
 
@@ -129,16 +129,16 @@
                         "Mod1+Shift+0" = "move container to workspace number 10";
                         "Mod1+Shift+h" = "move scratchpad";
 
-                        "XF86AudioRaiseVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
-                        "XF86AudioLowerVolume" = "exec ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
-                        "XF86AudioMute" = "exec ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+                        "XF86AudioRaiseVolume" = "exec ${lib.getExe' pkgs.wireplumber "wpctl"} set-volume @DEFAULT_AUDIO_SINK@ 5%+";
+                        "XF86AudioLowerVolume" = "exec ${lib.getExe' pkgs.wireplumber "wpctl"} set-volume @DEFAULT_AUDIO_SINK@ 5%-";
+                        "XF86AudioMute" = "exec ${lib.getExe' pkgs.wireplumber "wpctl"} set-mute @DEFAULT_AUDIO_SINK@ toggle";
 
-                        "XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
-                        "XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
-                        "XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
+                        "XF86AudioPlay" = "exec ${lib.getExe pkgs.playerctl} play-pause";
+                        "XF86AudioPrev" = "exec ${lib.getExe pkgs.playerctl} previous";
+                        "XF86AudioNext" = "exec ${lib.getExe pkgs.playerctl} next";
 
-                        "XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set 5%-";
-                        "XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl set +5%";
+                        "XF86MonBrightnessDown" = "exec ${lib.getExe pkgs.brightnessctl} set 5%-";
+                        "XF86MonBrightnessUp" = "exec $${lib.getExe pkgs.brightnessctl} set +5%";
                     };
 
                     modes = {

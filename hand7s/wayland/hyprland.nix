@@ -99,22 +99,22 @@
                     };
 
                     exec-once = [
-                        "${pkgs.systemd}/bin/systemctl --user start hyprpaper.service"
-                        "${pkgs.systemd}/bin/systemctl --user start hypridle.service"
-                        "${pkgs.systemd}/bin/systemctl --user start hyprpolkitagent.service"
-                        "${pkgs.systemd}/bin/systemctl --user start hyprpanel.service"
+                        "${lib.getExe' pkgs.systemd "systemctl"} --user start hyprpaper.service"
+                        "${lib.getExe' pkgs.systemd "systemctl"} --user start hypridle.service"
+                        "${lib.getExe' pkgs.systemd "systemctl"} --user start hyprpolkitagent.service"
+                        "${lib.getExe' pkgs.systemd "systemctl"} --user start hyprpanel.service"
                     ];
 
                     bind = [
-                        "ALT, return, exec, ${pkgs.ghostty}/bin/ghostty"
+                        "ALT, return, exec, ${lib.getExe pkgs.ghostty}"
                         "ALT, Q, killactive,"
-                        "ALT, S, exec, ${pkgs.fuzzel}/bin/fuzzel"
+                        "ALT, S, exec, ${lib.getExe pkgs.fuzzel}"
                         "ALT, F, fullscreen, 0"
-                        "ALT, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
+                        "ALT, L, exec, ${lib.getExe pkgs.hyprlock}"
 
                         "ALT SHIFT, E, exit,"
                         "ALT SHIFT, space, togglefloating, active"
-                        "ALT SHIFT, S, exec, ${pkgs.grimblast}/bin/grimblast --notify --freeze copysave area /home/hand7s/Pictures/Screenshots/$(date '+%y%m%d_%H-%M-%s').png"
+                        "ALT SHIFT, S, exec, ${lib.getExe pkgs.grimblast} --notify --freeze copysave area /home/hand7s/Pictures/Screenshots/$(date '+%y%m%d_%H-%M-%s').png"
 
                         "ALT, left, movefocus, l"
                         "ALT, right, movefocus, r"
@@ -150,18 +150,18 @@
                     ];
 
                     bindel = [
-                        ", XF86AudioRaiseVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-                        ", XF86AudioLowerVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+                        ", XF86AudioRaiseVolume, exec, ${lib.getExe' pkgs.wireplumber "wpctl"} set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+                        ", XF86AudioLowerVolume, exec, ${lib.getExe' pkgs.wireplumber "wpctl"} set-volume @DEFAULT_AUDIO_SINK@ 5%-"
 
-                        ", XF86MonBrightnessDown, exec, ${pkgs.brightnessctl}/bin/brightnessctl set 5%-"
-                        ", XF86MonBrightnessUp, exec, ${pkgs.brightnessctl}/bin/brightnessctl set +5%"
+                        ", XF86MonBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} set 5%-"
+                        ", XF86MonBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl}l set +5%"
                     ];
 
                     bindl = [
-                        ", XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause"
-                        ", XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous"
-                        ", XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next"
-                        ", XF86AudioMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+                        ", XF86AudioPlay, exec, ${lib.getExe pkgs.playerctl} play-pause"
+                        ", XF86AudioPrev, exec, ${lib.getExe pkgs.playerctl} previous"
+                        ", XF86AudioNext, exec, ${lib.getExe pkgs.playerctl} next"
+                        ", XF86AudioMute, exec, ${lib.getExe' pkgs.wireplumber "wpctl"} set-mute @DEFAULT_AUDIO_SINK@ toggle"
 
                         "ALT, TAB, hyprexpo:expo, toggle"
                     ];

@@ -61,12 +61,12 @@
                 scalingPriority = "hyprland";
 
                 tear = false;
-                terminal = "${pkgs.ghostty}/bin/ghostty";
+                terminal = "${lib.getExe pkgs.ghostty}";
                 dummy = true;
 
                 hyprpanel = {
                     restartAgs = true;
-                    restartCommand = "${pkgs.systemd}/bin/systemctl --user restart hyprpanel.service";
+                    restartCommand = "${lib.getExe' pkgs.systemd "systemctl"} --user restart hyprpanel.service";
                 };
 
                 bar = {
@@ -116,9 +116,9 @@
 
                     volume = {
                         label = true;
-                        scrollDown = "${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
-                        scrollUp = "${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+";
-                        rightClick = "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+                        scrollDown = "${lib.getExe' pkgs.wireplumber "wpctl"}  set-volume @DEFAULT_AUDIO_SINK@ 5%-";
+                        scrollUp = "${lib.getExe' pkgs.wireplumber "wpctl"} set-volume @DEFAULT_AUDIO_SINK@ 5%+";
+                        rightClick = "${lib.getExe' pkgs.wireplumber "wpctl"} set-mute @DEFAULT_AUDIO_SINK@ toggle";
                     };
 
                     windowtitle = {
@@ -225,7 +225,7 @@
                             icon = "󰌌";
                             label = true;
                             labelType = "code";
-                            rightClick = "${pkgs.hyprland}/bin/hyprctl switchxkblayout monsgeek-monsgeek-keyboard next";
+                            rightClick = "${lib.getExe' pkgs.hyprland "hyprctl"} switchxkblayout monsgeek-monsgeek-keyboard next";
                         };
 
                         netstat = {
@@ -321,7 +321,7 @@
                         shortcuts = {
                             left = {
                                 shortcut1 = {
-                                    command = "${pkgs.google-chrome}/bin/google-chrome-stable";
+                                    command = "${lib.getExe pkgs.google-chrome}";
                                     icon = "";
                                     tooltip = "Google Chrome";
                                 };
@@ -333,7 +333,7 @@
                                 };
 
                                 shortcut3 = {
-                                    command = "${pkgs.discord}/bin/discord";
+                                    command = "${lib.getExe pkgs.discord}";
                                     icon = "";
                                     tooltip = "Discord";
                                 };
@@ -347,13 +347,13 @@
 
                             right = {
                                 shortcut1 = {
-                                    command = "${pkgs.fuzzel}/bin/fuzzel";
+                                    command = "${lib.getExe pkgs.fuzzel}";
                                     icon = "";
                                     tooltip = "Search";
                                 };
 
                                 shortcut3 = {
-                                    command = "sleep 2; ${pkgs.grimblast}/bin/grimblast --notify --freeze copysave area /home/hand7s/Pictures/Screenshots/$(date '+%y%m%d_%H-%M-%s').png";
+                                    command = "sleep 2; ${lib.getExe pkgs.grimblast} --notify --freeze copysave area /home/hand7s/Pictures/Screenshots/$(date '+%y%m%d_%H-%M-%s').png";
                                     icon = "󰄀";
                                     tooltip = "Screenshot";
                                 };
@@ -389,10 +389,10 @@
                     power = {
                         confirmation = true;
                         showLabel = true;
-                        logout = "${pkgs.hyprland}hyprctl dispatch exit";
-                        reboot = "${pkgs.systemd}/bin/systemctl reboot";
-                        shutdown = "${pkgs.systemd}/bin/systemctl poweroff";
-                        sleep = "${pkgs.systemd}/bin/systemctl suspend";
+                        logout = "${lib.getExe' pkgs.hyprland "hyprctl"} dispatch exit";
+                        reboot = "${lib.getExe' pkgs.systemd "systemctl"} reboot";
+                        shutdown = "${lib.getExe' pkgs.systemd "systemctl"} poweroff";
+                        sleep = "${lib.getExe' pkgs.systemd "systemctl"} suspend";
                     };
 
                     volume = {

@@ -98,12 +98,12 @@
                 };
 
                 extraConfig = ''
-                    ${pkgs.river}/bin/riverctl keyboard-layout -options "grp:caps_toggle" "us,ru"
-                    ${pkgs.river}/bin/riverctl spawn ${pkgs.systemd}/bin/systemctl --user start hyprpaper.service
-                    ${pkgs.river}/bin/riverctl spawn ${pkgs.systemd}/bin/systemctl --user start hyprpolkitagent.service
-                    ${pkgs.river}/bin/riverctl spawn ${pkgs.systemd}/bin/systemctl --user start yambar.service
-                    ${pkgs.river}/bin/riverctl spawn ${pkgs.wayidle}/bin/wayidle -t=300 ${pkgs.brightnessctl}/bin/brightnessctl -s set 10
-                    ${pkgs.river}/bin/riverctl spawn ${pkgs.wayidle}/bin/wayidle -t=600 ${pkgs.waylock}/bin/waylock
+                    ${lib.getExe' pkgs.river "riverctl"} keyboard-layout -options "grp:caps_toggle" "us,ru"
+                    ${lib.getExe' pkgs.river "riverctl"} spawn ${lib.getExe' pkgs.systemd "systemctl"} --user start hyprpaper.service
+                    ${lib.getExe' pkgs.river "riverctl"} spawn ${lib.getExe' pkgs.systemd "systemctl"} --user start hyprpolkitagent.service
+                    ${lib.getExe' pkgs.river "riverctl"} spawn ${lib.getExe' pkgs.systemd "systemctl"} --user start yambar.service
+                    ${lib.getExe' pkgs.river "riverctl"} spawn ${lib.getExe pkgs.wayidle} -t=300 ${lib.getExe pkgs.brightnessctl} -s set 10
+                    ${lib.getExe' pkgs.river "riverctl"} spawn ${lib.getExe pkgs.wayidle} -t=600 ${lib.getExe pkgs.waylock}
                 '';
             };
         };

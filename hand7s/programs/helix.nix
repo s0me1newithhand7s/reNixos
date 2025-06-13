@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs,lib, ...}: {
     programs = {
         helix = {
             enable = true;
@@ -22,7 +22,7 @@
             languages = {
                 language-servers = {
                     nixd = {
-                        command = "${pkgs.nixd}/bin/nixd";
+                        command = "${lib.getExe pkgs.nixd}";
                         args = [
                             "--inlay-hints=true"
                         ];
@@ -40,7 +40,7 @@
                         };
 
                         formatter = {
-                            command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt-rfc-style";
+                            command = "${lib.getExe pkgs.nixfmt-rfc-style}";
                             args = [
                                 "--indent=4"
                             ];
