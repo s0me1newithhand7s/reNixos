@@ -1,12 +1,15 @@
-{pkgs, ...}: {
+{
+    pkgs,
+    lib,
+    ...
+}: {
     environment = {
         systemPackages = with pkgs; [
-            home-manager
+            (lib.hiPrio uutils-coreutils-noprefix)
             xdg-desktop-portal-gtk
-            xdg-desktop-portal-hyprland
-            nixos-anywhere
-            sbctl
-            sops
+            uutils-findutils
+            uutils-diffutils
+            home-manager
         ];
     };
 }
