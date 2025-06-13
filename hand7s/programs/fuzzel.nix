@@ -1,4 +1,8 @@
-{pkgs,lib, ...}: {
+{
+    pkgs,
+    lib,
+    ...
+}: {
     programs = {
         fuzzel = {
             settings = {

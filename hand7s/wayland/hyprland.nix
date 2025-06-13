@@ -108,6 +108,7 @@
                     bind = [
                         "ALT, return, exec, ${lib.getExe pkgs.ghostty}"
                         "ALT, Q, killactive,"
+                        "ALT SHIFT, Q, closeunfocused,"
                         "ALT, S, exec, ${lib.getExe pkgs.fuzzel}"
                         "ALT, F, fullscreen, 0"
                         "ALT, L, exec, ${lib.getExe pkgs.hyprlock}"
@@ -121,32 +122,34 @@
                         "ALT, up, movefocus, u"
                         "ALT, down, movefocus, d"
 
-                        "ALT, 1, workspace, 1"
-                        "ALT, 2, workspace, 2"
-                        "ALT, 3, workspace, 3"
-                        "ALT, 4, workspace, 4"
-                        "ALT, 5, workspace, 5"
-                        "ALT, 6, workspace, 6"
-                        "ALT, 7, workspace, 7"
-                        "ALT, 8, workspace, 8"
-                        "ALT, 9, workspace, 9"
-                        "ALT, 0, workspace, 0"
+                        "ALT, 1, split-workspace, 1"
+                        "ALT, 2, split-workspace, 2"
+                        "ALT, 3, split-workspace, 3"
+                        "ALT, 4, split-workspace, 4"
+                        "ALT, 5, split-workspace, 5"
+                        "ALT, 6, split-workspace, 6"
+                        "ALT, 7, split-workspace, 7"
+                        "ALT, 8, split-workspace, 8"
+                        "ALT, 9, split-workspace, 9"
+                        "ALT, 0, split-workspace, 10"
                         "ALT, H, togglespecialworkspace, special"
 
-                        "ALT SHIFT, 1, movetoworkspace, 1"
-                        "ALT SHIFT, 2, movetoworkspace, 2"
-                        "ALT SHIFT, 3, movetoworkspace, 3"
-                        "ALT SHIFT, 4, movetoworkspace, 4"
-                        "ALT SHIFT, 5, movetoworkspace, 5"
-                        "ALT SHIFT, 6, movetoworkspace, 6"
-                        "ALT SHIFT, 7, movetoworkspace, 7"
-                        "ALT SHIFT, 8, movetoworkspace, 8"
-                        "ALT SHIFT, 9, movetoworkspace, 9"
-                        "ALT SHIFT, 0, movetoworkspace, 0"
-                        "ALT SHIFT, H, movetoworkspace, special"
+                        "ALT SHIFT, 1, split-movetoworkspace, 1"
+                        "ALT SHIFT, 2, split-movetoworkspace, 2"
+                        "ALT SHIFT, 3, split-movetoworkspace, 3"
+                        "ALT SHIFT, 4, split-movetoworkspace, 4"
+                        "ALT SHIFT, 5, split-movetoworkspace, 5"
+                        "ALT SHIFT, 6, split-movetoworkspace, 6"
+                        "ALT SHIFT, 7, split-movetoworkspace, 7"
+                        "ALT SHIFT, 8, split-movetoworkspace, 8"
+                        "ALT SHIFT, 9, split-movetoworkspace, 9"
+                        "ALT SHIFT, 0, split-movetoworkspace, 10"
+                        "ALT SHIFT, H, split-movetoworkspace, special"
 
                         "ALT, mouse_down, workspace, e+1"
                         "ALT, mouse_up, workspace, e-1"
+
+                        "ALT, TAB, overview:toggle"
                     ];
 
                     bindel = [
@@ -154,7 +157,7 @@
                         ", XF86AudioLowerVolume, exec, ${lib.getExe' pkgs.wireplumber "wpctl"} set-volume @DEFAULT_AUDIO_SINK@ 5%-"
 
                         ", XF86MonBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} set 5%-"
-                        ", XF86MonBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl}l set +5%"
+                        ", XF86MonBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} set +5%"
                     ];
 
                     bindl = [
@@ -162,8 +165,6 @@
                         ", XF86AudioPrev, exec, ${lib.getExe pkgs.playerctl} previous"
                         ", XF86AudioNext, exec, ${lib.getExe pkgs.playerctl} next"
                         ", XF86AudioMute, exec, ${lib.getExe' pkgs.wireplumber "wpctl"} set-mute @DEFAULT_AUDIO_SINK@ toggle"
-
-                        "ALT, TAB, hyprexpo:expo, toggle"
                     ];
 
                     bindm = [
@@ -217,20 +218,59 @@
                     };
 
                     plugin = {
-                        hyprexpo = {
-                            columns = 3;
-                            gap_size = 5;
+                        split-monitor-workspaces = {
+                            count = 10;
+                            keep_focused = 1;
+                            enable_notifications = 1;
+                            enable_persistent_workspaces = 1;
+                        };
 
-                            enable_gesture = true;
-                            gesture_fingers = 3;
-                            gesture_distance = 300;
-                            gesture_positive = false;
+                        easymotion = {
+                            only_special = false;
+                        };
+
+                        dynamic-cursors = {
+                            enabled = true;
+                            mode = "strech";
+                            threshold = 2;
+                            stretch = {
+                                limit = 4000;
+                                function = "quadratic";
+                            };
+
+                            shake = {
+                                enabled = true;
+                                nearest = true;
+                                threshold = 10.0;
+                                effects = true;
+                            };
+
+                            hyprcursor = {
+                                enabled = true;
+                                nearest = true;
+                                fallback = "clientside";
+                            };
+                        };
+
+                        touch_gestures = {
+                            sensitivity = 0.0;
+                            workspace_swipe_fingers = 4;
+                            long_press_delay = 400;
+                            resize_on_border_long_press = true;
+                            edge_margin = 10;
+                            emulate_touchpad_swipe = false;
                         };
                     };
                 };
 
                 plugins = with inputs; [
-                    inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo
+                    hyprsplit.packages.${pkgs.system}.split-monitor-workspaces
+                    hyprcurs.packages.${pkgs.system}.hypr-dynamic-cursors
+                    hypremot.packages.${pkgs.system}.hyprland-easymotion
+                    hyprplugs.packages.${pkgs.system}.xtra-dispatchers
+                    hyprplugs.packages.${pkgs.system}.hyprwinwrap
+                    hyprspace.packages.${pkgs.system}.Hyprspace
+                    hyprgrass.packages.${pkgs.system}.hyprgrass
                 ];
             };
         };

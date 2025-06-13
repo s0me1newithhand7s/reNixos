@@ -7,7 +7,6 @@
             aliases = {
                 pushall = "push github; push gitlab";
                 pushall-f = "push --force github; push --force gitlab";
-                
             };
 
             signing = {
