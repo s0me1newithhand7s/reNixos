@@ -14,6 +14,7 @@
                 nvd
                 git
                 dust
+                sops
                 comma
                 procs
                 gping
@@ -25,7 +26,10 @@
                 kubectl
                 yt-dlp
                 ripgrep
+                gitoxide
                 tty-clock
+                deploy-rs
+                nixos-anywhere
                 wireguard-tools
                 yubico-piv-tool
                 libimobiledevice
