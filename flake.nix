@@ -135,8 +135,17 @@
             url = "github:hyprwm/Hyprland";
         };
 
-        hyprland-plugins = {
+        hyprplugs = {
             url = "github:hyprwm/hyprland-plugins";
+            inputs = {
+                hyprland = {
+                    follows = "hyprland";
+                };
+            };
+        };
+
+        hyprsplit = {
+            url = "github:Duckonaut/split-monitor-workspaces";
             inputs = {
                 hyprland = {
                     follows = "hyprland";
@@ -146,6 +155,42 @@
 
         hyprpanel = {
             url = "github:Jas-SinghFSU/HyprPanel";
+            inputs = {
+                nixpkgs = {
+                    follows = "nixpkgs";
+                };
+            };
+        };
+
+        hypremot = {
+            url = "github:zakk4223/hyprland-easymotion";
+            inputs = {
+                nixpkgs = {
+                    follows = "nixpkgs";
+                };
+            };
+        };
+
+        hyprcurs = {
+            url = "github:VirtCode/hypr-dynamic-cursors";
+            inputs = {
+                nixpkgs = {
+                    follows = "nixpkgs";
+                };
+            };
+        };
+
+        hyprspace = {
+            url = "github:KZDKM/Hyprspace";
+            inputs = {
+                nixpkgs = {
+                    follows = "nixpkgs";
+                };
+            };
+        };
+
+        hyprgrass = {
+            url = "github:horriblename/hyprgrass";
             inputs = {
                 nixpkgs = {
                     follows = "nixpkgs";
