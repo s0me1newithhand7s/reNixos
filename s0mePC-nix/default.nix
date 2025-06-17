@@ -71,6 +71,7 @@
         ./services/usbmuxd.nix
         ./services/irqbalance.nix
         ./services/yubikey-agent.nix
+        ./services/resolved.nix
 
         ./sops/defaults.nix
         ./sops/secrets.nix
