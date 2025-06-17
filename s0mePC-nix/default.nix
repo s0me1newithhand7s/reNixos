@@ -40,6 +40,7 @@
         ./nix/settings/trusted-public-keys.nix
         ./nix/settings/trusted-users.nix
         ./nix/settings/auto-optimise-store.nix
+        ./nix/settings/trusted-substituters.nix
 
         ./nixpkgs/config.nix
         ./nixpkgs/system.nix
