@@ -2,7 +2,7 @@
     programs = {
         ssh = {
             startAgent = true;
-            agentTimeout = "30m";
+            agentTimeout = "12h";
         };
     };
 }
