@@ -1,6 +1,4 @@
-{
-    ...
-}: {
+{...}: {
     nix = {
         settings = {
             trusted-substituters = [
@@ -18,5 +16,5 @@
                 "https://colmena.cachix.org"
             ];
         };
-    }; 
+    };
 }

@@ -1,16 +1,13 @@
-{
-    pkgs,
-    ...
-}: {
+{pkgs, ...}: {
     xdg = {
         portal = {
             enable = true;
-            
+
             config = {
                 common = {
                     default = [
                         "gtk"
-                    ];  
+                    ];
                 };
 
                 hyprland = {
@@ -21,7 +18,7 @@
                 };
 
                 sway = {
-                     preferred = [
+                    preferred = [
                         "gtk"
                         "wlr"
                     ];

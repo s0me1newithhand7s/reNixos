@@ -1,16 +1,14 @@
-{
-    ...
-}: {
+{...}: {
     services = {
         resolved = {
             enable = true;
             dnsovertls = "true";
             dnssec = "true";
             llmnr = "resolve";
-            domains = [ 
-                "~." 
+            domains = [
+                "~."
             ];
-            
+
             fallbackDns = [
                 # cf dns
                 "1.1.1.1"
