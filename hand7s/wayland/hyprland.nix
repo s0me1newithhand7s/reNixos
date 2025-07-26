@@ -13,6 +13,11 @@
                 )
                 true;
 
+                systemd = {
+                    enable = true;
+                    enableXdgAutostart = true;
+                };
+
                 settings = {
                     monitor = ", 2560x1440@165.00Hz, 0x0, 1";
 
