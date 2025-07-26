@@ -77,11 +77,11 @@
         ./sops/defaults.nix
         ./sops/secrets.nix
 
-        ./stylix/base16Scheme.nix
-        ./stylix/cursor.nix
-        ./stylix/defaults.nix
-        ./stylix/fonts.nix
-        ./stylix/image.nix
+        "${self}/hand7s/stylix/base16Scheme.nix"
+        "${self}/hand7s/stylix/cursor.nix"
+        "${self}/hand7s/stylix/defaults.nix"
+        "${self}/hand7s/stylix/fonts.nix"
+        "${self}/hand7s/stylix/image.nix"
 
         ./system/name.nix
         ./system/stateVersion.nix
