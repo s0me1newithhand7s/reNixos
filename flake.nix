@@ -235,7 +235,6 @@
                     inputs.stylix.homeManagerModules.stylix
                     inputs.chaotic.homeManagerModules.default
                     inputs.sops-nix.homeManagerModules.sops
-                    inputs.hyprpanel.homeManagerModules.hyprpanel
                     inputs.spicetify-nix.homeManagerModules.default
                     inputs.hyprland.homeManagerModules.default
                 ];

@@ -8,7 +8,6 @@
             hand7s = {
                 imports = [
                     "${self}/hand7s/default.nix"
-                    inputs.hyprpanel.homeManagerModules.hyprpanel
                     inputs.spicetify-nix.homeManagerModules.default
                     inputs.hyprland.homeManagerModules.default
                     inputs.chaotic.homeManagerModules.default
