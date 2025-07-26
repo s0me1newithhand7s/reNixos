@@ -391,6 +391,14 @@
                 theme = {
                     matugen = false;
 
+                    name = "tokyo-night-vivid";
+
+                    font = {
+                        name = "Hack Font Nerd Regular";
+                        size = "16px";
+                        weight = 600;
+                    };
+
                     matugen_settings = {
                         contrast = 0;
                         mode = "dark";
