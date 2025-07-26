@@ -11,27 +11,6 @@
             )
             true;
 
-            hyprland = {
-                enable = lib.mkIf (
-                    config.home.gui.sessionType == "Hyprland"
-                )
-                true;
-            };
-
-            overwrite = {
-                enable = lib.mkIf (
-                    config.home.gui.sessionType == "Hyprland"
-                )
-                true;
-            };
-
-            overlay = {
-                enable = lib.mkIf (
-                    config.home.gui.sessionType == "Hyprland"
-                )
-                true;
-            };
-
             settings = {
                 layout = {
                     "bar.layouts" = {
