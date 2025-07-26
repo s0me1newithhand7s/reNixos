@@ -18,6 +18,7 @@
 
         ./services/hypridle.nix
         ./services/swayidle.nix
+        ./services/kdeconnect.nix
 
         ./systemd/hyprpanel-service.nix
         ./systemd/hyprpolkitagent-service.nix
