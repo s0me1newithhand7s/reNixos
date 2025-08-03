@@ -7,7 +7,6 @@
         xserver = {
             display = lib.mkForce 0;
             enable = true;
-            tty = 7;
 
             excludePackages = with pkgs; [
                 xterm
