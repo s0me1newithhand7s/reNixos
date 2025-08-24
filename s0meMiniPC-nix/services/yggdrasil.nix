@@ -4,7 +4,6 @@
             enable = true;
             persistentKeys = false;
             settings = {
-
                 Peers = [
                     # Germany :Erm:
                     "tcp://s-fra-0.sergeysedoy97.ru:65533"
