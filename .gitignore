@@ -6,7 +6,6 @@ s0melapt0p-nix/sops
 
 # ignored hosts
 s0men0de-nix/
-s0meMiniPC-nix/
 
 # env shit
 .env/
