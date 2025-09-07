@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
     boot = {
         zfs = {
             allowHibernation = false;
