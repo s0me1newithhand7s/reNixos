@@ -24,10 +24,10 @@
 <div>
 
   Treeview ([Obsidian](https://obsidian.md/) canvases) are avaiable under `doc/` directory. </br>
-  - flake-tree - `doc/flake-tree.canvas` - explains how inputs and outputs works inside my `flake.nix`. </br>
-  - hand7s-tree - `doc/hand7s-tree.canvas` - schema for my `home-manager`. </br>
-  - s0mePC-tree - `doc/s0mePC-tree.canvas` - schema for my PC config. </br>
-  - s0melapt0p-tree - `doc/s0melapt0p-tree.canvas` - schema for my laptop config. </br>
+  - [flake-tree](./doc/flake-tree.canvas) - `doc/flake-tree.canvas` - explains how inputs and outputs works inside my `flake.nix`. </br>
+  - [hand7s-tree](./doc/hand7s-tree.canvas) - `doc/hand7s-tree.canvas` - schema for my `home-manager`. </br>
+  - [s0mePC-tree](./doc/s0mePC-tree.canvas) - `doc/s0mePC-tree.canvas` - schema for my PC config. </br>
+  - [s0melapt0p-tree](./doc/s0melapt0p-tree.canvas) - `doc/s0melapt0p-tree.canvas` - schema for my laptop config. </br>
 
   AI review (in case you care) avaiable [here](https://deepwiki.com/s0me1newithhand7s/reNixos/5-development-workflow), but take this with a **big** grain of salt, since AI is AI.
  
