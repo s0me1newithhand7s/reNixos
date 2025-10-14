@@ -237,7 +237,7 @@
                     treefmt \
                     --ci \
                     --config-file \
-                    "${self}/.github/workflows/alejandra.toml"
+                    "${self}/.github/workflows/"
                 '';
             };
         };
