@@ -223,6 +223,25 @@
         home-manager,
         ...
     } @ inputs: {
+        formatter = {
+            x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.writeShellApplication {
+                name = "treefmt-nix-lite";
+                runtimeInputs = with nixpkgs.legacyPackages.x86_64-linux; [
+                    alejandra
+                    statix
+                    deadnix
+                    treefmt
+                ];
+
+                text = ''
+                    treefmt \
+                    --ci \
+                    --config-file \
+                    "${self}/.github/workflows/alejandra.toml"
+                '';
+            };
+        };
+         
         homeConfigurations = {
             hand7s = home-manager.lib.homeManagerConfiguration {
                 pkgs = nixpkgs.legacyPackages.x86_64-linux;
