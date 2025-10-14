@@ -227,7 +227,10 @@
             hand7s = home-manager.lib.homeManagerConfiguration {
                 pkgs = nixpkgs.legacyPackages.x86_64-linux;
                 extraSpecialArgs = {
-                    inherit inputs self;
+                    inherit
+                        inputs
+                        self
+                        ;
                 };
 
                 modules = [
@@ -245,7 +248,10 @@
             s0mePC-nix = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
                 specialArgs = {
-                    inherit inputs self;
+                    inherit
+                        inputs
+                        self
+                        ;
                 };
                 modules = [
                     "${self}/s0mePC-nix/default.nix"
@@ -262,7 +268,10 @@
             s0meMiniPC-nix = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
                 specialArgs = {
-                    inherit inputs self;
+                    inherit
+                        inputs
+                        self
+                        ;
                 };
                 modules = [
                     "${self}/s0meMiniPC-nix/default.nix"
@@ -294,7 +303,10 @@
             s0melapt0p-nix = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
                 specialArgs = {
-                    inherit inputs self;
+                    inherit
+                        inputs
+                        self
+                        ;
                 };
                 modules = [
                     "${self}/s0melapt0p-nix/default.nix"
