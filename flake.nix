@@ -235,19 +235,24 @@
                 text = ''
                     ${nixpkgs.lib.getExe nixpkgs.legacyPackages.x86_64-linux.alejandra} \
                     --experimental-config \
-                    ${self}/.github/workflows/alejandra.toml \
+                    ${nixpkgs.legacyPackages.x86_64-linux.writeText "alejandra.toml" ''
+                        indentation = "FourSpaces"
+                    ''} \
                     --check \
                     ${self} && ${nixpkgs.lib.getExe nixpkgs.legacyPackages.x86_64-linux.statix} \
                     check \
                     --config \
-                    ${self}/.github/workflows/statix.toml \
+                    ${nixpkgs.legacyPackages.x86_64-linux.writeText "statix.toml" ''
+                        disabled = [
+                            "empty_pattern"
+                        ]
+                    ''} \
                     ${self} && ${nixpkgs.lib.getExe nixpkgs.legacyPackages.x86_64-linux.deadnix} \
                     --fail \
                     ${self}
                 '';
             };
         };
-
 
         homeConfigurations = {
             hand7s = home-manager.lib.homeManagerConfiguration {
