@@ -13,3 +13,6 @@ s0men0de-nix/
 .obsidian/
 .trash/
 .zed/
+
+# for local purposes
+.fmtconf/
