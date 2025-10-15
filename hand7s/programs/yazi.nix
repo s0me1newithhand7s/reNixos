@@ -57,12 +57,15 @@
                     cursor_blink = true;
                 };
 
-                plugins = with pkgs.yaziPlugins; {
-                    starship = starship;
-                    rsync = rsync;
-                    git = git;
-                    chmod = chmod;
-                    full-border = full-border;
+                plugins = {
+                    inherit
+                        (pkgs.yaziPlugins)
+                        starship
+                        rsync
+                        git
+                        chmod
+                        full-border
+                        ;
                 };
 
                 initLua = ''

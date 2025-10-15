@@ -6,7 +6,7 @@
     ...
 }: let
     cfg = config.home.gui;
-    ayugram-desktop = inputs.ayugram-desktop.packages.${pkgs.system}.ayugram-desktop;
+    ayugram = inputs.ayugram-desktop.packages.${pkgs.system}.ayugram-desktop;
     freesm-launcher = inputs.freesm.packages.${pkgs.system}.freesmlauncher;
 in {
     options.home.gui = {
@@ -40,6 +40,7 @@ in {
                 [
                     vesktop
                     nekoray
+                    ayugram
                     anki-bin
                     obsidian
                     playerctl
@@ -49,7 +50,6 @@ in {
                     parsec-bin
                     pwvucontrol
                     easyeffects
-                    ayugram-desktop
                     element-desktop
                     hyprpolkitagent
                     freesm-launcher
