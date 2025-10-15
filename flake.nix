@@ -225,23 +225,30 @@
     } @ inputs: {
         formatter = {
             x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.writeShellApplication {
-                name = "treefmt-nix-lite";
+                name = "hand7sfmt";
                 runtimeInputs = with nixpkgs.legacyPackages.x86_64-linux; [
                     alejandra
                     statix
                     deadnix
-                    treefmt
                 ];
 
                 text = ''
-                    treefmt \
-                    --ci \
-                    --config-file \
-                    "${self}/.github/workflows/"
+                    ${nixpkgs.lib.getExe nixpkgs.legacyPackages.x86_64-linux.alejandra} \
+                    --experimental-config \
+                    ${self}/.github/workflows/alejandra.toml \
+                    --check \
+                    ${self} && ${nixpkgs.lib.getExe nixpkgs.legacyPackages.x86_64-linux.statix} \
+                    check \
+                    --config \
+                    ${self}/.github/workflows/statix.toml \
+                    ${self} && ${nixpkgs.lib.getExe nixpkgs.legacyPackages.x86_64-linux.deadnix} \
+                    --fail \
+                    ${self}
                 '';
             };
         };
-         
+
+
         homeConfigurations = {
             hand7s = home-manager.lib.homeManagerConfiguration {
                 pkgs = nixpkgs.legacyPackages.x86_64-linux;
