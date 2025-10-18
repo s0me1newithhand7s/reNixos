@@ -223,8 +223,7 @@
         home-manager,
         ...
     } @ inputs: let
-       pkgs = self.inputs.nixpkgs.legacyPackages.x86_64-linux;
-       lib = self.inputs.nixpkgs.lib;
+        pkgs = self.inputs.nixpkgs.legacyPackages.x86_64-linux;
     in {
         formatter = {
             x86_64-linux = self.packages.x86_64-linux.hand7sfmt;
@@ -240,15 +239,15 @@
                         deadnix
                     ];
 
-                    text = '' 
-                        ${lib.getExe pkgs.alejandra} \
+                    text = ''
+                        ${nixpkgs.lib.getExe pkgs.alejandra} \
                         --experimental-config \
                         ${pkgs.writeText "alejandra.toml" ''
                             indentation = "FourSpaces"
                         ''} \
                         --check \
                         ${self}; \
-                        ${lib.getExe pkgs.statix} \
+                        ${nixpkgs.lib.getExe pkgs.statix} \
                         check \
                         --config \
                         ${pkgs.writeText "statix.toml" ''
@@ -257,7 +256,7 @@
                             ]
                         ''} \
                         ${self}; \
-                        ${lib.getExe pkgs.deadnix} \
+                        ${nixpkgs.lib.getExe pkgs.deadnix} \
                         --fail \
                         ${self};
                     '';
