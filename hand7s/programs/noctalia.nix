@@ -1,7 +1,8 @@
 {config, ...}: {
     programs =
-        if (
-            config.home.gui.sessionType == "Hyprland"
+        if
+            (
+                config.home.gui.sessionType == "Hyprland"
             )
         then {
             noctalia-shell = {
@@ -97,7 +98,7 @@
 
                                 {
                                     id = "Tray";
-                                    blacklist = [ ];
+                                    blacklist = [];
                                     colorizeIcons = true;
                                 }
 
