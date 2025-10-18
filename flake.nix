@@ -222,35 +222,58 @@
         nixpkgs,
         home-manager,
         ...
-    } @ inputs: {
+    } @ inputs: let
+       pkgs = self.inputs.nixpkgs.legacyPackages.x86_64-linux;
+       lib = self.inputs.nixpkgs.lib;
+    in {
         formatter = {
-            x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.writeShellApplication {
-                name = "hand7sfmt";
-                runtimeInputs = with nixpkgs.legacyPackages.x86_64-linux; [
-                    alejandra
-                    statix
-                    deadnix
-                ];
+            x86_64-linux = self.packages.x86_64-linux.hand7sfmt;
+        };
 
-                text = ''
-                    ${nixpkgs.lib.getExe nixpkgs.legacyPackages.x86_64-linux.alejandra} \
-                    --experimental-config \
-                    ${nixpkgs.legacyPackages.x86_64-linux.writeText "alejandra.toml" ''
-                        indentation = "FourSpaces"
-                    ''} \
-                    --check \
-                    ${self} && ${nixpkgs.lib.getExe nixpkgs.legacyPackages.x86_64-linux.statix} \
-                    check \
-                    --config \
-                    ${nixpkgs.legacyPackages.x86_64-linux.writeText "statix.toml" ''
-                        disabled = [
-                            "empty_pattern"
-                        ]
-                    ''} \
-                    ${self} && ${nixpkgs.lib.getExe nixpkgs.legacyPackages.x86_64-linux.deadnix} \
-                    --fail \
-                    ${self}
-                '';
+        packages = {
+            x86_64-linux = {
+                hand7sfmt = pkgs.writeShellApplication {
+                    name = "hand7sfmt";
+                    runtimeInputs = with pkgs; [
+                        alejandra
+                        statix
+                        deadnix
+                    ];
+
+                    text = '' 
+                        ${lib.getExe pkgs.alejandra} \
+                        --experimental-config \
+                        ${pkgs.writeText "alejandra.toml" ''
+                            indentation = "FourSpaces"
+                        ''} \
+                        --check \
+                        ${self}; \
+                        ${lib.getExe pkgs.statix} \
+                        check \
+                        --config \
+                        ${pkgs.writeText "statix.toml" ''
+                            disabled = [
+                                "empty_pattern"
+                            ]
+                        ''} \
+                        ${self}; \
+                        ${lib.getExe pkgs.deadnix} \
+                        --fail \
+                        ${self};
+                    '';
+                };
+            };
+        };
+
+        devShells = {
+            x86_64-linux = {
+                default = pkgs.mkShell {
+                    buildInputs = with pkgs; [
+                        alejandra
+                        statix
+                        deadnix
+                    ];
+                };
             };
         };
 
