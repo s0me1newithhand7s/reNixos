@@ -40,9 +40,7 @@
         ./programs/yazi.nix
         ./programs/zoxide.nix
         ./programs/chrome.nix
-        ./programs/fuzzel.nix
         ./programs/hyprlock.nix
-        ./programs/hyprpanel.nix
         ./programs/spicetify.nix
         ./programs/vscode.nix
         ./programs/yambar.nix
