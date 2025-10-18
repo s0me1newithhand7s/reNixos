@@ -13,6 +13,9 @@
                 )
                 true;
 
+                package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+                portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+
                 systemd = {
                     enable = true;
                     enableXdgAutostart = true;
@@ -103,11 +106,12 @@
                         };
                     };
 
-                    exec-once = [
+                    execr-once = [
                         "${lib.getExe' pkgs.systemd "systemctl"} --user start hyprpaper.service"
                         "${lib.getExe' pkgs.systemd "systemctl"} --user start hypridle.service"
                         "${lib.getExe' pkgs.systemd "systemctl"} --user start hyprpolkitagent.service"
-                        "${lib.getExe' pkgs.systemd "systemctl"} --user start hyprpanel.service"
+                        "${lib.getExe' pkgs.systemd "systemctl"} --user start noctalis.service"
+                        "${lib.getExe' pkgs.hyprland "hyprctl"} setcursor material_light_cursors 20"
                     ];
 
                     bind = [
@@ -268,14 +272,12 @@
                     };
                 };
 
-                plugins = with inputs; [
-                    hyprsplit.packages.${pkgs.system}.split-monitor-workspaces
-                    hyprcurs.packages.${pkgs.system}.hypr-dynamic-cursors
-                    hypremot.packages.${pkgs.system}.hyprland-easymotion
-                    hyprplugs.packages.${pkgs.system}.xtra-dispatchers
-                    hyprplugs.packages.${pkgs.system}.hyprwinwrap
-                    hyprspace.packages.${pkgs.system}.Hyprspace
-                    hyprgrass.packages.${pkgs.system}.hyprgrass
+                plugins = [
+                    pkgs.hyprlandPlugins.hypr-dynamic-cursors
+                    pkgs.hyprlandPlugins.xtra-dispatchers
+                    pkgs.hyprlandPlugins.hyprwinwrap
+                    pkgs.hyprlandPlugins.hyprgrass
+                    pkgs.hyprlandPlugins.hyprscrolling
                 ];
             };
         };
