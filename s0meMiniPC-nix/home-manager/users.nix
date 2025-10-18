@@ -7,10 +7,11 @@
         users = {
             hand7s = {
                 imports = [
-                    "${self}/hand7s/default.nix"
+                    "${self}/hand7s/"
                     inputs.spicetify-nix.homeManagerModules.default
                     inputs.hyprland.homeManagerModules.default
                     inputs.chaotic.homeManagerModules.default
+                    inputs.sops-nix.homeManagerModules.sops
                 ];
             };
         };
