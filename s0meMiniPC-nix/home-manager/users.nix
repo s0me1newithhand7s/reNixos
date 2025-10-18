@@ -19,7 +19,10 @@
         backupFileExtension = "backup";
 
         extraSpecialArgs = {
-            inherit inputs self;
+            inherit 
+                inputs 
+                self
+                ;
         };
     };
 }
