@@ -9,6 +9,7 @@ s0men0de-nix/
 
 # env shit
 .env/
+.direnv/
 .vscode/
 .obsidian/
 .trash/
