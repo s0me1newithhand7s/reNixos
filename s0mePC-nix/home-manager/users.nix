@@ -18,7 +18,7 @@
             };
         };
 
-        backupFileExtension = "backup";
+        backupFileExtension = "force";
 
         extraSpecialArgs = {
             inherit 
