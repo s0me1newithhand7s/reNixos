@@ -1,9 +1,9 @@
 {pkgs, ...}: {
     stylix = {
         cursor = {
-            name = "Whitesur-cursors";
-            package = pkgs.whitesur-cursors;
-            size = 16;
+            name = "material_light_cursors";
+            package = pkgs.material-cursors;
+            size = 20;
         };
     };
 }
