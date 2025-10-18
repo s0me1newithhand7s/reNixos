@@ -21,8 +21,8 @@
         backupFileExtension = "force";
 
         extraSpecialArgs = {
-            inherit 
-                inputs 
+            inherit
+                inputs
                 self
                 ;
         };

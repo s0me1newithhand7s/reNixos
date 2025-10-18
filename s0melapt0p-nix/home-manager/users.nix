@@ -12,7 +12,7 @@
                     inputs.hyprland.homeManagerModules.default
                     inputs.chaotic.homeManagerModules.default
                     inputs.sops-nix.homeManagerModules.sops
-                    
+
                     inputs.noctalia.homeModules.default
                 ];
             };
@@ -21,8 +21,8 @@
         backupFileExtension = "force";
 
         extraSpecialArgs = {
-            inherit 
-                inputs 
+            inherit
+                inputs
                 self
                 ;
         };

@@ -1,55 +1,58 @@
-{lib,config,...}: {
-    programs = if (config.home.gui.sessionType == "Hyprland") then {
-        noctalia-shell = {
-            enable = true;
-            settings = {
-                bar = {
-                    density = "compact";
-                    position = "right";
-                    showCapsule = false;
+{config, ...}: {
+    programs =
+        if (config.home.gui.sessionType == "Hyprland")
+        then {
+            noctalia-shell = {
+                enable = true;
+                settings = {
+                    bar = {
+                        density = "compact";
+                        position = "right";
+                        showCapsule = false;
 
-                    widgets = {
-                        left = [
-                            {
-                                id = "SidePanelToggle";
-                                useDistroLogo = true;
-                            }
+                        widgets = {
+                            left = [
+                                {
+                                    id = "SidePanelToggle";
+                                    useDistroLogo = true;
+                                }
 
-                            {
-                                id = "Workspace";
-                            }
+                                {
+                                    id = "Workspace";
+                                }
 
-                            {
-                                id = "MediaMini";
-                            }
-                        ];
+                                {
+                                    id = "MediaMini";
+                                }
+                            ];
 
-                        center = [
-                            {
-                                formatHorizontal = "HH:mm";
-                                formatVertical = "HH mm";
-                                id = "Clock";
-                                useMonospacedFont = true;
-                                usePrimaryColor = true;
-                            }
-                        ];
+                            center = [
+                                {
+                                    formatHorizontal = "HH:mm";
+                                    formatVertical = "HH mm";
+                                    id = "Clock";
+                                    useMonospacedFont = true;
+                                    usePrimaryColor = true;
+                                }
+                            ];
 
-                        right = [
-                            {
-                                id = "Volume";
-                            }
+                            right = [
+                                {
+                                    id = "Volume";
+                                }
 
-                            {
-                                id = "Tray";
-                            }
+                                {
+                                    id = "Tray";
+                                }
 
-                            {
-                                id = "NotificationHistory";
-                            }
-                        ];
+                                {
+                                    id = "NotificationHistory";
+                                }
+                            ];
+                        };
                     };
                 };
             };
-        };
-    } else {};
+        }
+        else {};
 }
