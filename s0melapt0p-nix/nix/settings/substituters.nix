@@ -3,7 +3,6 @@
         settings = {
             substituters = [
                 # cache.nixos.org
-                "https://nixos-cache-proxy.cofob.dev"
                 "https://cache.nixos.org"
                 # cache.garnix.org
                 "https://cache.garnix.io"
@@ -13,6 +12,7 @@
                 "https://ags.cachix.org"
                 "https://hyprland.cachix.org"
                 "https://chaotic-nyx.cachix.org/"
+                "https://colmena.cachix.org"
             ];
         };
     };

@@ -1,7 +1,7 @@
 {...}: {
     hardware = {
         openrazer = {
-            enable = true;
+            enable = false;
             users = [
                 "hand7s"
             ];

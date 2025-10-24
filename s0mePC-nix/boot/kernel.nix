@@ -1,5 +1,6 @@
 {
     config,
+    pkgs,
     lib,
     ...
 }: {
@@ -20,15 +21,18 @@
         extraModulePackages = with config.boot.kernelPackages; [
             zenpower
             v4l2loopback
+            amneziawg
         ];
 
         kernelModules = [
             "amdgpu"
             "zenpower"
             "v4l2loopback"
+            "amneziawg"
         ];
 
         kernelParams = [
+            "video=DP-1:2560x1440@165"
             "amd_pstate=guided"
             "udev.log_priority=3"
             "quiet"

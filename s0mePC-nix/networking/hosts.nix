@@ -1,7 +1,7 @@
 {...}: {
     networking = {
         hosts = {
-            # Nope
+            # nope
         };
     };
 }

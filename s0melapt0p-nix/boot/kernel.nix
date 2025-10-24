@@ -80,6 +80,6 @@
             zfs = lib.mkForce false;
         };
 
-        consoleLogLevel = 0;
+        # consoleLogLevel = 0;
     };
 }

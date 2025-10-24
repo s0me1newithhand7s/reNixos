@@ -1,7 +1,7 @@
 {...}: {
     boot = {
         lanzaboote = {
-            enable = true;
+            enable = false;
             configurationLimit = 7;
             pkiBundle = "/var/lib/sbctl";
             settings = {

@@ -16,11 +16,6 @@
                 package = inputs.hyprland.packages.${pkgs.system}.hyprland;
                 portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
 
-                systemd = {
-                    enable = true;
-                    enableXdgAutostart = true;
-                };
-
                 settings = {
                     monitor = ", 2560x1440@165.00Hz, 0x0, 1";
 
@@ -31,7 +26,7 @@
                         layout = "dwindle";
 
                         snap = {
-                            enabled = true;
+                            enabled = false;
                             window_gap = "5";
                             monitor_gap = "5";
                             border_overlap = false;
@@ -67,20 +62,6 @@
                         workspace_swipe_distance = 400;
                     };
 
-                    group = {
-                        auto_group = true;
-                        insert_after_current = true;
-                        focus_removed_window = true;
-                        drag_into_group = "2";
-                        merge_groups_on_drag = true;
-                        merge_groups_on_groupbar = true;
-                        group_on_movetoworkspace = true;
-
-                        groupbar = {
-                            enabled = true;
-                        };
-                    };
-
                     decoration = {
                         active_opacity = "0.85";
                         inactive_opacity = "0.65";
@@ -110,15 +91,17 @@
                         "${lib.getExe' pkgs.systemd "systemctl"} --user start hyprpaper.service"
                         "${lib.getExe' pkgs.systemd "systemctl"} --user start hypridle.service"
                         "${lib.getExe' pkgs.systemd "systemctl"} --user start hyprpolkitagent.service"
-                        "${lib.getExe' pkgs.systemd "systemctl"} --user start noctalis.service"
+
+                        # "${lib.getExe' pkgs.systemd "systemctl"} --user start noctalis.service"
+                        "${lib.getExe inputs.noctalia.packages.${pkgs.system}.default}"
+
                         "${lib.getExe' pkgs.hyprland "hyprctl"} setcursor material_light_cursors 20"
                     ];
 
                     bind = [
                         "ALT, return, exec, ${lib.getExe pkgs.ghostty}"
                         "ALT, Q, killactive,"
-                        "ALT SHIFT, Q, closeunfocused,"
-                        "ALT, S, exec, ${lib.getExe pkgs.fuzzel}"
+                        "ALT, S, exec, ${lib.getExe inputs.noctalia.packages.${pkgs.system}.default} ipc call launcher toggle"
                         "ALT, F, fullscreen, 0"
                         "ALT, L, exec, ${lib.getExe pkgs.hyprlock}"
 
@@ -131,34 +114,32 @@
                         "ALT, up, movefocus, u"
                         "ALT, down, movefocus, d"
 
-                        "ALT, 1, split-workspace, 1"
-                        "ALT, 2, split-workspace, 2"
-                        "ALT, 3, split-workspace, 3"
-                        "ALT, 4, split-workspace, 4"
-                        "ALT, 5, split-workspace, 5"
-                        "ALT, 6, split-workspace, 6"
-                        "ALT, 7, split-workspace, 7"
-                        "ALT, 8, split-workspace, 8"
-                        "ALT, 9, split-workspace, 9"
-                        "ALT, 0, split-workspace, 10"
+                        "ALT, 1,  workspace, 1"
+                        "ALT, 2,  workspace, 2"
+                        "ALT, 3,  workspace, 3"
+                        "ALT, 4,  workspace, 4"
+                        "ALT, 5,  workspace, 5"
+                        "ALT, 6,  workspace, 6"
+                        "ALT, 7,  workspace, 7"
+                        "ALT, 8,  workspace, 8"
+                        "ALT, 9,  workspace, 9"
+                        "ALT, 0,  workspace, 10"
                         "ALT, H, togglespecialworkspace, special"
 
-                        "ALT SHIFT, 1, split-movetoworkspace, 1"
-                        "ALT SHIFT, 2, split-movetoworkspace, 2"
-                        "ALT SHIFT, 3, split-movetoworkspace, 3"
-                        "ALT SHIFT, 4, split-movetoworkspace, 4"
-                        "ALT SHIFT, 5, split-movetoworkspace, 5"
-                        "ALT SHIFT, 6, split-movetoworkspace, 6"
-                        "ALT SHIFT, 7, split-movetoworkspace, 7"
-                        "ALT SHIFT, 8, split-movetoworkspace, 8"
-                        "ALT SHIFT, 9, split-movetoworkspace, 9"
-                        "ALT SHIFT, 0, split-movetoworkspace, 10"
-                        "ALT SHIFT, H, split-movetoworkspace, special"
+                        "ALT SHIFT, 1, movetoworkspacesilent, 1"
+                        "ALT SHIFT, 2, movetoworkspacesilent, 2"
+                        "ALT SHIFT, 3, movetoworkspacesilent, 3"
+                        "ALT SHIFT, 4, movetoworkspacesilent, 4"
+                        "ALT SHIFT, 5, movetoworkspacesilent, 5"
+                        "ALT SHIFT, 6, movetoworkspacesilent, 6"
+                        "ALT SHIFT, 7, movetoworkspacesilent, 7"
+                        "ALT SHIFT, 8, movetoworkspacesilent, 8"
+                        "ALT SHIFT, 9, movetoworkspacesilent, 9"
+                        "ALT SHIFT, 0, movetoworkspacesilent, 10"
+                        "ALT SHIFT, H, movetoworkspacesilent, special"
 
                         "ALT, mouse_down, workspace, e+1"
                         "ALT, mouse_up, workspace, e-1"
-
-                        "ALT, TAB, overview:toggle"
                     ];
 
                     bindel = [
@@ -205,6 +186,10 @@
                         initial_workspace_tracking = "2";
                     };
 
+                    render = {
+                        cm_auto_hdr = 0;
+                    };
+
                     binds = {
                         workspace_back_and_forth = true;
                         allow_workspace_cycles = true;
@@ -227,11 +212,9 @@
                     };
 
                     plugin = {
-                        split-monitor-workspaces = {
-                            count = 10;
-                            keep_focused = 1;
-                            enable_notifications = 1;
-                            enable_persistent_workspaces = 1;
+                        hyprscrolling = {
+                            fullscreen_on_one_column = true;
+                            follow_focus = true;
                         };
 
                         easymotion = {
@@ -273,11 +256,16 @@
                 };
 
                 plugins = [
-                    pkgs.hyprlandPlugins.hypr-dynamic-cursors
-                    pkgs.hyprlandPlugins.xtra-dispatchers
-                    pkgs.hyprlandPlugins.hyprwinwrap
-                    pkgs.hyprlandPlugins.hyprgrass
-                    pkgs.hyprlandPlugins.hyprscrolling
+                    # pkgs.hyprlandPlugins.hypr-dynamic-cursors
+                    # pkgs.hyprlandPlugins.xtra-dispatchers
+                    # pkgs.hyprlandPlugins.hyprwinwrap
+                    # pkgs.hyprlandPlugins.hyprgrass
+                    # pkgs.hyprlandPlugins.hyprscrolling
+
+                    # inputs.hyprcurs.packages.${pkgs.system}.hypr-dynamic-cursors
+                    # inputs.hyprplugs.packages.${pkgs.system}.hyprscrolling
+                    # inputs.hyprplugs.packages.${pkgs.system}.xtra-dispatchers
+                    # inputs.hyprplugs.packages.${pkgs.system}.hyprwinwrap
                 ];
             };
         };

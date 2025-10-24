@@ -20,6 +20,7 @@ in {
 
         sessionType = lib.mkOption {
             type = lib.types.enum [
+                "DWL"
                 "Sway"
                 "River"
                 "Hyprland"
@@ -40,16 +41,17 @@ in {
                 [
                     vesktop
                     nekoray
-                    ayugram
                     anki-bin
                     obsidian
                     playerctl
+                    monero-gui
                     mindustry
                     bitwarden
                     lan-mouse
                     parsec-bin
                     pwvucontrol
                     easyeffects
+                    ayugram
                     element-desktop
                     hyprpolkitagent
                     freesm-launcher
@@ -63,10 +65,10 @@ in {
                     cfg.sessionType == "Sway"
                 ) [
                     swaykbdd
-                    sway-contrib.grimshot
-                    sway-contrib.inactive-windows-transparency
                     autotiling-rs
                     sway-audio-idle-inhibit
+                    sway-contrib.grimshot
+                    sway-contrib.inactive-windows-transparency
                 ]
                 ++ lib.optionals (
                     cfg.sessionType == "River"
@@ -78,7 +80,7 @@ in {
                 ++ lib.optionals (
                     cfg.sessionType == "Hyprland"
                 ) [
-                    hyprpanel
+                    inputs.noctalia.packages.${system}.default
                     grimblast
                 ];
         };
@@ -90,10 +92,12 @@ in {
             fuzzel.enable = true;
             ghostty.enable = true;
             firefox.enable = true;
+            alacritty.enable = true;
         };
 
         services = with lib.mkDefault; {
             hyprpaper.enable = true;
+            kdeconnect.enable = true;
         };
     };
 

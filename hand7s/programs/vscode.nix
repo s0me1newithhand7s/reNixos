@@ -1,6 +1,7 @@
 {
-    lib,
+    config,
     pkgs,
+    lib,
     ...
 }: {
     programs = {
@@ -16,20 +17,22 @@
                     ];
 
                     userSettings = lib.mkForce {
-                        "editor.fontFamily" = "'Hack Nerd Font'";
+                        "editor.fontFamily" = config.stylix.fonts.emoji.name;
                         "editor.fontSize" = 16;
 
                         "editor.cursorBlinking" = "smooth";
                         "editor.cursorSmoothCaretAnimation" = "on";
                         "editor.wordWrap" = "on";
 
-                        "workbench.colorTheme" = "Blazing Red";
+                        "workbench.colorTheme" = "Tokyo Night Moon";
                         "workbench.sideBar.location" = "right";
                         "workbench.activityBar.location" = "top";
                         "workbench.editor.editorActionsLocation" = "titleBar";
                         "workbench.editor.showTabs" = "none";
 
                         "window.menuBarVisibility" = "hidden";
+
+                        "terminal.integrated.cursorBlinking" = true;
 
                         "files.autoSave" = "afterDelay";
 

@@ -4,7 +4,7 @@
             enable = true;
             dnsovertls = "true";
             dnssec = "true";
-            llmnr = "resolve";
+            llmnr = "true";
             domains = [
                 "~."
             ];

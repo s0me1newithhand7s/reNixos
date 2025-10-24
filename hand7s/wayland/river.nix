@@ -102,8 +102,8 @@
                     ${lib.getExe' pkgs.river "riverctl"} spawn ${lib.getExe' pkgs.systemd "systemctl"} --user start hyprpaper.service
                     ${lib.getExe' pkgs.river "riverctl"} spawn ${lib.getExe' pkgs.systemd "systemctl"} --user start hyprpolkitagent.service
                     ${lib.getExe' pkgs.river "riverctl"} spawn ${lib.getExe' pkgs.systemd "systemctl"} --user start yambar.service
-                    ${lib.getExe' pkgs.river "riverctl"} spawn ${lib.getExe pkgs.wayidle} -t=300 ${lib.getExe pkgs.brightnessctl} -s set 10
-                    ${lib.getExe' pkgs.river "riverctl"} spawn ${lib.getExe pkgs.wayidle} -t=600 ${lib.getExe pkgs.waylock}
+                    ${lib.getExe' pkgs.river "riverctl"} spawn ${lib.getEce pkgs.wayidle} -t=300 ${lib.getExe pkgs.brightnessctl} -s set 10
+                    ${lib.getExe' pkgs.river "riverctl"} spawn ${lib.getEce pkgs.wayidle} -t=600 ${lib.getExe pkgs.waylock}
                 '';
             };
         };

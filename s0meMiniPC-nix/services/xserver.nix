@@ -13,7 +13,7 @@
             ];
 
             videoDrivers = [
-                "amdgpu"
+                "modesetting"
             ];
 
             xkb = {

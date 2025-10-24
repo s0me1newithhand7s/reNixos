@@ -5,12 +5,11 @@
 }: {
     programs = {
         helix = {
-            enable = true;
             package = pkgs.helix_git;
+            enable = true;
             defaultEditor = true;
             extraPackages = with pkgs; [
                 nixd
-                nixfmt-rfc-style
             ];
 
             settings = {
@@ -44,9 +43,9 @@
                         };
 
                         formatter = {
-                            command = "${lib.getExe pkgs.nixfmt-rfc-style}";
+                            command = "${lib.getExe pkgs.nix}";
                             args = [
-                                "--indent=4"
+                                "fmt"
                             ];
                         };
 

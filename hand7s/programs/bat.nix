@@ -1,9 +1,13 @@
-{...}: {
+{
+    pkgs,
+    lib,
+    ...
+}: {
     programs = {
         bat = {
             enable = true;
             config = {
-                pager = "less -FR";
+                pager = "${lib.getExe pkgs.less} -FR";
             };
         };
     };

@@ -15,6 +15,7 @@
                         forceBlackScreenCorners = true;
                         showScreenCorners = true;
                         screenRadiusRatio = 2;
+                        radiusRatio = 0.7;
                     };
 
                     appLauncher = {
@@ -184,6 +185,15 @@
                         monitors = [
                             "DP-3"
                         ];
+                    };
+
+                    ui = {
+                        fontDefault = "Nerd Fonts Hack";
+                        fontDefaultScale = 1;
+                        fontFixed = "Nerd Fonts Hack";
+                        fontFixedScale = 1;
+                        idleInhibitorEnabled = false;
+                        tooltipsEnabled = true;
                     };
 
                     location = {

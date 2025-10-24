@@ -3,7 +3,6 @@
         settings = {
             substituters = [
                 # cache.nixos.org
-                "https://nixos-cache-proxy.cofob.dev"
                 "https://cache.nixos.org"
                 # cache.garnix.org
                 "https://cache.garnix.io"

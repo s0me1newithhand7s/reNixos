@@ -19,7 +19,7 @@
 
                 {
                     event = "before-sleep";
-                    command = "${lib.getExe' pkgs.sway "swaymsg"}  'output * power off'";
+                    command = "${lib.getExe' pkgs.sway "swaymsg"} 'output * power off'";
                 }
 
                 {
@@ -31,8 +31,8 @@
             timeouts = [
                 {
                     timeout = 300;
-                    command = "${libgetExe pkgs.brightnessctl} -s set 10";
-                    resumeCommand = "${libgetExe pkgs.brightnessctl} -r";
+                    command = "${lib.getExe pkgs.brightnessctl} -s set 10";
+                    resumeCommand = "${lib.getExe pkgs.brightnessctl} -r";
                 }
 
                 {
@@ -42,7 +42,7 @@
 
                 {
                     timeout = 900;
-                    command = "${lib.getExe' pkgs.systemd "systemctl"}  suspend";
+                    command = "${lib.getExe' pkgs.systemd "systemctl"} suspend";
                 }
             ];
         };

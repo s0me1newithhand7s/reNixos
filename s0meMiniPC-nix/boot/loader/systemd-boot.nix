@@ -1,8 +1,8 @@
-{lib, ...}: {
+{...}: {
     boot = {
         loader = {
             systemd-boot = {
-                enable = lib.mkForce false;
+                enable = false;
                 sortKey = "nixos";
                 memtest86 = {
                     enable = true;

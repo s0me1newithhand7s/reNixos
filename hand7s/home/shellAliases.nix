@@ -1,9 +1,13 @@
-{...}: {
+{
+    pkgs,
+    lib,
+    ...
+}: {
     home = {
         shellAliases = {
-            e = "eza";
-            et = "eza -T";
-            k = "kubectl";
+            e = "${lib.getExe pkgs.eza}";
+            et = "${lib.getExe pkgs.eza} -T";
+            k = "${lib.getExe pkgs.kubectl}";
         };
     };
 }

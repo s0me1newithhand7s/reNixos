@@ -16,7 +16,6 @@
                 waveform
                 obs-vkcapture
                 obs-pipewire-audio-capture
-                obs-webkitgtk
             ];
         };
     };

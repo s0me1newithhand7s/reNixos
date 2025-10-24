@@ -9,19 +9,22 @@
                 hyprpolkitagent = {
                     Unit = {
                         Description = "Hyprpolkitagent service.";
-                        WantedBy = "graphical-session.target";
+                        After = "graphical-session.target";
+                        PartOf = "graphical-session.target";
                     };
 
                     Service = {
+                        Type = "simple";
                         ExecStart = "${lib.getExe pkgs.hyprpolkitagent}";
                         Restart = "always";
-                        RestartSec = 10;
+                        RestartSec = 1;
+                        TimeoutStopSec = 10;
                     };
 
                     Install = {
-                        After = "graphical-session.target";
-                        ConditionEnvironment = "WAYLAND_DISPLAY";
-                        PartOf = "graphical-session.target";
+                        WantedBy = [
+                            "graphical-session.target"
+                        ];
                     };
                 };
             };

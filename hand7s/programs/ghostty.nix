@@ -16,8 +16,7 @@
 
                 keybind = [
                     "ctrl+shift+d=new_split:right"
-                    "ctrl+shift+h=goto_split:left"
-                    "ctrl+shift+l=goto_split:right"
+                    "ctrl+shift+a=new_split:down"
                 ];
             };
         };

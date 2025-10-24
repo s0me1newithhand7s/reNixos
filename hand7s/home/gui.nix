@@ -18,6 +18,11 @@
                 then "Hyprland"
                 else if
                     (
+                        osConfig.networking.hostName == "s0mew0rkstat1on-nix"
+                    )
+                then "Hyprland"
+                else if
+                    (
                         osConfig.networking.hostName == "s0melapt0p-nix"
                     )
                 then "Sway"

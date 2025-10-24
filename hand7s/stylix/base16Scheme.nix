@@ -1,24 +1,24 @@
 {...}: {
     stylix = {
         base16Scheme = {
-            scheme = "Ólafur Bjarki Bogason";
-            name = "Tokyo Night Moon";
-            base00 = "#222436";
-            base01 = "#1e2030";
-            base02 = "#2d3f76";
-            base03 = "#636da6";
-            base04 = "#828bb8";
-            base05 = "#3b4261";
-            base06 = "#828bb8";
-            base07 = "#c8d3f5";
-            base08 = "#ff757f";
-            base09 = "#ffc777";
-            base0A = "#ffc777";
-            base0B = "#c3e88d";
-            base0C = "#86e1fc";
-            base0D = "#82aaff";
-            base0E = "#fca7ea";
-            base0F = "#c53b53";
+            scheme = "Tokyonight by Folke Lemaitre (https://github.com/folke)";
+            name = "Tokyonight";
+            base00 = "#24283b";
+            base01 = "#1f2335";
+            base02 = "#292e42";
+            base03 = "#565f89";
+            base04 = "#a9b1d6";
+            base05 = "#c0caf5";
+            base06 = "#c0caf5";
+            base07 = "#c0caf5";
+            base08 = "#f7768e";
+            base09 = "#ff9e64";
+            base0A = "#e0af68";
+            base0B = "#9ece6a";
+            base0C = "#1abc9c";
+            base0D = "#41a6b5";
+            base0E = "#bb9af7";
+            base0F = "#ff007c";
         };
     };
 }

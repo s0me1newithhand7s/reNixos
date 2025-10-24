@@ -72,6 +72,10 @@
                         }
 
                         {
+                            command = "${lib.getExe' pkgs.systemd "systemctl"} --user start yambar.service";
+                        }
+
+                        {
                             command = "${lib.getExe pkgs.sway-audio-idle-inhibit}";
                         }
 
@@ -81,10 +85,6 @@
 
                         {
                             command = "${lib.getExe pkgs.swaykbdd}";
-                        }
-
-                        {
-                            command = "${lib.getExe' pkgs.systemd "systemctl"} --user start yambar.service";
                         }
                     ];
 
@@ -138,7 +138,7 @@
                         "XF86AudioNext" = "exec ${lib.getExe pkgs.playerctl} next";
 
                         "XF86MonBrightnessDown" = "exec ${lib.getExe pkgs.brightnessctl} set 5%-";
-                        "XF86MonBrightnessUp" = "exec $${lib.getExe pkgs.brightnessctl} set +5%";
+                        "XF86MonBrightnessUp" = "exec ${lib.getExe pkgs.brightnessctl} set +5%";
                     };
 
                     modes = {

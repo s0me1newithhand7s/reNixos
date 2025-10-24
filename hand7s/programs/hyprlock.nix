@@ -23,7 +23,7 @@
                         text_align = "center";
                         color = config.lib.stylix.colors.base01;
                         font_size = 48;
-                        font_family = "Nerd Hack Font";
+                        font_family = config.stylix.fonts.emoji.name;
                         rotate = 0;
 
                         position = "0, 50";
@@ -42,7 +42,7 @@
                         text_align = "center";
                         color = config.lib.stylix.colors.base06;
                         font_size = 26;
-                        font_family = "Nerd Hack Font";
+                        font_family = config.stylix.fonts.emoji.name;
                         rotate = 0;
 
                         position = "200, -50";

@@ -7,19 +7,22 @@
     home = {
         packages = with pkgs;
             [
-                xh
                 fd
                 gh
                 sd
+                xh
+                dua
                 nvd
-                git
+                gat
                 dust
                 sops
-                comma
+                rsync
                 procs
+                sbctl
                 gping
                 dconf
                 tokei
+                comma
                 ifuse
                 trippy
                 bottom
@@ -29,21 +32,24 @@
                 gitoxide
                 tty-clock
                 deploy-rs
+                monero-cli
                 nixos-anywhere
                 wireguard-tools
                 yubico-piv-tool
+                yubikey-manager
                 libimobiledevice
                 nix-output-monitor
                 yubikey-touch-detector
                 yubikey-personalization
+                netbird-ui
             ]
             ++ lib.optionals (
                 osConfig.networking.hostName == "s0mePC-nix"
             ) [
-                tetrio-desktop
-                netbird-ui
-                thunderbird
                 mindustry
+                thunderbird
+                tetrio-desktop
+                min-ed-launcher
                 qbittorrent-enhanced
             ]
             ++ lib.optionals (

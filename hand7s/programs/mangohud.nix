@@ -1,0 +1,7 @@
+{...}: {
+    programs = {
+        mangohud = {
+            enable = true;
+        };
+    };
+}

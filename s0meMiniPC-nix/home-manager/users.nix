@@ -12,6 +12,8 @@
                     inputs.hyprland.homeManagerModules.default
                     inputs.chaotic.homeManagerModules.default
                     inputs.sops-nix.homeManagerModules.sops
+
+                    inputs.nix-index-database.homeModules.nix-index
                 ];
             };
         };

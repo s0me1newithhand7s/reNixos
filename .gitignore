@@ -1,11 +1,9 @@
 # sops / secrets
 .sops.yaml
 secrets/
-s0mePC-nix/sops/
-s0melapt0p-nix/sops
+*/sops/*
 
-# ignored hosts
-s0men0de-nix/
+# ignored 
 
 # env shit
 .env/

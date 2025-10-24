@@ -16,6 +16,7 @@
             };
         };
 
+        kernelPackages = pkgs.linuxPackages_cachyos-server;
         extraModulePackages = with config.boot.kernelPackages; [
             rtl8821ce
             yt6801

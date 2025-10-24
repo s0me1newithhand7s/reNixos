@@ -1,5 +1,8 @@
-{
+{self, ...}: {
     imports = [
+        ./disko/disk.nix
+        ./disko/lvm_vg.nix
+
         ./boot/loader/systemd-boot.nix
         ./boot/lanzaboote.nix
         ./boot/initrd.nix
@@ -80,9 +83,6 @@
         ./system/stateVersion.nix
 
         ./systemd/oomd.nix
-        ./systemd/slices/system-slice.nix
-        ./systemd/slices/user-slice.nix
-        ./systemd/slices/root-slice.nix
 
         ./time/timeZone.nix
 

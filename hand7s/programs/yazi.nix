@@ -19,6 +19,20 @@
 
                     show_hidden = true;
                     show_symlink = true;
+
+                    prepend_keymap = [
+                        {
+                            on = "R";
+                            run = "plugin rsync";
+                            desc = "Copy files using rsync";
+                        }
+
+                        {
+                            on = "c, m";
+                            run = "plugin chmod";
+                            desc = "Chmod on selected files";
+                        }
+                    ];
                 };
 
                 preview = {
@@ -57,23 +71,39 @@
                     cursor_blink = true;
                 };
 
-                plugins = {
-                    inherit
-                        (pkgs.yaziPlugins)
-                        starship
-                        rsync
-                        git
-                        chmod
-                        full-border
-                        ;
-                };
+                plugin = {
+                    prepend_fetchers = [
+                        {
+                            id = "git";
+                            name = "*";
+                            run = "git";
+                        }
 
-                initLua = ''
-                    require("full-border"):setup({ type = ui.Border.ROUNDED })
-                    require("starship"):setup()
-                    require("git"):setup()
-                '';
+                        {
+                            id = "git";
+                            name = "*/";
+                            run = "git";
+                        }
+                    ];
+                };
             };
+
+            plugins = {
+                inherit
+                    (pkgs.yaziPlugins)
+                    starship
+                    rsync
+                    git
+                    chmod
+                    full-border
+                    ;
+            };
+
+            initLua = ''
+                require("full-border"):setup({ type = ui.Border.ROUNDED })
+                require("starship"):setup()
+                require("git"):setup()
+            '';
         };
     };
 }

@@ -1,0 +1,7 @@
+{...}: {
+    programs = {
+        nh = {
+            enable = true;
+        };
+    };
+}

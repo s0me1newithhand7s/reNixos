@@ -4,7 +4,7 @@
             enable = true;
             persistentKeys = false;
             settings = {
-                # PrivateKey = ""; it's won't work as i thought :D;
+                PrivateKey = "${yggKeyPC}";
 
                 Peers = [
                     # Germany :Erm:

@@ -1,10 +1,10 @@
-{...}: {
+{config, ...}: {
     services = {
         yggdrasil = {
             enable = true;
             persistentKeys = false;
             settings = {
-                # PrivateKey = ""; it's won't work as i thought :D
+                PrivateKey = config.sops.secrets.yggKeyLT.path;
 
                 Peers = [
                     # only 1W+ peers (some exeptions are possible)

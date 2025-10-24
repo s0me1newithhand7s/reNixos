@@ -7,21 +7,21 @@
                 common = {
                     default = [
                         "gtk"
-                        "wlr"
                     ];
                 };
 
-                sway = {
+                hyprland = {
                     preferred = [
                         "gtk"
-                        "wlr"
+                        "hyprland"
                     ];
                 };
             };
 
             extraPortals = with pkgs; [
+                xdg-desktop-portal
                 xdg-desktop-portal-gtk
-                xdg-desktop-portal-wlr
+                xdg-desktop-portal-hyprland
             ];
         };
     };

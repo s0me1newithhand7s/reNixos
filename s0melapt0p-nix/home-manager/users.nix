@@ -13,7 +13,7 @@
                     inputs.chaotic.homeManagerModules.default
                     inputs.sops-nix.homeManagerModules.sops
 
-                    inputs.noctalia.homeModules.default
+                    inputs.nix-index-database.homeModules.nix-index
                 ];
             };
         };

@@ -9,6 +9,7 @@
                 "usb_storage"
                 "sd_mod"
                 "btrfs"
+                "amneziawg"
                 "cryptd"
             ];
 
@@ -20,18 +21,23 @@
 
             kernelModules = [
                 "amdgpu"
+                "zenpower"
+                "amneziawg"
             ];
 
             luks = {
                 devices = {
                     cryptroot = {
-                        device = "nvme-KINGSTON_SKC3000S_1024G_AA000000000000000013-part2";
+                        device = "/dev/disk/by-id/nvme-KINGSTON_SKC3000S_1024G_AA000000000000000013-part2";
                     };
                 };
             };
 
             systemd = {
                 enable = true;
+                network = {
+                    enable = true;
+                };
             };
 
             verbose = false;
