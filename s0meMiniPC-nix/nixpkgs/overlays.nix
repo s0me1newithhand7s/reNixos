@@ -1,6 +1,6 @@
 {...}: {
-    nixpkgs = {
-        overlays = [
-        ];
-    };
+  nixpkgs = {
+    overlays = [
+    ];
+  };
 }

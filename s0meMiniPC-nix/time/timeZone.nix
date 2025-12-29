@@ -1,6 +1,6 @@
 {...}: {
-    time = {
-        timeZone = "Europe/Moscow";
-        hardwareClockInLocalTime = true;
-    };
+  time = {
+    timeZone = "Europe/Moscow";
+    hardwareClockInLocalTime = true;
+  };
 }

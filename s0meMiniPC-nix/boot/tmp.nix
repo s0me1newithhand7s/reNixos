@@ -1,8 +1,8 @@
 {...}: {
-    boot = {
-        tmp = {
-            useTmpfs = true;
-            cleanOnBoot = true;
-        };
+  boot = {
+    tmp = {
+      useTmpfs = true;
+      cleanOnBoot = true;
     };
+  };
 }

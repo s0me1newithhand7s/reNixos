@@ -1,10 +1,10 @@
 {...}: {
-    services = {
-        zerotierone = {
-            enable = true;
-            joinNetworks = [
-                # nope
-            ];
-        };
+  services = {
+    zerotierone = {
+      enable = true;
+      joinNetworks = [
+        # nope
+      ];
     };
+  };
 }

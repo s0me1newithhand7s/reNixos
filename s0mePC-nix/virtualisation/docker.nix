@@ -1,10 +1,10 @@
 {...}: {
-    virtualisation = {
-        docker = {
-            enable = true;
-            rootless = {
-                enable = true;
-            };
-        };
+  virtualisation = {
+    docker = {
+      enable = true;
+      rootless = {
+        enable = true;
+      };
     };
+  };
 }

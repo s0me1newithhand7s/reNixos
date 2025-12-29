@@ -1,9 +1,9 @@
 {...}: {
-    nix = {
-        settings = {
-            trusted-users = [
-                "@wheel"
-            ];
-        };
+  nix = {
+    settings = {
+      trusted-users = [
+        "@wheel"
+      ];
     };
+  };
 }

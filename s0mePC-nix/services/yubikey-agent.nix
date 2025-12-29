@@ -1,8 +1,8 @@
 {pkgs, ...}: {
-    services = {
-        yubikey-agent = {
-            package = pkgs.yubikey-agent;
-            enable = false;
-        };
+  services = {
+    yubikey-agent = {
+      package = pkgs.yubikey-agent;
+      enable = false;
     };
+  };
 }

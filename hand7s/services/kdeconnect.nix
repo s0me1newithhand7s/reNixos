@@ -1,8 +1,8 @@
 {pkgs, ...}: {
-    services = {
-        kdeconnect = {
-            package = pkgs.valent;
-            indicator = true;
-        };
+  services = {
+    kdeconnect = {
+      package = pkgs.valent;
+      indicator = true;
     };
+  };
 }

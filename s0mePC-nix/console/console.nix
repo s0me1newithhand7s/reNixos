@@ -1,5 +1,5 @@
 {...}: {
-    console = {
-        useXkbConfig = true;
-    };
+  console = {
+    useXkbConfig = true;
+  };
 }

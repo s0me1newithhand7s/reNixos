@@ -1,10 +1,10 @@
 {...}: {
-    hardware = {
-        enableRedistributableFirmware = true;
-        cpu = {
-            intel = {
-                updateMicrocode = true;
-            };
-        };
+  hardware = {
+    enableRedistributableFirmware = true;
+    cpu = {
+      intel = {
+        updateMicrocode = true;
+      };
     };
+  };
 }

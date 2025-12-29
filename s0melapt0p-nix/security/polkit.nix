@@ -1,10 +1,10 @@
 {...}: {
-    security = {
-        polkit = {
-            enable = true;
-            adminIdentities = [
-                "unix-group:wheel"
-            ];
-        };
+  security = {
+    polkit = {
+      enable = true;
+      adminIdentities = [
+        "unix-group:wheel"
+      ];
     };
+  };
 }

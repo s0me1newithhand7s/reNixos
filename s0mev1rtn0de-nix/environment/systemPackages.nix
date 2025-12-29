@@ -1,10 +1,10 @@
 {pkgs, ...}: {
-    environment = {
-        systemPackages = [
-            pkgs.helix
-            pkgs.comma
-        ];
+  environment = {
+    systemPackages = [
+      pkgs.helix
+      pkgs.comma
+    ];
 
-        enableAllTerminfo = true;
-    };
+    enableAllTerminfo = true;
+  };
 }

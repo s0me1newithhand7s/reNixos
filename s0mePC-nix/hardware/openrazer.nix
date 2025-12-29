@@ -1,15 +1,15 @@
 {...}: {
-    hardware = {
-        openrazer = {
-            enable = false;
-            users = [
-                "hand7s"
-            ];
+  hardware = {
+    openrazer = {
+      enable = false;
+      users = [
+        "hand7s"
+      ];
 
-            batteryNotifier = {
-                enable = true;
-                percentage = 15;
-            };
-        };
+      batteryNotifier = {
+        enable = true;
+        percentage = 15;
+      };
     };
+  };
 }

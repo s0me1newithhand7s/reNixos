@@ -1,10 +1,10 @@
 {...}: {
-    services = {
-        sunshine = {
-            enable = true;
-            capSysAdmin = true;
-            openFirewall = true;
-            autoStart = true;
-        };
+  services = {
+    sunshine = {
+      enable = true;
+      capSysAdmin = true;
+      openFirewall = true;
+      autoStart = true;
     };
+  };
 }

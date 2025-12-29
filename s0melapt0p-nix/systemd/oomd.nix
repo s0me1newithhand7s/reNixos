@@ -1,10 +1,10 @@
 {...}: {
-    systemd = {
-        oomd = {
-            enable = true;
-            enableUserSlices = true;
-            enableSystemSlice = true;
-            enableRootSlice = true;
-        };
+  systemd = {
+    oomd = {
+      enable = true;
+      enableUserSlices = true;
+      enableSystemSlice = true;
+      enableRootSlice = true;
     };
+  };
 }

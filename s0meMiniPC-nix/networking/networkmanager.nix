@@ -1,9 +1,9 @@
 {...}: {
-    networking = {
-        networkmanager = {
-            enable = false;
-        };
-
-        useNetworkd = true;
+  networking = {
+    networkmanager = {
+      enable = false;
     };
+
+    useNetworkd = true;
+  };
 }

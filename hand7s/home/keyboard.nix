@@ -1,11 +1,11 @@
 {...}: {
-    home = {
-        keyboard = {
-            variant = "";
-            layout = "us, ru";
-            options = [
-                "grp:caps_toggle"
-            ];
-        };
+  home = {
+    keyboard = {
+      variant = "";
+      layout = "us, ru";
+      options = [
+        "grp:caps_toggle"
+      ];
     };
+  };
 }

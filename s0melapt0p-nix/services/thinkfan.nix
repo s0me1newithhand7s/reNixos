@@ -1,8 +1,8 @@
 {...}: {
-    services = {
-        thinkfan = {
-            enable = true;
-            smartSupport = true;
-        };
+  services = {
+    thinkfan = {
+      enable = true;
+      smartSupport = true;
     };
+  };
 }

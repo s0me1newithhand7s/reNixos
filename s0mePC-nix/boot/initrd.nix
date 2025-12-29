@@ -1,46 +1,46 @@
 {lib, ...}: {
-    boot = {
-        initrd = {
-            availableKernelModules = [
-                "nvme"
-                "xhci_pci"
-                "ahci"
-                "usbhid"
-                "usb_storage"
-                "sd_mod"
-                "btrfs"
-                "amneziawg"
-                "cryptd"
-            ];
+  boot = {
+    initrd = {
+      availableKernelModules = [
+        "nvme"
+        "xhci_pci"
+        "ahci"
+        "usbhid"
+        "usb_storage"
+        "sd_mod"
+        "btrfs"
+        "amneziawg"
+        "cryptd"
+      ];
 
-            supportedFilesystems = {
-                vfat = true;
-                btrfs = true;
-                zfs = lib.mkForce true;
-            };
+      supportedFilesystems = {
+        vfat = true;
+        btrfs = true;
+        zfs = lib.mkForce true;
+      };
 
-            kernelModules = [
-                "amdgpu"
-                "zenpower"
-                "amneziawg"
-            ];
+      kernelModules = [
+        "amdgpu"
+        "zenpower"
+        "amneziawg"
+      ];
 
-            luks = {
-                devices = {
-                    cryptroot = {
-                        device = "/dev/disk/by-id/nvme-KINGSTON_SKC3000S_1024G_AA000000000000000013-part2";
-                    };
-                };
-            };
-
-            systemd = {
-                enable = true;
-                network = {
-                    enable = true;
-                };
-            };
-
-            verbose = false;
+      luks = {
+        devices = {
+          cryptroot = {
+            device = "/dev/disk/by-id/nvme-KINGSTON_SKC3000S_1024G_AA000000000000000013-part2";
+          };
         };
+      };
+
+      systemd = {
+        enable = true;
+        network = {
+          enable = true;
+        };
+      };
+
+      verbose = false;
     };
+  };
 }

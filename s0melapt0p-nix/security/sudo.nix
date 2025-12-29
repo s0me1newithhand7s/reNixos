@@ -1,7 +1,7 @@
 {lib, ...}: {
-    security = {
-        sudo = {
-            enable = lib.mkDefault false;
-        };
+  security = {
+    sudo = {
+      enable = lib.mkDefault false;
     };
+  };
 }

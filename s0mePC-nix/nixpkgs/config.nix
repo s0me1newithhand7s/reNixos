@@ -1,8 +1,8 @@
 {...}: {
-    nixpkgs = {
-        config = {
-            allowUnfree = true;
-            allowBroken = true;
-        };
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowBroken = true;
     };
+  };
 }

@@ -1,5 +1,5 @@
 {config, ...}: {
-    system = {
-        stateVersion = config.system.nixos.release;
-    };
+  system = {
+    stateVersion = config.system.nixos.release;
+  };
 }

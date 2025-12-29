@@ -1,11 +1,11 @@
 {...}: {
-    boot = {
-        loader = {
-            grub = {
-                enable = true;
-                efiSupport = true;
-                efiInstallAsRemovable = true;
-            };
-        };
+  boot = {
+    loader = {
+      grub = {
+        enable = true;
+        efiSupport = true;
+        efiInstallAsRemovable = true;
+      };
     };
+  };
 }

@@ -1,9 +1,9 @@
 {...}: {
-    services = {
-        scx = {
-            enable = true;
-            # package = pkgs.scx_git.full;
-            scheduler = "scx_cosmos";
-        };
+  services = {
+    scx = {
+      enable = true;
+      # package = pkgs.scx_git.full;
+      scheduler = "scx_cosmos";
     };
+  };
 }

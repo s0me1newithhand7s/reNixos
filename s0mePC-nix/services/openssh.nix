@@ -1,22 +1,22 @@
 {config, ...}: {
-    services = {
-        openssh = {
-            enable = true;
-            allowSFTP = true;
-            openFirewall = true;
-            ports = [
-                45734
-            ];
+  services = {
+    openssh = {
+      enable = true;
+      allowSFTP = true;
+      openFirewall = true;
+      ports = [
+        45734
+      ];
 
-            settings = {
-                PrintMotd = false;
-                PermitRootLogin = "no";
-                PasswordAuthentication = false;
-            };
+      settings = {
+        PrintMotd = false;
+        PermitRootLogin = "no";
+        PasswordAuthentication = false;
+      };
 
-            authorizedKeysFiles = [
-                config.sops.secrets.sshKey.path
-            ];
-        };
+      authorizedKeysFiles = [
+        config.sops.secrets.sshKey.path
+      ];
     };
+  };
 }

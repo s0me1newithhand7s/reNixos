@@ -1,9 +1,9 @@
 {pkgs, ...}: {
-    services = {
-        udev = {
-            packages = with pkgs; [
-                qmk-udev-rules
-            ];
-        };
+  services = {
+    udev = {
+      packages = with pkgs; [
+        qmk-udev-rules
+      ];
     };
+  };
 }

@@ -1,12 +1,12 @@
 {...}: {
-    programs = {
-        kitty = {
-            enable = true;
-            enableGitIntegration = true;
+  programs = {
+    kitty = {
+      enable = true;
+      enableGitIntegration = true;
 
-            shellIntegration = {
-                enableFishIntegration = true;
-            };
-        };
+      shellIntegration = {
+        enableFishIntegration = true;
+      };
     };
+  };
 }

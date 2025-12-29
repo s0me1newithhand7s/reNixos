@@ -1,9 +1,9 @@
 {...}: {
-    hardware = {
-        amdgpu = {
-            initrd = {
-                enable = true;
-            };
-        };
+  hardware = {
+    amdgpu = {
+      initrd = {
+        enable = true;
+      };
     };
+  };
 }

@@ -1,8 +1,8 @@
 {...}: {
-    programs = {
-        gamemode = {
-            enable = true;
-            enableRenice = true;
-        };
+  programs = {
+    gamemode = {
+      enable = true;
+      enableRenice = true;
     };
+  };
 }

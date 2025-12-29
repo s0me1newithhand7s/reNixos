@@ -1,22 +1,22 @@
 {pkgs, ...}: {
-    programs = {
-        steam = {
-            enable = true;
-            extraCompatPackages = [
-                pkgs.proton-ge-bin
-            ];
+  programs = {
+    steam = {
+      enable = true;
+      extraCompatPackages = [
+        pkgs.proton-ge-bin
+      ];
 
-            remotePlay = {
-                openFirewall = true;
-            };
+      remotePlay = {
+        openFirewall = true;
+      };
 
-            localNetworkGameTransfers = {
-                openFirewall = true;
-            };
+      localNetworkGameTransfers = {
+        openFirewall = true;
+      };
 
-            protontricks = {
-                enable = true;
-            };
-        };
+      protontricks = {
+        enable = true;
+      };
     };
+  };
 }

@@ -1,5 +1,5 @@
 {...}: {
-    networking = {
-        hostId = "5c79d468";
-    };
+  networking = {
+    hostId = "5c79d468";
+  };
 }

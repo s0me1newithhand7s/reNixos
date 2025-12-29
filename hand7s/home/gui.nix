@@ -1,32 +1,33 @@
 {
-    osConfig,
-    lib,
-    ...
+  osConfig,
+  lib,
+  ...
 }: {
-    home = {
-        gui = {
-            enable = lib.mkIf (
-                osConfig.networking.hostName == "s0mePC-nix" || osConfig.networking.hostName == "s0melapt0p-nix"
-            )
-            true;
+  home = {
+    gui = {
+      enable =
+        lib.mkIf (
+          osConfig.networking.hostName == "s0mePC-nix" || osConfig.networking.hostName == "s0melapt0p-nix"
+        )
+        true;
 
-            sessionType =
-                if
-                    (
-                        osConfig.networking.hostName == "s0mePC-nix"
-                    )
-                then "Hyprland"
-                else if
-                    (
-                        osConfig.networking.hostName == "s0mew0rkstat1on-nix"
-                    )
-                then "Hyprland"
-                else if
-                    (
-                        osConfig.networking.hostName == "s0melapt0p-nix"
-                    )
-                then "Sway"
-                else "None";
-        };
+      sessionType =
+        if
+          (
+            osConfig.networking.hostName == "s0mePC-nix"
+          )
+        then "Hyprland"
+        else if
+          (
+            osConfig.networking.hostName == "s0mew0rkstat1on-nix"
+          )
+        then "Hyprland"
+        else if
+          (
+            osConfig.networking.hostName == "s0melapt0p-nix"
+          )
+        then "Sway"
+        else "None";
     };
+  };
 }

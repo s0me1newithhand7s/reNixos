@@ -1,5 +1,5 @@
 {config, ...}: {
-    system = {
-        name = config.networking.hostName;
-    };
+  system = {
+    name = config.networking.hostName;
+  };
 }

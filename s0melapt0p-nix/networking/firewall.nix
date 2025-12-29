@@ -1,9 +1,9 @@
 {...}: {
-    networking = {
-        firewall = {
-            allowPing = true;
-            enable = true;
-            checkReversePath = false;
-        };
+  networking = {
+    firewall = {
+      allowPing = true;
+      enable = true;
+      checkReversePath = false;
     };
+  };
 }

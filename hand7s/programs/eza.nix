@@ -1,10 +1,10 @@
 {...}: {
-    programs = {
-        eza = {
-            enable = true;
-            enableFishIntegration = true;
-            git = true;
-            icons = "always";
-        };
+  programs = {
+    eza = {
+      enable = true;
+      enableFishIntegration = true;
+      git = true;
+      icons = "always";
     };
+  };
 }

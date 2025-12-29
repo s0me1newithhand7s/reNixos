@@ -1,8 +1,8 @@
 {pkgs, ...}: {
-    services = {
-        usbmuxd = {
-            enable = true;
-            package = pkgs.usbmuxd2;
-        };
+  services = {
+    usbmuxd = {
+      enable = true;
+      package = pkgs.usbmuxd2;
     };
+  };
 }

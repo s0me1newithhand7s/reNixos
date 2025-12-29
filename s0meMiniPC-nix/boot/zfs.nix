@@ -1,9 +1,9 @@
 {...}: {
-    boot = {
-        zfs = {
-            package = pkgs.zfs_cachyos;
-            allowHibernation = false;
-            removeLinuxDRM = false;
-        };
+  boot = {
+    zfs = {
+      package = pkgs.zfs_cachyos;
+      allowHibernation = false;
+      removeLinuxDRM = false;
     };
+  };
 }

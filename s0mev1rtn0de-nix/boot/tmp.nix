@@ -1,7 +1,7 @@
 {...}: {
-    boot = {
-        tmp = {
-            cleanOnBoot = true;
-        };
+  boot = {
+    tmp = {
+      cleanOnBoot = true;
     };
+  };
 }

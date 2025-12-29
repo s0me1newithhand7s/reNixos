@@ -1,14 +1,14 @@
 {
-    pkgs,
-    lib,
-    ...
+  pkgs,
+  lib,
+  ...
 }: {
-    programs = {
-        bat = {
-            enable = true;
-            config = {
-                pager = "${lib.getExe pkgs.less} -FR";
-            };
-        };
+  programs = {
+    bat = {
+      enable = true;
+      config = {
+        pager = "${lib.getExe pkgs.less} -FR";
+      };
     };
+  };
 }

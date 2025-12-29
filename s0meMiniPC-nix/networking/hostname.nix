@@ -1,5 +1,5 @@
 {...}: {
-    networking = {
-        hostName = "s0meMiniPC-nix";
-    };
+  networking = {
+    hostName = "s0meMiniPC-nix";
+  };
 }

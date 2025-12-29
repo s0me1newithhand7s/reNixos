@@ -1,9 +1,9 @@
 {pkgs, ...}: {
+  users = {
     users = {
-        users = {
-            root = {
-                shell = "${pkgs.util-linux}/bin/nologin";
-            };
-        };
+      root = {
+        shell = "${pkgs.util-linux}/bin/nologin";
+      };
     };
+  };
 }
