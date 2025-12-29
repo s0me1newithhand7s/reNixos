@@ -331,12 +331,8 @@
     };
   };
 
-  outputs = inputs @ {
-    flake-parts,
-    self,
-    ...
-  }:
-    flake-parts.lib.mkFlake {
+  outputs = inputs @ {self, ...}:
+    inputs.flake-parts.lib.mkFlake {
       inherit
         inputs
         self
