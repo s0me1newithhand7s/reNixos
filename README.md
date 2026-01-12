@@ -1,8 +1,8 @@
 <div align="center">
 
-  [![nfu](https://github.com/s0me1newithhand7s/reNixos/actions/workflows/flake-update-action.yaml/badge.svg)](https://github.com/s0me1newithhand7s/reNixos/actions/workflows/flake-update-action.yaml)
+  [![nfu](https://github.com/s0me1newithhand7s/reNixos/actions/workflows/flake_update.yml/badge.svg)](https://github.com/s0me1newithhand7s/reNixos/actions/workflows/flake_update.yml)
 
-  [![nfc](https://github.com/s0me1newithhand7s/reNixos/actions/workflows/flake-check-action.yaml/badge.svg)](https://github.com/s0me1newithhand7s/reNixos/actions/workflows/flake-check-action.yaml)
+  [![nfc](https://github.com/s0me1newithhand7s/reNixos/actions/workflows/fmt_run.yml/badge.svg)](https://github.com/s0me1newithhand7s/reNixos/actions/workflows/fmt_run.yml)
 
 </div>
 
