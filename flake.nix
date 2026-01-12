@@ -85,6 +85,13 @@
       repo = "freesmlauncher";
     };
 
+    github-actions-nix = {
+      flake = true;
+      type = "github";
+      owner = "synapdeck";
+      repo = "github-actions-nix";
+    };
+
     git-hooks-nix = {
       flake = true;
       type = "github";
@@ -356,6 +363,7 @@
         inputs.devenv.flakeModule
         # i can't really deside between devenv, devshells and devShells they are equally good for me
         # for now, at least, i'm using numtide/devshells
+        inputs.github-actions-nix.flakeModule
       ];
 
       flake = {
@@ -635,6 +643,117 @@
                 just
               ]
               ++ config.pre-commit.settings.enabledPackages;
+          };
+        };
+
+        # synapdeck/github-actions-nix, declaretive gha
+        githubActions = {
+          enable = true;
+
+          workflows = {
+            "flake_update" = {
+              name = "flake lock updater";
+              on = {
+                workflowDispatch = {};
+                schedule = [
+                  {
+                    cron = "0 0 * * *";
+                  }
+                ];
+              };
+
+              jobs = {
+                "locking" = {
+                  name = "flake.lock update";
+                  runsOn = "ubuntu-latest";
+                  continueOnError = false;
+                  permissions = "write-all";
+                  steps = [
+                    {
+                      name = "checkout";
+                      uses = "actions/checkout@v6";
+                    }
+
+                    {
+                      name = "nix install";
+                      uses = "DeterminateSystems/nix-installer-action@v21";
+                    }
+
+                    {
+                      name = "flake.lock check";
+                      uses = "DeterminateSystems/flake-checker-action@v12";
+                      with_ = {
+                        fail-mode = true;
+                      };
+                    }
+
+                    {
+                      name = "flake.lock update";
+                      uses = "DeterminateSystems/update-flake-lock@v28";
+                      with_ = {
+                        pr-title = "Update `flake.lock` GitHub Action";
+                        pr-assignees = "s0me1newithhand7s";
+                        pr-reviewers = "s0me1newithhand7s";
+                        pr-lables = ''
+                          "CI/CD"
+                        '';
+                      };
+                    }
+                  ];
+                };
+              };
+            };
+
+            "fmt_run" = {
+              name = "flake_format";
+              on = {
+                workflowDispatch = {};
+                push = {};
+
+                workflowDispatch = {
+                  types = [
+                    "opened"
+                    "edited"
+                    "synchronize"
+                    "reopened"
+                  ];
+                };
+              };
+
+              jobs = {
+                "fmt" = {
+                  runsOn = "ubuntu-latest";
+                  continueOnError = false;
+                  permissions = "write-all";
+                  steps = [
+                    {
+                      name = "checkout";
+                      uses = "actions/checkout@v6";
+                    }
+
+                    {
+                      name = "nix install";
+                      uses = "DeterminateSystems/nix-installer-action@v21";
+                    }
+
+                    {
+                      name = "flake.lock check";
+                      uses = "DeterminateSystems/flake-checker-action@v12";
+                      with_ = {
+                        fail-mode = true;
+                      };
+                    }
+
+                    {
+                      name = "formatter run";
+                      run = ''
+                        nix develop -c prek run -a
+                      '';
+                    }
+                  ];
+                };
+              };
+            };
           };
         };
       };
