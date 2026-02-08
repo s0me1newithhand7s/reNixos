@@ -50,6 +50,14 @@
             }
           ];
 
+          view = [
+            {
+              run = "${lib.getExe pkgs.timg} ''-p k -C $@ | ${lib.getExe' pkgs.uutils-coreutils-noprefix "more"}''";
+              block = true;
+              for = "unix";
+            }
+          ];
+
           edit = [
             {
               run = "${lib.getExe pkgs.helix} ''$@''";
@@ -61,8 +69,32 @@
           open = [
             {
               run = "${lib.getExe' pkgs.xdg-utils "xdg-open"} ''$@''";
-              block = true;
+              orphan = true;
               for = "unix";
+            }
+          ];
+        };
+
+        open = {
+          rules = [
+            {
+              mime = "image/*";
+              use = "view";
+            }
+
+            {
+              mime = "text/*";
+              use = "edit";
+            }
+
+            {
+              mime = "audio/*";
+              use = "play";
+            }
+
+            {
+              mime = "video/*";
+              use = "play";
             }
           ];
         };

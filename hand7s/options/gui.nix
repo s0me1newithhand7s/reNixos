@@ -2,12 +2,12 @@
   lib,
   pkgs,
   config,
-  inputs,
+  self,
   ...
 }: let
   cfg = config.home.gui;
-  ayugram = inputs.ayugram-desktop.packages.${pkgs.system}.ayugram-desktop;
-  freesm-launcher = inputs.freesm.packages.${pkgs.system}.freesmlauncher;
+  ayugram = self.inputs.ayugram-desktop.packages.${pkgs.system}.ayugram-desktop;
+  freesm-launcher = self.inputs.freesm.packages.${pkgs.system}.freesmlauncher;
 in {
   options.home.gui = {
     enable = lib.mkEnableOption ''
@@ -19,6 +19,7 @@ in {
     '';
 
     sessionType = lib.mkOption {
+      default = "None";
       type = lib.types.enum [
         "DWL"
         "Sway"
@@ -26,7 +27,7 @@ in {
         "Hyprland"
         "None"
       ];
-      default = "None";
+
       description = ''
         This option allows to choose current desktop session. All
         three: riverwm, sway and Hyprland has their own config. Almost
@@ -39,22 +40,26 @@ in {
     home = {
       packages = with pkgs;
         [
+          throne
+          heroic
           vesktop
-          nekoray
+          ayugram
           anki-bin
           obsidian
-          playerctl
-          monero-gui
           mindustry
-          bitwarden
           lan-mouse
+          monero-gui
           parsec-bin
+          proton-pass
           pwvucontrol
           easyeffects
-          ayugram
-          element-desktop
+          thunderbird
+          chatterino7
+          tetrio-desktop
           hyprpolkitagent
           freesm-launcher
+          bitwarden-desktop
+          qbittorrent-enhanced
 
           (discord.override {
             withVencord = true;
@@ -62,26 +67,28 @@ in {
           })
         ]
         ++ lib.optionals (
-          cfg.sessionType == "Sway"
-        ) [
-          swaykbdd
-          autotiling-rs
-          sway-audio-idle-inhibit
-          sway-contrib.grimshot
-          sway-contrib.inactive-windows-transparency
-        ]
-        ++ lib.optionals (
-          cfg.sessionType == "River"
-        ) [
-          wayshot
-          waylock
-          wayidle
-        ]
-        ++ lib.optionals (
           cfg.sessionType == "Hyprland"
         ) [
-          inputs.noctalia.packages.${system}.default
+          fum
+          timg
+          dconf
+          iwgtk
+          tokei
+          ifuse
+          yt-dlp
+          termusic
+          playerctl
+          tty-clock
           grimblast
+          monero-cli
+          brightnessctl
+          hyprsysteminfo
+          yubico-piv-tool
+          yubikey-manager
+          libimobiledevice
+          yubikey-touch-detector
+          yubikey-personalization
+          self.inputs.noctalia.packages.${system}.default
         ];
     };
 
@@ -89,10 +96,8 @@ in {
       chromium.enable = true;
       spicetify.enable = true;
       vscode.enable = true;
-      fuzzel.enable = true;
       ghostty.enable = true;
-      firefox.enable = true;
-      alacritty.enable = true;
+      git.enable = true;
     };
 
     services = with lib.mkDefault; {

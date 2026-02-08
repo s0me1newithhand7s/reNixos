@@ -1,5 +1,5 @@
-{...}: {
+_: {
   stylix = {
-    image = ./wallpaper3.jpg;
+    image = ./wallpaper3.png;
   };
 }

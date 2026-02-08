@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  lib,
+  config,
+  ...
+}: {
   programs =
     if
       (
@@ -14,12 +18,14 @@
             dimDesktop = false;
             forceBlackScreenCorners = true;
             showScreenCorners = true;
-            screenRadiusRatio = 2;
+            screenRadiusRatio = 1;
             radiusRatio = 0.7;
+            enableShadows = true;
+            shadowDirection = "center";
           };
 
           appLauncher = {
-            position = "center";
+            position = "bottom_center";
             useApp2Unit = false;
             sortByMostUsed = true;
             enableClipboardHistory = false;
@@ -34,8 +40,8 @@
           };
 
           bar = {
-            floating = true;
-            density = "comfortable";
+            floating = false;
+            density = "default";
             position = "right";
             showCapsule = false;
             marginVertical = 1;
@@ -47,7 +53,7 @@
             widgets = {
               left = [
                 {
-                  id = "SidePanelToggle";
+                  id = "ControlCenter";
                   useDistroLogo = true;
                 }
 
@@ -110,6 +116,10 @@
                 }
               ];
             };
+          };
+
+          notifications = {
+            location = "top_center";
           };
 
           controlCenter = {
@@ -181,23 +191,27 @@
             enabled = true;
             alwaysOnTop = true;
             autoHideMs = 2500;
-            location = "top";
+            location = "bottom_center";
             monitors = [
               "DP-3"
             ];
           };
 
           ui = {
-            fontDefault = "Nerd Fonts Hack";
+            fontDefault = lib.mkForce "Nerd Fonts Hack";
             fontDefaultScale = 1;
-            fontFixed = "Nerd Fonts Hack";
+            fontFixed = lib.mkForce "Nerd Fonts Hack";
             fontFixedScale = 1;
             idleInhibitorEnabled = false;
             tooltipsEnabled = true;
           };
 
+          wallpaper = {
+            enabled = false;
+          };
+
           location = {
-            name = "Yelaguba";
+            name = "Tatarstan, Yelaguba";
             showWeekNumberInCalendar = true;
             use12hourFormat = false;
             useFahrenheit = false;

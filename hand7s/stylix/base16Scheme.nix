@@ -1,4 +1,4 @@
-{...}: {
+_: {
   stylix = {
     base16Scheme = {
       scheme = "Tokyonight by Folke Lemaitre (https://github.com/folke)";

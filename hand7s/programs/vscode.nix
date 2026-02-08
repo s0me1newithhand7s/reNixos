@@ -6,14 +6,19 @@
 }: {
   programs = {
     vscode = {
+      package = pkgs.vscodium;
       profiles = {
         default = {
           extensions = with pkgs.vscode-extensions; [
             jnoortheen.nix-ide
+
             ms-vscode-remote.vscode-remote-extensionpack
             ms-vsliveshare.vsliveshare
+
             redhat.vscode-yaml
             redhat.ansible
+
+            nefrob.vscode-just-syntax
           ];
 
           userSettings = lib.mkForce {
@@ -24,7 +29,7 @@
             "editor.cursorSmoothCaretAnimation" = "on";
             "editor.wordWrap" = "on";
 
-            "workbench.colorTheme" = "Tokyo Night Moon";
+            "workbench.colorTheme" = "Tokyo Storm AltSynt";
             "workbench.sideBar.location" = "right";
             "workbench.activityBar.location" = "top";
             "workbench.editor.editorActionsLocation" = "titleBar";
@@ -35,11 +40,6 @@
             "terminal.integrated.cursorBlinking" = true;
 
             "files.autoSave" = "afterDelay";
-
-            "[nix]" = {
-              "editor.insertSpaces" = true;
-              "editor.tabSize" = 4;
-            };
           };
         };
       };

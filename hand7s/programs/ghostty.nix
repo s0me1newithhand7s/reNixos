@@ -8,11 +8,24 @@
       enableFishIntegration = true;
       installBatSyntax = true;
       settings = {
-        title = "spooky scary tty";
+        title = "";
 
-        command = "${lib.getExe pkgs.fish} --login --interactive";
+        bell-features = "system";
+
+        command = "${lib.getExe pkgs.fish}";
 
         confirm-close-surface = false;
+
+        cursor-style-blink = true;
+        cursor-style = "bar";
+
+        mouse-hide-while-typing = true;
+
+        working-directory = "home";
+
+        window-save-state = "never";
+
+        window-inherit-working-directory = false;
 
         keybind = [
           "ctrl+shift+d=new_split:right"

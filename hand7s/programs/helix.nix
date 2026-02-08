@@ -5,7 +5,7 @@
 }: {
   programs = {
     helix = {
-      package = pkgs.helix_git;
+      package = pkgs.helix;
       enable = true;
       defaultEditor = true;
       extraPackages = with pkgs; [

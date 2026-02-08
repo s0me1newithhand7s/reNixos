@@ -1,5 +1,5 @@
 {
-  inputs,
+  self,
   config,
   pkgs,
   lib,
@@ -14,8 +14,8 @@
           )
           true;
 
-        package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-        portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+        package = self.inputs.hyprland.packages.${pkgs.system}.hyprland;
+        portalPackage = self.inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
 
         settings = {
           monitor = ", 2560x1440@165.00Hz, 0x0, 1";
@@ -92,9 +92,7 @@
             "${lib.getExe' pkgs.systemd "systemctl"} --user start hyprpaper.service"
             "${lib.getExe' pkgs.systemd "systemctl"} --user start hypridle.service"
             "${lib.getExe' pkgs.systemd "systemctl"} --user start hyprpolkitagent.service"
-
-            # "${lib.getExe' pkgs.systemd "systemctl"} --user start noctalis.service"
-            "${lib.getExe inputs.noctalia.packages.${pkgs.system}.default}"
+            "${lib.getExe self.inputs.noctalia.packages.${pkgs.system}.default}"
 
             "${lib.getExe' pkgs.hyprland "hyprctl"} setcursor material_light_cursors 20"
           ];
@@ -102,13 +100,12 @@
           bind = [
             "ALT, return, exec, ${lib.getExe pkgs.ghostty}"
             "ALT, Q, killactive,"
-            "ALT, S, exec, ${lib.getExe inputs.noctalia.packages.${pkgs.system}.default} ipc call launcher toggle"
+            "ALT, S, exec, ${lib.getExe self.inputs.noctalia.packages.${pkgs.system}.default} ipc call launcher toggle"
             "ALT, F, fullscreen, 0"
             "ALT, L, exec, ${lib.getExe pkgs.hyprlock}"
 
-            "ALT SHIFT, E, exit,"
             "ALT SHIFT, space, togglefloating, active"
-            "ALT SHIFT, S, exec, ${lib.getExe pkgs.grimblast} --notify --freeze copysave area /home/hand7s/Pictures/Screenshots/$(date '+%y%m%d_%H-%M-%s').png"
+            "ALT SHIFT, S, exec, ${lib.getExe pkgs.grimblast} --notify --freeze copysave area /home/hand7s/Pictures/Screenshots/$(date '+%y%m%d_%H-%M-%s').png | , killall -9 hyprpicker"
 
             "ALT, left, movefocus, l"
             "ALT, right, movefocus, r"
@@ -139,6 +136,8 @@
             "ALT SHIFT, 0, movetoworkspacesilent, 10"
             "ALT SHIFT, H, movetoworkspacesilent, special"
 
+            "ALT, Tab, hyprexpo:expo, toggle"
+
             "ALT, mouse_down, workspace, e+1"
             "ALT, mouse_up, workspace, e-1"
           ];
@@ -166,14 +165,16 @@
           animation = [
             "enabled = true"
 
-            "bezier = bez, 0.05, 0.9, 0.1, 1.05"
+            "animation = windows, 1, 7, popin"
+            "animation = windowsOut, 1, 7, popin"
 
-            "animation = windows, 1, 7, bez"
-            "animation = windowsOut, 1, 7, default, popin 80%"
-            "animation = border, 1, 10, default"
-            "animation = borderangle, 1, 10, default"
-            "animation = fade, 1, 7, default"
-            "animation = workspaces, 1, 7, default"
+            "animation = layers, 1, 7, fade"
+
+            "animation = border, 1, 10"
+            "animation = borderangle, 1, 10"
+
+            "animation = workspaces, 1, 7, slidevert"
+            "animation = specialWorkspace, 1, 7, slidevert"
           ];
 
           misc = {
@@ -216,10 +217,15 @@
             hyprscrolling = {
               fullscreen_on_one_column = true;
               follow_focus = true;
+              column_width = 0.7;
+              focus_fit_method = "center";
             };
 
-            easymotion = {
-              only_special = false;
+            hyprexpo = {
+              columns = 2;
+              gap_size = 10;
+              skip_empty = true;
+              workspace_method = "workspace";
             };
 
             dynamic-cursors = {
@@ -228,7 +234,7 @@
               threshold = 2;
               stretch = {
                 limit = 4000;
-                function = "quadratic";
+                function = "linear";
               };
 
               shake = {
@@ -256,17 +262,10 @@
           };
         };
 
-        plugins = [
-          # pkgs.hyprlandPlugins.hypr-dynamic-cursors
-          # pkgs.hyprlandPlugins.xtra-dispatchers
-          # pkgs.hyprlandPlugins.hyprwinwrap
-          # pkgs.hyprlandPlugins.hyprgrass
-          # pkgs.hyprlandPlugins.hyprscrolling
-
-          # inputs.hyprcurs.packages.${pkgs.system}.hypr-dynamic-cursors
-          # inputs.hyprplugs.packages.${pkgs.system}.hyprscrolling
-          # inputs.hyprplugs.packages.${pkgs.system}.xtra-dispatchers
-          # inputs.hyprplugs.packages.${pkgs.system}.hyprwinwrap
+        plugins = with pkgs.hyprlandPlugins; [
+          hypr-dynamic-cursors
+          hyprscrolling
+          hyprexpo
         ];
       };
     };

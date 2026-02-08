@@ -1,4 +1,4 @@
-{...}: {
+_: {
   home = {
     keyboard = {
       variant = "";

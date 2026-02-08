@@ -1,4 +1,4 @@
-{...}: {
+_: {
   programs = {
     starship = {
       enable = true;
@@ -7,15 +7,14 @@
         add_newline = true;
 
         format = ''
-          [╭──╼](bold blue) $hostname $os
+          [╭──╼](bold blue) $username at $hostname on $os
           [┆](bold blue) $directory$git_branch$git_commit$git_state$git_metrics$git_status
-          [╰─>](bold blue)
-        '';
+          [╰─>](bold blue) '';
 
         right_format = ''$cmd_duration ($character) at ❗$time'';
 
         os = {
-          format = "on [($name $codename$version$edition $symbol )]($style)";
+          format = "[($name $codename$version$edition $symbol )]($style)";
           style = "bold blue";
           disabled = false;
         };
@@ -25,6 +24,13 @@
           format = "[$hostname]($style)";
           style = "bold red";
           disabled = false;
+        };
+
+        username = {
+          show_always = true;
+          disabled = false;
+          format = "[$user]($style)";
+          style_user = "bold green";
         };
 
         character = {

@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   lib,
   ...
 }: {
@@ -20,14 +21,17 @@
         label = [
           {
             monitor = "";
-            text = "$TIME";
+            text = ''
+              cmd[update:1000] ${lib.getExe' pkgs.uutils-coreutils-noprefix "date"} +"%T"
+            '';
+
             text_align = "center";
             color = config.lib.stylix.colors.base01;
             font_size = 48;
             font_family = config.stylix.fonts.emoji.name;
             rotate = 0;
 
-            position = "0, 50";
+            position = "0, 200";
             halign = "center";
             valign = "center";
 
@@ -39,14 +43,17 @@
 
           {
             monitor = "";
-            text = "> $LAYOUT[en,ru]";
+            text = ''
+              cmd[update:1000] ${lib.getExe' pkgs.uutils-coreutils-noprefix "date"} +"%A, %B"
+            '';
+
             text_align = "center";
-            color = config.lib.stylix.colors.base06;
-            font_size = 26;
+            color = config.lib.stylix.colors.base01;
+            font_size = 24;
             font_family = config.stylix.fonts.emoji.name;
             rotate = 0;
 
-            position = "200, -50";
+            position = "0, 150";
             halign = "center";
             valign = "center";
 
@@ -73,7 +80,7 @@
             hide_input = false;
             rounding = -0.3;
 
-            fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
+            fail_text = "$FAIL -> $ATTEMPTS";
             fail_transition = 1000;
             capslock_color = -1;
             numlock_color = -1;
@@ -81,7 +88,7 @@
             invert_numlock = false;
             swap_font_color = false;
 
-            position = "0, -50";
+            position = "0, -650";
             halign = "center";
             valign = "center";
 

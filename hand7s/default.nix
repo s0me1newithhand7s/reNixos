@@ -4,8 +4,6 @@
     "${self}/hand7s/options/gui.nix"
 
     "${self}/hand7s/wayland/hyprland.nix"
-    "${self}/hand7s/wayland/river.nix"
-    "${self}/hand7s/wayland/sway.nix"
 
     "${self}/hand7s/home/defaults.nix"
     "${self}/hand7s/home/gui.nix"
@@ -17,7 +15,7 @@
     "${self}/hand7s/nixpkgs/overlays.nix"
 
     "${self}/hand7s/services/hypridle.nix"
-    "${self}/hand7s/services/swayidle.nix"
+    "${self}/hand7s/services/hyprsunset.nix"
     "${self}/hand7s/services/kdeconnect.nix"
 
     "${self}/hand7s/systemd/hyprpolkitagent-service.nix"
@@ -33,19 +31,15 @@
     "${self}/hand7s/programs/index.nix"
     "${self}/hand7s/programs/obs-studio.nix"
     "${self}/hand7s/programs/starship.nix"
-    "${self}/hand7s/programs/firefox.nix"
-    "${self}/hand7s/programs/swaylock.nix"
     "${self}/hand7s/programs/yazi.nix"
     "${self}/hand7s/programs/zoxide.nix"
     "${self}/hand7s/programs/chrome.nix"
     "${self}/hand7s/programs/hyprlock.nix"
-    "${self}/hand7s/programs/hyprpanel.nix"
     "${self}/hand7s/programs/spicetify.nix"
     "${self}/hand7s/programs/vscode.nix"
     "${self}/hand7s/programs/zellij.nix"
-    "${self}/hand7s/programs/zed-editor.nix"
     "${self}/hand7s/programs/direnv.nix"
-    "${self}/hand7s/programs/kitty.nix"
     "${self}/hand7s/programs/noctalia.nix"
+    "${self}/hand7s/programs/iamb.nix"
   ];
 }
