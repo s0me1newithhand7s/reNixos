@@ -1,7 +1,0 @@
-{...}: {
-  programs = {
-    nh = {
-      enable = true;
-    };
-  };
-}

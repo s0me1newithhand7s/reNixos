@@ -1,7 +1,0 @@
-{...}: {
-  networking = {
-    nftables = {
-      enable = false;
-    };
-  };
-}

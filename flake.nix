@@ -468,7 +468,10 @@
             ];
           };
 
-          "s0mev1rtn0de-nix" = inputs.nixpkgs.lib.nixosSystem {
+          # my VPSes:
+
+          # VPS 1
+          "hazel" = inputs.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = {
               inherit
@@ -478,11 +481,92 @@
             };
 
             modules = [
-              "${self}/s0mev1rtn0de-nix/"
+              {
+                networking.hostName = inputs.nixpkgs.lib.mkDefault "hazel";
+              }
+
+              "${self}/kyra/"
+              inputs.agenix.nixosModules.default
               inputs.disko.nixosModules.disko
               inputs.home-manager.nixosModules.default
               inputs.sops-nix.nixosModules.sops
               inputs.nix-index-database.nixosModules.nix-index
+              inputs.nix-mineral.nixosModules.nix-mineral
+            ];
+          };
+
+          # VPS 2
+          "lynn" = inputs.nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = {
+              inherit
+                inputs
+                self
+                ;
+            };
+
+            modules = [
+              {
+                networking.hostName = inputs.nixpkgs.lib.mkDefault "lynn";
+              }
+
+              "${self}/kyra/"
+              inputs.agenix.nixosModules.default
+              inputs.disko.nixosModules.disko
+              inputs.home-manager.nixosModules.default
+              inputs.sops-nix.nixosModules.sops
+              inputs.nix-index-database.nixosModules.nix-index
+              inputs.nix-mineral.nixosModules.nix-mineral
+            ];
+          };
+
+          # VPS 3
+          "ivy" = inputs.nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = {
+              inherit
+                inputs
+                self
+                ;
+            };
+
+            modules = [
+              {
+                networking.hostName = inputs.nixpkgs.lib.mkDefault "ivy";
+              }
+
+              "${self}/kyra/"
+              inputs.agenix.nixosModules.default
+              inputs.disko.nixosModules.disko
+              inputs.home-manager.nixosModules.default
+              inputs.sops-nix.nixosModules.sops
+              inputs.nix-index-database.nixosModules.nix-index
+              inputs.nix-mineral.nixosModules.nix-mineral
+            ];
+          };
+
+          # VPS 4
+          "mel" = inputs.nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = {
+              inherit
+                inputs
+                self
+                ;
+            };
+
+            modules = [
+              {
+                networking.hostName = inputs.nixpkgs.lib.mkDefault "mel";
+              }
+
+              "${self}/kyra/"
+              inputs.agenix.nixosModules.default
+              inputs.disko.nixosModules.disko
+              inputs.home-manager.nixosModules.default
+              inputs.sops-nix.nixosModules.sops
+              inputs.nix-index-database.nixosModules.nix-index
+              inputs.nix-mineral.nixosModules.nix-mineral
             ];
           };
 

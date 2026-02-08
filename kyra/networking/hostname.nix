@@ -1,0 +1,5 @@
+_: {
+  networking = {
+    hostName = "kyra";
+  };
+}
