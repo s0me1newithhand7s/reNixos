@@ -161,6 +161,13 @@
       repo = "nekoflake";
     };
 
+    nix-bwrapper = {
+      flake = true;
+      type = "github";
+      owner = "Naxdy";
+      repo = "nix-bwrapper";
+    };
+
     nix-darwin = {
       flake = true;
       type = "github";
@@ -172,6 +179,21 @@
           follows = "nixpkgs";
         };
       };
+    };
+
+    nix-cachyos-kernel = {
+      flake = true;
+      type = "github";
+      owner = "xddxdd";
+      repo = "nix-cachyos-kernel";
+      ref = "release";
+    };
+
+    nix-mineral = {
+      flake = true;
+      type = "github";
+      owner = "cynicsketch";
+      repo = "nix-mineral";
     };
 
     nix-homebrew = {
@@ -395,7 +417,7 @@
 
         # nixos hosts
         nixosConfigurations = {
-          "s0mePC-nix" = inputs.nixpkgs.lib.nixosSystem {
+          "ada" = inputs.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = {
               inherit
@@ -405,7 +427,8 @@
             };
 
             modules = [
-              "${self}/s0mePC-nix/"
+              "${self}/ada/"
+              inputs.agenix.nixosModules.default
               inputs.chaotic.nixosModules.default
               inputs.stylix.nixosModules.stylix
               inputs.sops-nix.nixosModules.sops
@@ -413,6 +436,8 @@
               inputs.lanzaboote.nixosModules.lanzaboote
               inputs.home-manager.nixosModules.default
               inputs.nix-index-database.nixosModules.nix-index
+              inputs.nix-bwrapper.nixosModules.default
+              inputs.nix-mineral.nixosModules.nix-mineral
             ];
           };
 
