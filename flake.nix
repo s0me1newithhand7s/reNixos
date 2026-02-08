@@ -570,7 +570,8 @@
             ];
           };
 
-          "s0meMiniPC-nix" = inputs.nixpkgs.lib.nixosSystem {
+          # homelab
+          "viola" = inputs.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = {
               inherit
@@ -580,7 +581,8 @@
             };
 
             modules = [
-              "${self}/s0meMiniPC-nix"
+              "${self}/viola"
+              inputs.agenix.nixosModules.default
               inputs.chaotic.nixosModules.default
               inputs.stylix.nixosModules.stylix
               inputs.sops-nix.nixosModules.sops
@@ -588,6 +590,7 @@
               inputs.lanzaboote.nixosModules.lanzaboote
               inputs.home-manager.nixosModules.default
               inputs.nix-index-database.nixosModules.nix-index
+              inputs.nix-mineral.nixosModules.nix-mineral
             ];
           };
         };
