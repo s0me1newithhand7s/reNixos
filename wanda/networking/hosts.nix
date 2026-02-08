@@ -1,0 +1,7 @@
+_: {
+  networking = {
+    hosts = {
+      # nope.
+    };
+  };
+}

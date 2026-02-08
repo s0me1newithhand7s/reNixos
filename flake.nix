@@ -593,6 +593,29 @@
               inputs.nix-mineral.nixosModules.nix-mineral
             ];
           };
+
+          # WSL2
+          "wanda" = inputs.nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = {
+              inherit
+                inputs
+                self
+                ;
+            };
+
+            modules = [
+              "${self}/wanda/"
+              inputs.agenix.nixosModules.default
+              inputs.nixos-wsl.nixosModules.default
+              inputs.stylix.nixosModules.stylix
+              inputs.home-manager.nixosModules.default
+              inputs.sops-nix.nixosModules.sops
+              inputs.nix-index-database.nixosModules.nix-index
+              inputs.nix-bwrapper.nixosModules.default
+              inputs.nix-mineral.nixosModules.nix-mineral
+            ];
+          };
         };
 
         # deploy-rs

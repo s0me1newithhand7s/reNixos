@@ -1,0 +1,5 @@
+_: {
+  console = {
+    useXkbConfig = true;
+  };
+}
