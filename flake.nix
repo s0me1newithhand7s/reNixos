@@ -416,6 +416,8 @@
         };
 
         # nixos hosts
+
+        # my PC
         nixosConfigurations = {
           "ada" = inputs.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
@@ -441,7 +443,8 @@
             ];
           };
 
-          "s0melapt0p-nix" = inputs.nixpkgs.lib.nixosSystem {
+          # my laptop
+          "isla" = inputs.nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = {
               inherit
@@ -451,7 +454,8 @@
             };
 
             modules = [
-              "${self}/s0melapt0p-nix/"
+              "${self}/isla/"
+              inputs.agenix.nixosModules.default
               inputs.chaotic.nixosModules.default
               inputs.stylix.nixosModules.stylix
               inputs.sops-nix.nixosModules.sops
@@ -459,6 +463,8 @@
               inputs.home-manager.nixosModules.home-manager
               inputs.lanzaboote.nixosModules.lanzaboote
               inputs.nix-index-database.nixosModules.nix-index
+              inputs.nix-bwrapper.nixosModules.default
+              inputs.nix-mineral.nixosModules.nix-mineral
             ];
           };
 
