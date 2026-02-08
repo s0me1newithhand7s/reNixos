@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   services = {
     postgresql = {
       enable = true;
@@ -45,11 +45,11 @@
       ];
 
       initialScript = ""; # nope
- 
+
       authentication = ""; #nope
 
       settings = {
-        port = ${dbport};
+        port = "${dbport}";
       };
     };
   };

@@ -9,7 +9,7 @@ _: {
             challenge = "dns-01";
             provider = "cloudflare";
             origin = "hand7s.org";
-            secret = ${mail_secret};
+            secret = "${mail_secret}";
             contact = [
               "me@hand7s.org"
             ];

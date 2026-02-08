@@ -5,11 +5,11 @@
       servers = {
         "forgejo" = {
           enable = true;
-          port = ${cacheport1};
+          port = "${cacheport1}";
           logLevel = "warning";
           databases = 16;
           maxclients = 10000;
-          requirePass = ${cachepass1};
+          requirePass = "${cachepass1}";
 
           settings = {
             stop-writes-on-bgsave-error = "yes";
@@ -41,11 +41,11 @@
 
         "woodpecker" = {
           enable = false;
-          port = ${cacheport2};
+          port = "${cacheport2}";
           logLevel = "warning";
           databases = 16;
           maxclients = 10000;
-          requirePass = ${cachepass2};
+          requirePass = "${cachepass2}";
 
           settings = {
             stop-writes-on-bgsave-error = "yes";
@@ -77,11 +77,11 @@
 
         "stalwart" = {
           enable = true;
-          port = ${cacheport3};
+          port = "${cacheport3}";
           logLevel = "warning";
           databases = 16;
           maxclients = 10000;
-          requirePass = ${cachepass3};
+          requirePass = "${cachepass3}";
 
           settings = {
             stop-writes-on-bgsave-error = "yes";
@@ -113,11 +113,11 @@
 
         "zitadel" = {
           enable = true;
-          port = ${cacheport4};
+          port = "${cacheport4}";
           logLevel = "warning";
           databases = 16;
           maxclients = 10000;
-          requirePass = ${cachepass4};
+          requirePass = "${cachepass4}";
 
           settings = {
             stop-writes-on-bgsave-error = "yes";
