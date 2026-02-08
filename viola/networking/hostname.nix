@@ -1,5 +1,5 @@
-{...}: {
+_: {
   networking = {
-    hostName = "s0meMiniPC-nix";
+    hostName = "viola";
   };
 }

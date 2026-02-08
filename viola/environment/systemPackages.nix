@@ -10,5 +10,7 @@
       uutils-diffutils
       home-manager
     ];
+
+    enableAllTerminfo = false;
   };
 }

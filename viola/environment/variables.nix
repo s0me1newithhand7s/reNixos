@@ -13,7 +13,5 @@
       GRIMBLAST_HIDE_CURSOR = "0";
       TERM = "xterm-256color";
     };
-
-    enableAllTerminfo = true;
   };
 }

@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: {
+{config, ...}: {
   boot = {
     kernel = {
       sysctl = {
@@ -16,7 +12,6 @@
       };
     };
 
-    kernelPackages = pkgs.linuxPackages_cachyos-server;
     extraModulePackages = with config.boot.kernelPackages; [
       rtl8821ce
       yt6801
@@ -35,6 +30,7 @@
       "page_alloc.shuffle=1"
       "page_poison=1"
       "slab_nomerge"
+      "zswap.enabled=0"
 
       "kernel.watchdog=0"
       "oops=panic"
@@ -73,7 +69,6 @@
     supportedFilesystems = {
       vfat = true;
       btrfs = true;
-      zfs = lib.mkForce true;
     };
 
     consoleLogLevel = 0;

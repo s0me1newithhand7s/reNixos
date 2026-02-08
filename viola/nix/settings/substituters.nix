@@ -1,4 +1,4 @@
-{...}: {
+_: {
   nix = {
     settings = {
       substituters = [
@@ -9,10 +9,10 @@
         # cachix
         "https://nix-community.cachix.org/"
         "https://chaotic-nyx.cachix.org/"
-        "https://ags.cachix.org"
         "https://hyprland.cachix.org"
         "https://chaotic-nyx.cachix.org/"
-        "https://colmena.cachix.org"
+        # nix-community
+        "https://hydra.nix-community.org/"
       ];
     };
   };
