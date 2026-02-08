@@ -1,4 +1,4 @@
-{...}: {
+_: {
   services = {
     pipewire = {
       enable = true;
@@ -25,6 +25,7 @@
 
       extraConfig = {
         pipewire = {
+          # PIPEWIRE_PROPS=node.force-rate=0
           "92-low-latency" = {
             "context.properties" = {
               "default.clock.rate" = 48000;

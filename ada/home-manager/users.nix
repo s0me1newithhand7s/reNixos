@@ -1,20 +1,17 @@
-{
-  inputs,
-  self,
-  ...
-}: {
+{self, ...}: {
   home-manager = {
     users = {
-      hand7s = {
+      "hand7s" = {
         imports = [
           "${self}/hand7s/"
-          inputs.spicetify-nix.homeManagerModules.default
-          inputs.hyprland.homeManagerModules.default
-          inputs.chaotic.homeManagerModules.default
-          inputs.sops-nix.homeManagerModules.sops
+          self.inputs.agenix.homeManagerModules.default
+          self.inputs.spicetify-nix.homeManagerModules.default
+          self.inputs.hyprland.homeManagerModules.default
+          self.inputs.chaotic.homeManagerModules.default
+          self.inputs.sops-nix.homeManagerModules.sops
 
-          inputs.nix-index-database.homeModules.nix-index
-          inputs.noctalia.homeModules.default
+          self.inputs.nix-index-database.homeModules.nix-index
+          self.inputs.noctalia.homeModules.default
         ];
       };
     };
@@ -23,7 +20,6 @@
 
     extraSpecialArgs = {
       inherit
-        inputs
         self
         ;
     };

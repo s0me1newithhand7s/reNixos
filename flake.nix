@@ -617,41 +617,6 @@
             ];
           };
         };
-
-        # deploy-rs
-        deploy = {
-          user = "hand7s";
-          interactiveSudo = true;
-          autoRollback = true;
-          magicRollback = true;
-          remoteBuild = false;
-          sshOpts = [
-            "-p"
-            "6969"
-          ];
-
-          nodes = {
-            "s0mev1rtn0de-nix" = {
-              hostname = "100.109.213.170";
-              profiles = {
-                main = {
-                  path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.s0mev1rtn0de-nix;
-                  profilePath = "/nix/var/nix/profiles/system";
-                };
-              };
-            };
-
-            "s0meMiniPC-nix" = {
-              hostname = "100.109.71.194";
-              profiles = {
-                main = {
-                  path = inputs.deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.s0mev1rtn0de-nix;
-                  profilePath = "/nix/var/nix/profiles/system";
-                };
-              };
-            };
-          };
-        };
       };
 
       perSystem = {

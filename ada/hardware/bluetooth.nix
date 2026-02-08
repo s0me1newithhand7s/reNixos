@@ -1,8 +1,7 @@
 _: {
   hardware = {
-    graphics = {
+    bluetooth = {
       enable = true;
-      enable32Bit = true;
     };
   };
 }

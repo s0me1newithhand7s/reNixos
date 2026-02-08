@@ -6,7 +6,6 @@
     "${self}/ada/boot/plymouth.nix"
     "${self}/ada/boot/tmp.nix"
     "${self}/ada/boot/loader/systemd-boot.nix"
-    "${self}/ada/boot/zfs.nix"
 
     "${self}/ada/disko/disk.nix"
     "${self}/ada/disko/lvm_vg.nix"
@@ -19,9 +18,10 @@
     "${self}/ada/hardware/amdgpu.nix"
     "${self}/ada/hardware/cpu.nix"
     "${self}/ada/hardware/graphics.nix"
-    "${self}/ada/hardware/openrazer.nix"
     "${self}/ada/hardware/qmk.nix"
     "${self}/ada/hardware/zram.nix"
+    "${self}/ada/hardware/bluetooth.nix"
+    "${self}/ada/hardware/"
 
     "${self}/ada/home-manager/users.nix"
 
@@ -70,14 +70,12 @@
     "${self}/ada/services/qmk.nix"
     "${self}/ada/services/scx.nix"
     "${self}/ada/services/xserver.nix"
-    "${self}/ada/services/zapret.nix"
-    "${self}/ada/services/zerotier.nix"
-    "${self}/ada/services/yggdrasil.nix"
     "${self}/ada/services/sunshine.nix"
     "${self}/ada/services/usbmuxd.nix"
     "${self}/ada/services/irqbalance.nix"
     "${self}/ada/services/yubikey-agent.nix"
     "${self}/ada/services/resolved.nix"
+    "${self}/ada/services/firewalld.nix"
 
     "${self}/ada/sops/defaults.nix"
     "${self}/ada/sops/secrets.nix"
@@ -101,8 +99,6 @@
     "${self}/ada/users/users/hand7s.nix"
     "${self}/ada/users/users/root.nix"
     "${self}/ada/users/mutableUsers.nix"
-
-    "${self}/ada/virtualisation/docker.nix"
 
     "${self}/ada/xdg/icons.nix"
     "${self}/ada/xdg/mime.nix"

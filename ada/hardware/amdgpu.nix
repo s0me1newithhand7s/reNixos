@@ -1,4 +1,4 @@
-{...}: {
+_: {
   hardware = {
     amdgpu = {
       initrd = {

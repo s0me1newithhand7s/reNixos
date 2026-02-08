@@ -1,7 +1,7 @@
 {config, ...}: {
   environment = {
     variables = {
-      AMD_VULKAN_ICD = "RADV";
+      AMD_VULKAN_ICD = "AMDVLK";
       HOSTNAME = config.networking.hostName;
       QT_QPA_PLATFORM = "wayland";
       SDL_VIDEODRIVER = "wayland";

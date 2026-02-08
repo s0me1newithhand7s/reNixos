@@ -1,4 +1,4 @@
-{...}: {
+_: {
   nix = {
     settings = {
       trusted-substituters = [
@@ -13,7 +13,6 @@
         "https://ags.cachix.org"
         "https://hyprland.cachix.org"
         "https://chaotic-nyx.cachix.org/"
-        "https://colmena.cachix.org"
       ];
     };
   };

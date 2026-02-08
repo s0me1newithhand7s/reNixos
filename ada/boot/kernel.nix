@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }: {
   boot = {
@@ -17,7 +16,7 @@
       };
     };
 
-    kernelPackages = pkgs.linuxPackages_cachyos-gcc;
+    kernelPackages = pkgs.linuxPackages_latest;
     extraModulePackages = with config.boot.kernelPackages; [
       zenpower
       v4l2loopback
@@ -32,7 +31,6 @@
     ];
 
     kernelParams = [
-      "video=DP-1:2560x1440@165"
       "amd_pstate=guided"
       "udev.log_priority=3"
       "quiet"
@@ -45,6 +43,7 @@
       "page_alloc.shuffle=1"
       "page_poison=1"
       "slab_nomerge"
+      "zswap.enabled=0"
 
       "kernel.watchdog=0"
       "oops=panic"
@@ -68,6 +67,7 @@
       "hfs"
       "hpfs"
       "jfs"
+      "zfs"
       "minix"
       "nilfs2"
       "ntfs"
@@ -81,9 +81,9 @@
     ];
 
     supportedFilesystems = {
+      ntfs = true;
       vfat = true;
       btrfs = true;
-      zfs = lib.mkForce true;
     };
 
     consoleLogLevel = 0;

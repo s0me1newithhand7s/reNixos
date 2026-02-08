@@ -1,4 +1,4 @@
-{lib, ...}: {
+_: {
   boot = {
     initrd = {
       availableKernelModules = [
@@ -14,9 +14,9 @@
       ];
 
       supportedFilesystems = {
+        ntfs = true;
         vfat = true;
         btrfs = true;
-        zfs = lib.mkForce true;
       };
 
       kernelModules = [

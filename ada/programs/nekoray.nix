@@ -1,6 +1,6 @@
-{...}: {
+_: {
   programs = {
-    nekoray = {
+    throne = {
       enable = true;
       tunMode = {
         enable = true;
