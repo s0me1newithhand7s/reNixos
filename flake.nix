@@ -2,34 +2,34 @@
   description = "hand7s'es flake";
 
   inputs = {
-    agenix = {
+    "agenix" = {
       flake = true;
       type = "github";
       owner = "yaxitech";
       repo = "ragenix";
     };
 
-    agenix-rekey = {
+    "agenix-rekey" = {
       flake = true;
       type = "github";
       owner = "oddlama";
       repo = "agenix-rekey";
 
       inputs = {
-        nixpkgs = {
+        "nixpkgs" = {
           follows = "nixpkgs";
         };
       };
     };
 
-    ayugram-desktop = {
+    "ayugram-desktop" = {
       flake = true;
       type = "github";
       owner = "ndfined-crp";
       repo = "ayugram-desktop";
     };
 
-    chaotic = {
+    "chaotic" = {
       flake = true;
       type = "github";
       owner = "chaotic-cx";
@@ -37,110 +37,110 @@
       ref = "nyxpkgs-unstable";
     };
 
-    deploy-rs = {
+    "deploy-rs" = {
       flake = true;
       type = "github";
       owner = "serokell";
       repo = "deploy-rs";
     };
 
-    devenv = {
+    "devenv" = {
       flake = true;
       type = "github";
       owner = "cachix";
       repo = "devenv";
     };
 
-    devshell = {
+    "devshell" = {
       flake = true;
       type = "github";
       owner = "numtide";
       repo = "devshell";
     };
 
-    disko = {
+    "disko" = {
       flake = true;
       type = "github";
       owner = "nix-community";
       repo = "disko";
 
       inputs = {
-        nixpkgs = {
+        "nixpkgs" = {
           follows = "nixpkgs";
         };
       };
     };
 
-    flake-parts = {
+    "flake-parts" = {
       flake = true;
       type = "github";
       owner = "hercules-ci";
       repo = "flake-parts";
     };
 
-    freesm = {
+    "freesm" = {
       flake = true;
       type = "github";
       owner = "freesmteam";
       repo = "freesmlauncher";
     };
 
-    github-actions-nix = {
+    "github-actions-nix" = {
       flake = true;
       type = "github";
       owner = "synapdeck";
       repo = "github-actions-nix";
     };
 
-    git-hooks-nix = {
+    "git-hooks-nix" = {
       flake = true;
       type = "github";
       owner = "cachix";
       repo = "git-hooks.nix";
     };
 
-    home-manager = {
+    "home-manager" = {
       flake = true;
       type = "github";
       owner = "nix-community";
       repo = "home-manager";
 
       inputs = {
-        nixpkgs = {
+        "nixpkgs" = {
           follows = "nixpkgs";
         };
       };
     };
 
-    homebrew-bundle = {
+    "homebrew-bundle" = {
       flake = false;
       type = "github";
       owner = "homebrew";
       repo = "homebrew-bundle";
     };
 
-    homebrew-cask = {
+    "homebrew-cask" = {
       flake = false;
       type = "github";
       owner = "homebrew";
       repo = "homebrew-cask";
     };
 
-    homebrew-core = {
+    "homebrew-core" = {
       flake = false;
       type = "github";
       owner = "homebrew";
       repo = "homebrew-core";
     };
 
-    hyprland = {
+    "hyprland" = {
       flake = true;
       type = "github";
       owner = "hyprwm";
       repo = "Hyprland";
     };
 
-    lanzaboote = {
+    "lanzaboote" = {
       flake = true;
       type = "github";
       owner = "nix-community";
@@ -148,40 +148,40 @@
       ref = "v0.4.2";
 
       inputs = {
-        nixpkgs = {
+        "nixpkgs" = {
           follows = "nixpkgs";
         };
       };
     };
 
-    nekoflake = {
+    "nekoflake" = {
       flake = true;
       type = "github";
       owner = "s0me1newithhand7s";
       repo = "nekoflake";
     };
 
-    nix-bwrapper = {
+    "nix-bwrapper" = {
       flake = true;
       type = "github";
       owner = "Naxdy";
       repo = "nix-bwrapper";
     };
 
-    nix-darwin = {
+    "nix-darwin" = {
       flake = true;
       type = "github";
       owner = "LnL7";
       repo = "nix-darwin";
 
       inputs = {
-        nixpkgs = {
+        "nixpkgs" = {
           follows = "nixpkgs";
         };
       };
     };
 
-    nix-cachyos-kernel = {
+    "nix-cachyos-kernel" = {
       flake = true;
       type = "github";
       owner = "xddxdd";
@@ -189,78 +189,78 @@
       ref = "release";
     };
 
-    nix-mineral = {
+    "nix-mineral" = {
       flake = true;
       type = "github";
       owner = "cynicsketch";
       repo = "nix-mineral";
     };
 
-    nix-homebrew = {
+    "nix-homebrew" = {
       flake = true;
       type = "github";
       owner = "zhaofengli";
       repo = "nix-homebrew";
     };
 
-    nix-index-database = {
+    "nix-index-database" = {
       flake = true;
       type = "github";
       owner = "nix-community";
       repo = "nix-index-database";
 
       inputs = {
-        nixpkgs = {
+        "nixpkgs" = {
           follows = "nixpkgs";
         };
       };
     };
 
-    nix-on-droid = {
+    "nix-on-droid" = {
       flake = true;
       type = "github";
       owner = "nix-community";
       repo = "nix-on-droid";
 
       inputs = {
-        nixpkgs = {
+        "nixpkgs" = {
           follows = "nixpkgs";
         };
 
-        home-manager = {
+        "home-manager" = {
           follows = "home-manager";
         };
       };
     };
 
-    nixos-anywhere = {
+    "nixos-anywhere" = {
       flake = true;
       type = "github";
       owner = "nix-community";
       repo = "nixos-anywhere";
     };
 
-    nixos-cli = {
+    "nixos-cli" = {
       flake = true;
       type = "github";
       owner = "nix-community";
       repo = "nixos-cli";
     };
 
-    nixos-generators = {
+    "nixos-generators" = {
       flake = true;
       type = "github";
       owner = "nix-community";
       repo = "nixos-generators";
 
       inputs = {
-        nixpkgs = {
+        "nixpkgs" = {
           follows = "nixpkgs";
         };
       };
     };
 
-    nixos-wsl = {
+    "nixos-wsl" = {
       flake = true;
       type = "github";
       owner = "nix-community";
@@ -268,7 +268,7 @@
       ref = "main";
     };
 
-    nixpkgs = {
+    "nixpkgs" = {
       flake = true;
       type = "github";
       owner = "nixos";
@@ -276,83 +276,83 @@
       ref = "nixos-unstable";
     };
 
-    noctalia = {
+    "noctalia" = {
       flake = true;
       type = "github";
       owner = "noctalia-dev";
       repo = "noctalia-shell";
 
       inputs = {
-        nixpkgs = {
+        "nixpkgs" = {
           follows = "nixpkgs";
         };
 
-        quickshell = {
+        "quickshell" = {
           follows = "quickshell";
         };
       };
     };
 
-    quickshell = {
+    "quickshell" = {
       flake = true;
       type = "git";
       url = "https://git.outfoxxed.me/quickshell/quickshell";
 
       inputs = {
-        nixpkgs = {
+        "nixpkgs" = {
           follows = "nixpkgs";
         };
       };
     };
 
-    sops-nix = {
+    "sops-nix" = {
       flake = true;
       type = "github";
       owner = "Mic92";
       repo = "sops-nix";
     };
 
-    spicetify-nix = {
+    "spicetify-nix" = {
       flake = true;
       type = "github";
       owner = "Gerg-L";
       repo = "spicetify-nix";
 
       inputs = {
-        nixpkgs = {
+        "nixpkgs" = {
           follows = "nixpkgs";
         };
       };
     };
 
-    stylix = {
+    "stylix" = {
       flake = true;
       type = "github";
       owner = "nix-community";
       repo = "stylix";
     };
 
-    system-manager = {
+    "system-manager" = {
       flake = true;
       type = "github";
       owner = "numtide";
       repo = "system-manager";
 
       inputs = {
-        nixpkgs = {
+        "nixpkgs" = {
           follows = "nixpkgs";
         };
       };
     };
 
-    treefmt-nix = {
+    "treefmt-nix" = {
       flake = true;
       type = "github";
       owner = "numtide";
       repo = "treefmt-nix";
     };
 
-    vscserver = {
+    "vscserver" = {
       flake = true;
       type = "github";
       owner = "nix-community";
