@@ -4,6 +4,8 @@
 
   [![nfc](https://github.com/s0me1newithhand7s/reNixos/actions/workflows/fmt_run.yml/badge.svg)](https://github.com/s0me1newithhand7s/reNixos/actions/workflows/fmt_run.yml)
 
+  [![cicd](https://woodpecker.hand7s.org/api/badges/1/status.svg)](https://woodpecker.hand7s.org/repos/1)
+
 </div>
 
 <h1 align="center"> re:Nixos <img src="https://github.com/user-attachments/assets/5f064ed3-b558-426d-afef-d33940636c9d" width="32" alt="nixos"> </h1>
