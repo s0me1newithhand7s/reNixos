@@ -95,7 +95,6 @@ in {
     programs = {
       chromium.enable = true;
       spicetify.enable = true;
-      vscode.enable = true;
       ghostty.enable = true;
       git.enable = true;
     };

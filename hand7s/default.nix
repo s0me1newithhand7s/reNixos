@@ -36,7 +36,6 @@
     "${self}/hand7s/programs/chrome.nix"
     "${self}/hand7s/programs/hyprlock.nix"
     "${self}/hand7s/programs/spicetify.nix"
-    "${self}/hand7s/programs/vscode.nix"
     "${self}/hand7s/programs/zellij.nix"
     "${self}/hand7s/programs/direnv.nix"
     "${self}/hand7s/programs/noctalia.nix"
