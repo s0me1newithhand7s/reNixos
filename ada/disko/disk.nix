@@ -2,7 +2,7 @@
   disko = {
     devices = {
       disk = {
-        main = {
+        "main" = {
           device = "/dev/disk/by-id/nvme-KINGSTON_SKC3000S_1024G_AA000000000000000013";
           type = "disk";
           content = {

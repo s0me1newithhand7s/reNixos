@@ -9,7 +9,6 @@ _: {
         "usb_storage"
         "sd_mod"
         "btrfs"
-        "amneziawg"
         "cryptd"
       ];
 
@@ -22,7 +21,7 @@ _: {
       kernelModules = [
         "amdgpu"
         "zenpower"
-        "amneziawg"
+        "i2c-dev"
       ];
 
       luks = {

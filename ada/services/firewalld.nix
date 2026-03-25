@@ -3,12 +3,16 @@ _: {
     firewalld = {
       enable = true;
 
-      settings = {
-        # nope
-      };
-
       zones = {
-        # nope
+        "eno1" = {
+          interfaces = [
+            "ens1"
+          ];
+
+          services = [
+            "sunshine"
+          ];
+        };
       };
     };
   };

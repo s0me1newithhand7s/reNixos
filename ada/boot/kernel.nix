@@ -20,14 +20,13 @@
     extraModulePackages = with config.boot.kernelPackages; [
       zenpower
       v4l2loopback
-      amneziawg
     ];
 
     kernelModules = [
       "amdgpu"
       "zenpower"
       "v4l2loopback"
-      "amneziawg"
+      "i2c_dev"
     ];
 
     kernelParams = [

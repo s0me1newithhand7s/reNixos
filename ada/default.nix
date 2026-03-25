@@ -1,5 +1,7 @@
 {self, ...}: {
   imports = [
+    "${self}/ada/age/rekey.nix"
+
     "${self}/ada/boot/initrd.nix"
     "${self}/ada/boot/kernel.nix"
     "${self}/ada/boot/lanzaboote.nix"
@@ -39,7 +41,6 @@
     "${self}/ada/nix/package.nix"
     "${self}/ada/nix/settings/allowed-users.nix"
     "${self}/ada/nix/settings/experimental-features.nix"
-    "${self}/ada/nix/settings/substituters.nix"
     "${self}/ada/nix/settings/trusted-public-keys.nix"
     "${self}/ada/nix/settings/trusted-substituters.nix"
     "${self}/ada/nix/settings/trusted-users.nix"
@@ -70,12 +71,14 @@
     "${self}/ada/services/qmk.nix"
     "${self}/ada/services/scx.nix"
     "${self}/ada/services/xserver.nix"
+    "${self}/ada/services/yggdrasil.nix"
     "${self}/ada/services/sunshine.nix"
     "${self}/ada/services/usbmuxd.nix"
     "${self}/ada/services/irqbalance.nix"
     "${self}/ada/services/yubikey-agent.nix"
     "${self}/ada/services/resolved.nix"
     "${self}/ada/services/firewalld.nix"
+    "${self}/ada/services/zerotier.nix"
 
     "${self}/ada/sops/defaults.nix"
     "${self}/ada/sops/secrets.nix"

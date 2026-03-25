@@ -7,7 +7,7 @@ _: {
         mode = "challenge-response";
         control = "sufficient";
         id = [
-          "1873055870"
+          "funnyID"
         ];
       };
     };
