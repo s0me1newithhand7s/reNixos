@@ -1,5 +1,5 @@
 _: {
   networking = {
-    hostName = "wanda";
+    hostName = "wand";
   };
 }

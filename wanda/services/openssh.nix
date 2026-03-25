@@ -5,7 +5,7 @@
       allowSFTP = true;
       openFirewall = true;
       ports = [
-        48630
+        6969
       ];
 
       settings = {
