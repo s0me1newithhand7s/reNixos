@@ -1,9 +1,14 @@
-{
+{name, ...}: {
   disko = {
     devices = {
       disk = {
-        virt_main = {
-          device = "/dev/sda";
+        "virt_main" = {
+          device =
+            {
+              "yara" = "/dev/vda";
+            }.${
+              name
+            } or "/dev/sda";
           type = "disk";
           content = {
             type = "gpt";

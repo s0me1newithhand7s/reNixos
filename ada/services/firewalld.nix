@@ -1,4 +1,4 @@
-{...}: {
+_: {
   services = {
     firewalld = {
       enable = true;

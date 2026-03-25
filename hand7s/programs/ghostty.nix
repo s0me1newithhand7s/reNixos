@@ -12,7 +12,7 @@
 
         bell-features = "system";
 
-        command = "${lib.getExe pkgs.fish}";
+        command = "${lib.getExe pkgs.nushell}";
 
         confirm-close-surface = false;
 

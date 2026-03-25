@@ -3,15 +3,17 @@ _: {
     starship = {
       enable = true;
       enableFishIntegration = true;
+      enableNushellIntegration = true;
+
       settings = {
         add_newline = true;
 
         format = ''
           [╭──╼](bold blue) $username at $hostname on $os
-          [┆](bold blue) $directory$git_branch$git_commit$git_state$git_metrics$git_status
+          [┆](bold blue) $directory$git_branch$git_commit$git_state$git_metrics$git_status$kubernetes$rust
           [╰─>](bold blue) '';
 
-        right_format = ''$cmd_duration ($character) at ❗$time'';
+        right_format = ''$cmd_duration ($status) at ❗$time'';
 
         os = {
           format = "[($name $codename$version$edition $symbol )]($style)";
@@ -33,9 +35,18 @@ _: {
           style_user = "bold green";
         };
 
-        character = {
-          success_symbol = "[✓](bold green)";
-          error_symbol = "[✗](bold red)";
+        status = {
+          disabled = false;
+          format = "[$symbol]($style)";
+          symbol = "✗";
+          success_symbol = "✓";
+          not_executable_symbol = "⃠🚫";
+          not_found_symbol = "🔍";
+          sigint_symbol = "[🛑](bold red)";
+          signal_symbol = "[⚡](bold yellow)";
+
+          pipestatus = true;
+          pipestatus_separator = "|";
         };
 
         time = {
@@ -52,6 +63,14 @@ _: {
           show_milliseconds = false;
           show_notifications = false;
           format = "was [$duration](bold green)";
+        };
+
+        rust = {
+          format = "via [⚙️ $version](red bold)";
+        };
+
+        kubernetes = {
+          disabled = false;
         };
       };
     };

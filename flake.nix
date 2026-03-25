@@ -29,6 +29,13 @@
       repo = "ayugram-desktop";
     };
 
+    "cachix" = {
+      flake = true;
+      type = "github";
+      owner = "cachix";
+      repo = "cachix";
+    };
+
     "chaotic" = {
       flake = true;
       type = "github";
@@ -49,13 +56,6 @@
       type = "github";
       owner = "cachix";
       repo = "devenv";
-    };
-
-    "devshell" = {
-      flake = true;
-      type = "github";
-      owner = "numtide";
-      repo = "devshell";
     };
 
     "disko" = {
@@ -83,6 +83,13 @@
       type = "github";
       owner = "freesmteam";
       repo = "freesmlauncher";
+    };
+
+    "fenix" = {
+      flake = true;
+      type = "github";
+      owner = "nix-community";
+      repo = "fenix";
     };
 
     "github-actions-nix" = {
@@ -367,7 +374,7 @@
         self
         ;
     } {
-      debug = false;
+      debug = true;
 
       systems = [
         "x86_64-linux"
@@ -376,20 +383,201 @@
 
       imports = [
         # modules
-        inputs.agenix-rekey.flakeModule
         inputs.disko.flakeModules.default
-        inputs.devshell.flakeModule
         inputs.treefmt-nix.flakeModule
         inputs.home-manager.flakeModules.home-manager
         inputs.git-hooks-nix.flakeModule
         inputs.devenv.flakeModule
-        # i can't really deside between devenv, devshells and devShells they are equally good for me
-        # for now, at least, i'm using numtide/devshells
         inputs.github-actions-nix.flakeModule
       ];
 
-      flake = {
-        # home-manager, sorta broken when standalone
+      flake = let
+        inherit
+          (inputs."nixpkgs".lib)
+          nixosSystem
+          filesystem
+          genAttrs
+          map
+          ;
+
+        defaultModules = [];
+
+        defaultPath = filesystem.listFilesRecursive "${self}/kyra/";
+
+        inputedModules =
+          map (
+            {
+              input,
+              opt ? "default",
+            }:
+              inputs.${input}.nixosModules.${opt}
+          ) [
+            {
+              opt = "disko";
+              input = "disko";
+            }
+
+            {
+              input = "home-manager";
+            }
+
+            {
+              opt = "sops";
+              input = "sops-nix";
+            }
+
+            {
+              opt = "nix-index";
+              input = "nix-index-database";
+            }
+
+            {
+              opt = "nix-mineral";
+              input = "nix-mineral";
+            }
+          ];
+
+        kyraHost = name:
+          nixosSystem {
+            system = "x86_64-linux";
+            modules = defaultModules ++ defaultPath ++ inputedModules;
+            specialArgs = {
+              inherit
+                inputs
+                name
+                self
+                ;
+            };
+          };
+
+        kyraStack =
+          genAttrs [
+            "hazel"
+            "lynn"
+            "yara"
+            "ivy"
+            "mel"
+          ]
+          kyraHost;
+      in {
+        # Main PC
+        nixosConfigurations =
+          {
+            "ada" = inputs.nixpkgs.lib.nixosSystem {
+              system = "x86_64-linux";
+              specialArgs = {
+                inherit
+                  inputs
+                  self
+                  ;
+              };
+
+              modules = [
+                "${self}/ada/"
+                inputs.chaotic.nixosModules.default
+                inputs.stylix.nixosModules.stylix
+                inputs.sops-nix.nixosModules.sops
+                inputs.disko.nixosModules.disko
+                inputs.lanzaboote.nixosModules.lanzaboote
+                inputs.home-manager.nixosModules.default
+                inputs.nix-index-database.nixosModules.nix-index
+                inputs.nix-bwrapper.nixosModules.default
+                inputs.nix-mineral.nixosModules.nix-mineral
+              ];
+            };
+
+            # Main Laptop
+            "isla" = inputs.nixpkgs.lib.nixosSystem {
+              system = "x86_64-linux";
+              specialArgs = {
+                inherit
+                  inputs
+                  self
+                  ;
+              };
+
+              modules = [
+                "${self}/isla/"
+                inputs.chaotic.nixosModules.default
+                inputs.stylix.nixosModules.stylix
+                inputs.sops-nix.nixosModules.sops
+                inputs.disko.nixosModules.disko
+                inputs.home-manager.nixosModules.home-manager
+                inputs.lanzaboote.nixosModules.lanzaboote
+                inputs.nix-index-database.nixosModules.nix-index
+                inputs.nix-bwrapper.nixosModules.default
+                inputs.nix-mineral.nixosModules.nix-mineral
+              ];
+            };
+
+            # homelab
+            "viola" = inputs.nixpkgs.lib.nixosSystem {
+              system = "x86_64-linux";
+              specialArgs = {
+                inherit
+                  inputs
+                  self
+                  ;
+              };
+
+              modules = [
+                "${self}/viola"
+                inputs.chaotic.nixosModules.default
+                inputs.stylix.nixosModules.stylix
+                inputs.sops-nix.nixosModules.sops
+                inputs.disko.nixosModules.disko
+                inputs.lanzaboote.nixosModules.lanzaboote
+                inputs.home-manager.nixosModules.default
+                inputs.nix-index-database.nixosModules.nix-index
+                inputs.nix-mineral.nixosModules.nix-mineral
+              ];
+            };
+
+            # WSL2
+            "wanda" = inputs.nixpkgs.lib.nixosSystem {
+              system = "x86_64-linux";
+              specialArgs = {
+                inherit
+                  inputs
+                  self
+                  ;
+              };
+
+              modules = [
+                "${self}/wanda/"
+                inputs.nixos-wsl.nixosModules.default
+                inputs.stylix.nixosModules.stylix
+                inputs.home-manager.nixosModules.default
+                inputs.sops-nix.nixosModules.sops
+                inputs.nix-index-database.nixosModules.nix-index
+                inputs.nix-bwrapper.nixosModules.default
+                inputs.nix-mineral.nixosModules.nix-mineral
+              ];
+            };
+
+            # custom ISO
+            "florence" = inputs.nixpkgs.lib.nixosSystem {
+              system = "x86_64-linux";
+              specialArgs = {
+                inherit
+                  inputs
+                  self
+                  ;
+              };
+
+              modules = [
+                "${self}/florence/"
+              ];
+            };
+          }
+          // kyraStack;
+        # few words about kyraStack:
+        # it's my little fleet, 5 identical VPSes
+        # really nice that all of them are 2 vCPU 2GB
+        # tho ssd/nvme/hdd memory is nothing important
+        # and being KVM VPS / pure VPS too
+
+        # home-manager
         homeConfigurations = {
           "hand7s" = inputs.home-manager.lib.homeManagerConfiguration {
             pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
@@ -407,213 +595,9 @@
               inputs.hyprland.homeManagerModules.default
               inputs.chaotic.homeManagerModules.default
               inputs.sops-nix.homeManagerModules.sops
-
               inputs.nix-index-database.homeModules.nix-index
               inputs.noctalia.homeModules.default
               inputs.stylix.homeModules.stylix
-            ];
-          };
-        };
-
-        # nixos hosts
-
-        # my PC
-        nixosConfigurations = {
-          "ada" = inputs.nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = {
-              inherit
-                inputs
-                self
-                ;
-            };
-
-            modules = [
-              "${self}/ada/"
-              inputs.agenix.nixosModules.default
-              inputs.chaotic.nixosModules.default
-              inputs.stylix.nixosModules.stylix
-              inputs.sops-nix.nixosModules.sops
-              inputs.disko.nixosModules.disko
-              inputs.lanzaboote.nixosModules.lanzaboote
-              inputs.home-manager.nixosModules.default
-              inputs.nix-index-database.nixosModules.nix-index
-              inputs.nix-bwrapper.nixosModules.default
-              inputs.nix-mineral.nixosModules.nix-mineral
-            ];
-          };
-
-          # my laptop
-          "isla" = inputs.nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = {
-              inherit
-                inputs
-                self
-                ;
-            };
-
-            modules = [
-              "${self}/isla/"
-              inputs.agenix.nixosModules.default
-              inputs.chaotic.nixosModules.default
-              inputs.stylix.nixosModules.stylix
-              inputs.sops-nix.nixosModules.sops
-              inputs.disko.nixosModules.disko
-              inputs.home-manager.nixosModules.home-manager
-              inputs.lanzaboote.nixosModules.lanzaboote
-              inputs.nix-index-database.nixosModules.nix-index
-              inputs.nix-bwrapper.nixosModules.default
-              inputs.nix-mineral.nixosModules.nix-mineral
-            ];
-          };
-
-          # my VPSes:
-
-          # VPS 1
-          "hazel" = inputs.nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = {
-              inherit
-                inputs
-                self
-                ;
-            };
-
-            modules = [
-              {
-                networking.hostName = inputs.nixpkgs.lib.mkDefault "hazel";
-              }
-
-              "${self}/kyra/"
-              inputs.agenix.nixosModules.default
-              inputs.disko.nixosModules.disko
-              inputs.home-manager.nixosModules.default
-              inputs.sops-nix.nixosModules.sops
-              inputs.nix-index-database.nixosModules.nix-index
-              inputs.nix-mineral.nixosModules.nix-mineral
-            ];
-          };
-
-          # VPS 2
-          "lynn" = inputs.nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = {
-              inherit
-                inputs
-                self
-                ;
-            };
-
-            modules = [
-              {
-                networking.hostName = inputs.nixpkgs.lib.mkDefault "lynn";
-              }
-
-              "${self}/kyra/"
-              inputs.agenix.nixosModules.default
-              inputs.disko.nixosModules.disko
-              inputs.home-manager.nixosModules.default
-              inputs.sops-nix.nixosModules.sops
-              inputs.nix-index-database.nixosModules.nix-index
-              inputs.nix-mineral.nixosModules.nix-mineral
-            ];
-          };
-
-          # VPS 3
-          "ivy" = inputs.nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = {
-              inherit
-                inputs
-                self
-                ;
-            };
-
-            modules = [
-              {
-                networking.hostName = inputs.nixpkgs.lib.mkDefault "ivy";
-              }
-
-              "${self}/kyra/"
-              inputs.agenix.nixosModules.default
-              inputs.disko.nixosModules.disko
-              inputs.home-manager.nixosModules.default
-              inputs.sops-nix.nixosModules.sops
-              inputs.nix-index-database.nixosModules.nix-index
-              inputs.nix-mineral.nixosModules.nix-mineral
-            ];
-          };
-
-          # VPS 4
-          "mel" = inputs.nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = {
-              inherit
-                inputs
-                self
-                ;
-            };
-
-            modules = [
-              {
-                networking.hostName = inputs.nixpkgs.lib.mkDefault "mel";
-              }
-
-              "${self}/kyra/"
-              inputs.agenix.nixosModules.default
-              inputs.disko.nixosModules.disko
-              inputs.home-manager.nixosModules.default
-              inputs.sops-nix.nixosModules.sops
-              inputs.nix-index-database.nixosModules.nix-index
-              inputs.nix-mineral.nixosModules.nix-mineral
-            ];
-          };
-
-          # homelab
-          "viola" = inputs.nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = {
-              inherit
-                inputs
-                self
-                ;
-            };
-
-            modules = [
-              "${self}/viola"
-              inputs.agenix.nixosModules.default
-              inputs.chaotic.nixosModules.default
-              inputs.stylix.nixosModules.stylix
-              inputs.sops-nix.nixosModules.sops
-              inputs.disko.nixosModules.disko
-              inputs.lanzaboote.nixosModules.lanzaboote
-              inputs.home-manager.nixosModules.default
-              inputs.nix-index-database.nixosModules.nix-index
-              inputs.nix-mineral.nixosModules.nix-mineral
-            ];
-          };
-
-          # WSL2
-          "wanda" = inputs.nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = {
-              inherit
-                inputs
-                self
-                ;
-            };
-
-            modules = [
-              "${self}/wanda/"
-              inputs.agenix.nixosModules.default
-              inputs.nixos-wsl.nixosModules.default
-              inputs.stylix.nixosModules.stylix
-              inputs.home-manager.nixosModules.default
-              inputs.sops-nix.nixosModules.sops
-              inputs.nix-index-database.nixosModules.nix-index
-              inputs.nix-bwrapper.nixosModules.default
-              inputs.nix-mineral.nixosModules.nix-mineral
             ];
           };
         };
@@ -630,7 +614,7 @@
           flakeCheck = true;
 
           programs = {
-            alejandra = {
+            "alejandra" = {
               enable = true;
               priority = 1;
               includes = [
@@ -638,7 +622,7 @@
               ];
             };
 
-            statix = {
+            "statix" = {
               enable = true;
               priority = 1;
               includes = [
@@ -650,7 +634,7 @@
               ];
             };
 
-            deadnix = {
+            "deadnix" = {
               enable = true;
               priority = 1;
               includes = [
@@ -683,72 +667,45 @@
             gitPackage = pkgs.git;
 
             hooks = {
-              alejandra = {
+              "alejandra" = {
                 enable = true;
                 settings = {
+                  verbosity = "quiet";
                   check = true;
                 };
               };
 
-              deadnix = {
+              "deadnix" = {
                 enable = true;
                 settings = {
                   edit = false;
                 };
               };
 
-              statix = {
+              "statix" = {
                 enable = true;
-                settings = {
-                  config = "${pkgs.writeText ''statix.toml'' ''
-                    disabled = [
-                      "empty_pattern"
-                    ]
-                  ''}";
-                };
               };
             };
           };
         };
 
-        # numtide/devshells, basically a devShells but better
-        devshells = {
-          "default" = {
-            name = "default";
+        # cachix/devenv, basically a devShells, even better than numtide/devshells
+        devenv = {
+          shells = {
+            "default" = {
+              enterShell = config.pre-commit.shellHook;
 
-            commands = [
-              {
-                name = "pre";
-                category = "[tools]";
-                command = "prek run -a";
-                help = ''
-                  pre-commit-hook is a tool to execute linters / formatters before `git commit` to verify that code is meeting standarts of code setted up in projects;
-                '';
-              }
-
-              {
-                name = "fmt";
-                category = "[formatters]";
-                command = "nix fmt";
-                help = ''
-                  nix fmt is built-in formatting solution for nix pacakage manager;
-                '';
-              }
-            ];
-
-            devshell = {
-              startup = {
-                "git-hooks-nix" = {
-                  text = config.pre-commit.shellHook;
-                };
+              devenv = {
+                root = toString /home/hand7s/Projects/flake;
               };
-            };
 
-            packages = with pkgs;
-              [
-                just
-              ]
-              ++ config.pre-commit.settings.enabledPackages;
+              packages =
+                [
+                  pkgs.just
+                  config.treefmt.build.wrapper
+                ]
+                ++ config.pre-commit.settings.enabledPackages;
+            };
           };
         };
 

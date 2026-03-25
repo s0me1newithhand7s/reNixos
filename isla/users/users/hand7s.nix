@@ -1,4 +1,4 @@
-{...}: {
+_: {
   users = {
     users = {
       hand7s = {

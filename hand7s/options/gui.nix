@@ -6,8 +6,8 @@
   ...
 }: let
   cfg = config.home.gui;
-  ayugram = self.inputs.ayugram-desktop.packages.${pkgs.system}.ayugram-desktop;
-  freesm-launcher = self.inputs.freesm.packages.${pkgs.system}.freesmlauncher;
+  ayugram = self.inputs.ayugram-desktop.packages.${pkgs.stdenv.hostPlatform.system}.ayugram-desktop;
+  freesm-launcher = self.inputs.freesm.packages.${pkgs.stdenv.hostPlatform.system}.freesmlauncher;
 in {
   options.home.gui = {
     enable = lib.mkEnableOption ''
@@ -45,7 +45,6 @@ in {
           vesktop
           ayugram
           anki-bin
-          obsidian
           mindustry
           lan-mouse
           monero-gui
@@ -70,10 +69,10 @@ in {
           cfg.sessionType == "Hyprland"
         ) [
           fum
-          timg
           dconf
           iwgtk
           tokei
+          gajim
           ifuse
           yt-dlp
           termusic
@@ -86,17 +85,21 @@ in {
           yubico-piv-tool
           yubikey-manager
           libimobiledevice
+          ungoogled-chromium
           yubikey-touch-detector
           yubikey-personalization
           self.inputs.noctalia.packages.${system}.default
         ];
     };
 
+    gtk.enable = true;
+
     programs = {
       chromium.enable = true;
       spicetify.enable = true;
       ghostty.enable = true;
       git.enable = true;
+      obsidian.enable = true;
     };
 
     services = with lib.mkDefault; {

@@ -5,11 +5,17 @@
 
     "${self}/hand7s/wayland/hyprland.nix"
 
+    "${self}/hand7s/gtk/gtk.nix"
+    "${self}/hand7s/gtk/gtk3.nix"
+    "${self}/hand7s/gtk/gtk4.nix"
+
     "${self}/hand7s/home/defaults.nix"
     "${self}/hand7s/home/gui.nix"
     "${self}/hand7s/home/keyboard.nix"
     "${self}/hand7s/home/packages.nix"
     "${self}/hand7s/home/shellAliases.nix"
+    "${self}/hand7s/home/variables.nix"
+    "${self}/hand7s/home/shell.nix"
 
     "${self}/hand7s/nixpkgs/config.nix"
     "${self}/hand7s/nixpkgs/overlays.nix"
@@ -40,5 +46,15 @@
     "${self}/hand7s/programs/direnv.nix"
     "${self}/hand7s/programs/noctalia.nix"
     "${self}/hand7s/programs/iamb.nix"
+    "${self}/hand7s/programs/nushell.nix"
+    "${self}/hand7s/programs/carapace.nix"
+    "${self}/hand7s/programs/broot.nix"
+    "${self}/hand7s/programs/atuin.nix"
+    "${self}/hand7s/programs/gitui.nix"
+
+    "${self}/hand7s/xdg/portal.nix"
+    "${self}/hand7s/xdg/mime.nix"
+    "${self}/hand7s/xdg/configFile.nix"
+    "${self}/hand7s/xdg/terminal.nix"
   ];
 }

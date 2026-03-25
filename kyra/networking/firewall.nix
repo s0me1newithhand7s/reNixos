@@ -1,11 +1,8 @@
 _: {
   networking = {
     firewall = {
-      enable = true;
-      allowPing = true;
-      checkReversePath = false;
+      enable = false;
     };
-
     useNetworkd = true;
   };
 }

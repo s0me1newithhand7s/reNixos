@@ -19,9 +19,10 @@
             forceBlackScreenCorners = true;
             showScreenCorners = true;
             screenRadiusRatio = 1;
-            radiusRatio = 0.7;
+            radiusRatio = 1.5;
+            enableBlurBehind = true;
             enableShadows = true;
-            shadowDirection = "center";
+            shadowDirection = "bottom_right";
           };
 
           appLauncher = {
@@ -40,10 +41,12 @@
           };
 
           bar = {
-            floating = false;
-            density = "default";
+            floating = true;
+            density = "comfortable";
             position = "right";
-            showCapsule = false;
+            showCapsule = true;
+            contentPadding = 8;
+            widgetSpacing = 10;
             marginVertical = 1;
             marginHorizontal = 0.6;
             monitors = [
@@ -119,7 +122,7 @@
           };
 
           notifications = {
-            location = "top_center";
+            location = "top_right";
           };
 
           controlCenter = {
@@ -147,6 +150,7 @@
           };
 
           dock = {
+            dockType = "static";
             displayMode = "auto_hide";
             floatingRatio = 1;
             onlySameOutput = true;
@@ -198,9 +202,9 @@
           };
 
           ui = {
-            fontDefault = lib.mkForce "Nerd Fonts Hack";
+            fontDefault = lib.mkForce "Monaspace Aether Nerd Font";
             fontDefaultScale = 1;
-            fontFixed = lib.mkForce "Nerd Fonts Hack";
+            fontFixed = lib.mkForce "Roboto Mono Nerd Font";
             fontFixedScale = 1;
             idleInhibitorEnabled = false;
             tooltipsEnabled = true;

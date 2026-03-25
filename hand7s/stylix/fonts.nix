@@ -2,30 +2,30 @@
   stylix = {
     fonts = {
       sizes = {
-        applications = 10;
-        desktop = 8;
-        popups = 10;
-        terminal = 10;
+        applications = 12;
+        desktop = 11;
+        popups = 11;
+        terminal = 12;
       };
 
       monospace = {
-        package = pkgs.nerd-fonts.roboto-mono;
-        name = "Roboto-Mono Nerd Font";
+        package = pkgs.nerd-fonts.monaspace;
+        name = "Monospace Aether Nerd Font";
       };
 
       emoji = {
-        package = pkgs.nerd-fonts.symbols-only;
-        name = "Symbols Only Nerd Font";
+        package = pkgs.noto-fonts-color-emoji;
+        name = "Noto Color Emoji";
       };
 
       sansSerif = {
-        package = pkgs.nerd-fonts.aurulent-sans-mono;
-        name = "Aurulent Sans Mono Nerd Font";
+        package = pkgs.nerd-fonts.iosevka-term-slab;
+        name = "Iosevka Term Slab Nerd Font";
       };
 
       serif = {
-        package = pkgs.nerd-fonts.hack;
-        name = "Hack Nerd Font";
+        package = pkgs.nerd-fonts.noto;
+        name = "Noto Serif Nerd Font";
       };
     };
   };

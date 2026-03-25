@@ -1,6 +1,6 @@
 {
-  self,
   config,
+  self,
   pkgs,
   lib,
   ...
@@ -14,22 +14,22 @@
           )
           true;
 
-        package = self.inputs.hyprland.packages.${pkgs.system}.hyprland;
-        portalPackage = self.inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+        package = self.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+        portalPackage = self.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
 
         settings = {
           monitor = ", 2560x1440@165.00Hz, 0x0, 1";
 
           general = {
-            gaps_in = "5";
-            gaps_out = "20";
-            border_size = "2";
+            gaps_in = 8;
+            gaps_out = 20;
+            border_size = 0;
             layout = "dwindle";
 
             snap = {
               enabled = false;
-              window_gap = "5";
-              monitor_gap = "5";
+              window_gap = 10;
+              monitor_gap = 10;
               border_overlap = false;
             };
           };
@@ -39,9 +39,9 @@
             kb_options = "grp:caps_toggle";
 
             numlock_by_default = true;
-            follow_mouse = "1";
+            follow_mouse = 1;
             left_handed = false;
-            sensitivity = "0";
+            sensitivity = 0;
 
             special_fallthrough = true;
             focus_on_close = 1;
@@ -64,27 +64,29 @@
           };
 
           decoration = {
-            active_opacity = "0.85";
-            inactive_opacity = "0.65";
+            active_opacity = "0.92";
+            inactive_opacity = "0.88";
             fullscreen_opacity = "1.0";
-            rounding = "10";
 
-            dim_inactive = true;
-            dim_strength = "0.15";
-            dim_special = "0.0";
-            dim_around = "0.05";
+            rounding = 24;
+            rounding_power = "2";
+
+            dim_inactive = false;
 
             shadow = {
               enabled = true;
-              render_power = "4";
-              range = "4";
+              render_power = 3;
+              range = 20;
               ignore_window = false;
+              offset = "0 4";
+              scale = "1.0";
             };
 
             blur = {
               enabled = true;
-              size = "10";
-              passes = "5";
+              size = 8;
+              passes = 3;
+              vibrancy = 0.2;
             };
           };
 
@@ -92,7 +94,7 @@
             "${lib.getExe' pkgs.systemd "systemctl"} --user start hyprpaper.service"
             "${lib.getExe' pkgs.systemd "systemctl"} --user start hypridle.service"
             "${lib.getExe' pkgs.systemd "systemctl"} --user start hyprpolkitagent.service"
-            "${lib.getExe self.inputs.noctalia.packages.${pkgs.system}.default}"
+            "${lib.getExe self.inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default}"
 
             "${lib.getExe' pkgs.hyprland "hyprctl"} setcursor material_light_cursors 20"
           ];
@@ -100,12 +102,12 @@
           bind = [
             "ALT, return, exec, ${lib.getExe pkgs.ghostty}"
             "ALT, Q, killactive,"
-            "ALT, S, exec, ${lib.getExe self.inputs.noctalia.packages.${pkgs.system}.default} ipc call launcher toggle"
+            "ALT, S, exec, ${lib.getExe self.inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default} ipc call launcher toggle"
             "ALT, F, fullscreen, 0"
             "ALT, L, exec, ${lib.getExe pkgs.hyprlock}"
 
             "ALT SHIFT, space, togglefloating, active"
-            "ALT SHIFT, S, exec, ${lib.getExe pkgs.grimblast} --notify --freeze copysave area /home/hand7s/Pictures/Screenshots/$(date '+%y%m%d_%H-%M-%s').png | , killall -9 hyprpicker"
+            "ALT SHIFT, S, exec, ${lib.getExe pkgs.grimblast} --notify --freeze copysave area /home/hand7s/Pictures/Screenshots/$(date '+%y%m%d_%H-%M-%s').png || ,  killall -9 hyprpicker"
 
             "ALT, left, movefocus, l"
             "ALT, right, movefocus, r"
@@ -163,18 +165,34 @@
           ];
 
           animation = [
+            "workspace_wraparound = true"
             "enabled = true"
 
-            "animation = windows, 1, 7, popin"
-            "animation = windowsOut, 1, 7, popin"
+            "bezier = md3_standard, 0.2, 0.0, 0.0, 1.0"
+            "bezier = md3_decel, 0.05, 0.7, 0.1, 1.0"
+            "bezier = md3_accel, 0.3, 0.0, 0.8, 0.15"
 
-            "animation = layers, 1, 7, fade"
+            "bezier = menu_decel, 0.1, 1.0, 0.1, 1.0"
+            "bezier = menu_accel, 0.38, 0.04, 1.0, 0.07"
 
-            "animation = border, 1, 10"
-            "animation = borderangle, 1, 10"
+            "animation = windows, 1, 4, md3_decel, slide"
+            "animation = windowsIn, 1, 4, md3_decel, slide"
+            "animation = windowsOut, 1, 2, md3_accel, slide"
+            "animation = fade, 1, 2, md3_standard"
+            "animation = layers, 1, 2, md3_decel, slide"
+            "animation = layersIn, 1, 3, md3_decel, slide"
+            "animation = layersOut, 1, 2, md3_accel, slide"
+            "animation = fadeLayersIn, 1, 3, menu_decel"
+            "animation = fadeLayersOut, 1, 2, menu_accel"
+            "animation = workspaces, 1, 4, md3_standard, slidefade 20%"
+            "animation = specialWorkspace, 1, 3, md3_decel, slidevert"
+          ];
 
-            "animation = workspaces, 1, 7, slidevert"
-            "animation = specialWorkspace, 1, 7, slidevert"
+          windowrulev2 = [
+            "float, class:^(yazi-picker)$"
+            "center, class:^(yazi-picker)$"
+            "size 1000 600, class:^(yazi-picker)$"
+            "stayfocused, class:^(yazi-picker)$"
           ];
 
           misc = {
@@ -185,11 +203,12 @@
             animate_mouse_windowdragging = true;
             focus_on_activate = true;
             close_special_on_empty = true;
-            initial_workspace_tracking = "2";
+            vrr = "3";
           };
 
           render = {
             cm_auto_hdr = 0;
+            direct_scanout = "2";
           };
 
           binds = {
@@ -264,8 +283,7 @@
 
         plugins = with pkgs.hyprlandPlugins; [
           hypr-dynamic-cursors
-          hyprscrolling
-          hyprexpo
+          hyprspace
         ];
       };
     };

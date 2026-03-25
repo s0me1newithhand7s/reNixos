@@ -1,4 +1,4 @@
-{...}: {
+_: {
   nix = {
     settings = {
       experimental-features = [

@@ -1,4 +1,4 @@
-{...}: {
+_: {
   networking = {
     timeServers = [
       "0.nixos.pool.ntp.org"

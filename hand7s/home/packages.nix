@@ -7,16 +7,17 @@
       xh
       dua
       nvd
+      tlrc
       dust
       sops
       rsync
       procs
+      sshfs
       sbctl
       gping
       comma
       trippy
       bottom
-      ragenix
       ripgrep
       kubectl
       gitoxide

@@ -1,4 +1,4 @@
-{...}: {
+_: {
   services = {
     privatebin = {
       enable = true;

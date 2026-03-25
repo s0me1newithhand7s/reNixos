@@ -7,6 +7,8 @@
     yazi = {
       enable = true;
       enableFishIntegration = true;
+      enableNushellIntegration = true;
+
       shellWrapperName = "yz";
       settings = {
         mgr = {
@@ -42,33 +44,63 @@
         };
 
         opener = {
-          play = [
+          "play" = [
             {
-              run = "${lib.getExe pkgs.mpv} ''$@''";
+              run = ''${lib.getExe pkgs.mpv} --vo=tct "%s"'';
               block = true;
               for = "unix";
             }
           ];
 
-          view = [
+          "view" = [
             {
-              run = "${lib.getExe pkgs.timg} ''-p k -C $@ | ${lib.getExe' pkgs.uutils-coreutils-noprefix "more"}''";
+              run = ''${lib.getExe pkgs.viu} -t "%s"'';
               block = true;
               for = "unix";
             }
           ];
 
-          edit = [
+          "edit" = [
             {
-              run = "${lib.getExe pkgs.helix} ''$@''";
+              run = ''${lib.getExe pkgs.helix} "%s"'';
               block = true;
               for = "unix";
             }
           ];
 
-          open = [
+          "doc" = [
             {
-              run = "${lib.getExe' pkgs.xdg-utils "xdg-open"} ''$@''";
+              run = ''${lib.getExe pkgs.tdf} "%s"'';
+              block = true;
+              for = "unix";
+            }
+          ];
+
+          "hex" = [
+            {
+              run = ''${lib.getExe pkgs.hexyl} "$s"'';
+            }
+          ];
+
+          "exfil" = [
+            {
+              run = ''${lib.getExe pkgs.ouch} de "%s"'';
+              block = true;
+              for = "unix";
+            }
+          ];
+
+          "book" = [
+            {
+              run = ''${lib.getExe pkgs.epr} "%s"'';
+              block = true;
+              for = "unix";
+            }
+          ];
+
+          "open" = [
+            {
+              run = ''${lib.getExe' pkgs.xdg-utils "xdg-open"} "%s"'';
               orphan = true;
               for = "unix";
             }
@@ -78,23 +110,83 @@
         open = {
           rules = [
             {
-              mime = "image/*";
-              use = "view";
-            }
-
-            {
-              mime = "text/*";
-              use = "edit";
+              mime = "video/*";
+              use = [
+                "play"
+                "open"
+              ];
             }
 
             {
               mime = "audio/*";
-              use = "play";
+              use = [
+                "play"
+                "open"
+              ];
             }
 
             {
-              mime = "video/*";
-              use = "play";
+              mime = "application/epub+zip";
+              use = [
+                "book"
+                "edit"
+              ];
+            }
+
+            {
+              mime = "application/pdf";
+              use = [
+                "doc"
+                "open"
+              ];
+            }
+
+            {
+              mime = "application/{octet-stream,x-executable,x-sharedlib,x-pie-executable}";
+              use = [
+                "hex"
+                "open"
+              ];
+            }
+
+            {
+              mime = "application/vnd.*";
+              use = [
+                "open"
+                "edit"
+              ];
+            }
+
+            {
+              mime = "font/*";
+              use = [
+                "open"
+                "edit"
+              ];
+            }
+
+            {
+              mime = "application/{zip,rar,7z*,tar*,x-tar,x-bzip*,x-gzip,x-xz}";
+              use = [
+                "exfil"
+                "open"
+              ];
+            }
+
+            {
+              mime = "text/*";
+              use = [
+                "edit"
+                "open"
+              ];
+            }
+
+            {
+              mime = "*";
+              use = [
+                "edit"
+                "open"
+              ];
             }
           ];
         };

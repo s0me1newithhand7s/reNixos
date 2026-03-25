@@ -1,5 +1,5 @@
-_: {
+{name, ...}: {
   networking = {
-    hostName = "kyra";
+    hostName = name;
   };
 }

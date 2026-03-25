@@ -6,13 +6,13 @@
 }: {
   programs = {
     spicetify = {
-      enabledExtensions = with self.inputs.spicetify-nix.legacyPackages.${pkgs.system}.extensions; [
+      enabledExtensions = with self.inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system}.extensions; [
         adblock
         hidePodcasts
         shuffle
       ];
 
-      theme = lib.mkForce self.inputs.spicetify-nix.legacyPackages.${pkgs.system}.themes.text;
+      theme = lib.mkForce self.inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system}.themes.text;
       colorScheme = lib.mkForce "TokyoNight";
     };
   };

@@ -4,7 +4,6 @@ _: {
       "alep0u" = {
         description = "alep0u";
         isNormalUser = true;
-        password = "alep0u";
         extraGroups = [
           "wheel"
           "docker"
