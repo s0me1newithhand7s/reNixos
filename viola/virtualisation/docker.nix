@@ -1,9 +1,11 @@
 _: {
   virtualisation = {
-    docker = {
+    podman = {
       enable = true;
-      rootless = {
-        enable = true;
+      defaultNetwork = {
+        settings = {
+          dns_enabled = true;
+        };
       };
     };
   };

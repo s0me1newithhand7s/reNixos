@@ -5,47 +5,11 @@
       servers = {
         "forgejo" = {
           enable = true;
-          port = "${cacheport1}";
+          port = 6381;
           logLevel = "warning";
           databases = 16;
           maxclients = 10000;
-          requirePass = "${cachepass1}";
-
-          settings = {
-            stop-writes-on-bgsave-error = "yes";
-            rdbcompression = "yes";
-            rdbchecksum = "yes";
-
-            maxmemory = "1GB";
-            maxmemory-policy = "volatile-lru";
-            maxmemory-samples = 3;
-          };
-
-          save = [
-            [
-              900
-              1
-            ]
-
-            [
-              300
-              10
-            ]
-
-            [
-              60
-              1000
-            ]
-          ];
-        };
-
-        "woodpecker" = {
-          enable = false;
-          port = "${cacheport2}";
-          logLevel = "warning";
-          databases = 16;
-          maxclients = 10000;
-          requirePass = "${cachepass2}";
+          requirePass = "forgejo";
 
           settings = {
             stop-writes-on-bgsave-error = "yes";
@@ -77,11 +41,11 @@
 
         "stalwart" = {
           enable = true;
-          port = "${cacheport3}";
+          port = 6382;
           logLevel = "warning";
           databases = 16;
           maxclients = 10000;
-          requirePass = "${cachepass3}";
+          requirePass = lib.hashString "md5" "stalwart";
 
           settings = {
             stop-writes-on-bgsave-error = "yes";
@@ -113,11 +77,11 @@
 
         "zitadel" = {
           enable = true;
-          port = "${cacheport4}";
+          port = 6383;
           logLevel = "warning";
           databases = 16;
           maxclients = 10000;
-          requirePass = "${cachepass4}";
+          requirePass = lib.hashString "md5" "zitadel";
 
           settings = {
             stop-writes-on-bgsave-error = "yes";
@@ -126,6 +90,114 @@
 
             maxmemory = "1GB";
             maxmemory-policy = "volatile-lru";
+            maxmemory-samples = 3;
+          };
+
+          save = [
+            [
+              900
+              1
+            ]
+
+            [
+              300
+              10
+            ]
+
+            [
+              60
+              1000
+            ]
+          ];
+        };
+
+        "traefik" = {
+          enable = true;
+          port = 6384;
+          logLevel = "warning";
+          databases = 16;
+          maxclients = 10000;
+          requirePass = lib.hashString "md5" "traefik";
+
+          settings = {
+            stop-writes-on-bgsave-error = "yes";
+            rdbcompression = "yes";
+            rdbchecksum = "yes";
+
+            maxmemory = "1GB";
+            maxmemory-policy = "volatile-lru";
+            maxmemory-samples = 3;
+          };
+
+          save = [
+            [
+              900
+              1
+            ]
+
+            [
+              300
+              10
+            ]
+
+            [
+              60
+              1000
+            ]
+          ];
+        };
+
+        "loki" = {
+          enable = true;
+          port = 6385;
+          logLevel = "warning";
+          databases = 16;
+          maxclients = 10000;
+          requirePass = lib.hashString "md5" "loki";
+
+          settings = {
+            stop-writes-on-bgsave-error = "yes";
+            rdbcompression = "yes";
+            rdbchecksum = "yes";
+
+            maxmemory = "1GB";
+            maxmemory-policy = "allkeys-lru";
+            maxmemory-samples = 3;
+          };
+
+          save = [
+            [
+              900
+              1
+            ]
+
+            [
+              300
+              10
+            ]
+
+            [
+              60
+              1000
+            ]
+          ];
+        };
+
+        "mimir" = {
+          enable = true;
+          port = 6386;
+          logLevel = "warning";
+          databases = 16;
+          maxclients = 10000;
+          requirePass = lib.hashString "md5" "mimir";
+
+          settings = {
+            stop-writes-on-bgsave-error = "yes";
+            rdbcompression = "yes";
+            rdbchecksum = "yes";
+
+            maxmemory = "1GB";
+            maxmemory-policy = "allkeys-lru";
             maxmemory-samples = 3;
           };
 

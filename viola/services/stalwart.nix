@@ -1,87 +1,118 @@
-_: {
+{config, ...}: {
   services = {
-    stalwart-mail = {
+    stalwart = {
       enable = true;
       settings = {
-        acme = {
-          "cloudflare" = {
-            default = true;
-            challenge = "dns-01";
-            provider = "cloudflare";
-            origin = "hand7s.org";
-            secret = "${mail_secret}";
-            contact = [
-              "me@hand7s.org"
-            ];
-
-            email = "me@hand7s.org";
-            directory = "https://acme-staging-v02.api.letsencrypt.org/directory";
-            domains = [
-              "mail.hand7s.org"
-            ];
-          };
-        };
-
         server = {
-          hostname = "mail.hand7s.org";
+          allowed-ip = [
+            "127.0.0.1"
+            "100.109.201.146"
+            "192.168.1.0/24"
+          ];
+
+          auto-ban = {
+            enable = false;
+            unban-after = "1h";
+          };
 
           proxy = {
             trusted-networks = [
+              "127.0.0.0/8"
               "::1"
-              "100.109.213.170/16"
+              "100.109.201.146"
             ];
           };
 
+          hostname = "mail.hand7s.org";
+
+          proxy-networks = [
+            "127.0.0.1/32"
+            "100.109.201.146"
+          ];
+
           listener = {
             "lmtp" = {
-              bind = "[::]:24";
+              bind = "0.0.0.0:24";
               protocol = "lmtp";
             };
 
             "smtp" = {
-              bind = "[::]:25";
+              bind = "0.0.0.0:25";
               protocol = "smtp";
+              proxy-protocol = true;
             };
 
             "pop3" = {
-              bind = "[::]:110";
+              bind = "0.0.0.0:110";
               protocol = "pop3";
+              proxy-protocol = true;
             };
 
             "imap" = {
-              bind = "[::]:143";
+              bind = "0.0.0.0:143";
               protocol = "imap";
+              proxy-protocol = true;
+              tls = {
+                enable = true;
+                implicit = false;
+                certificate = "default";
+              };
             };
 
             "submissions" = {
-              bind = "[::]:465";
+              bind = "0.0.0.0:465";
               protocol = "smtp";
+              proxy-protocol = true;
+              tls = {
+                certificate = "default";
+                implicit = true;
+                enable = true;
+              };
             };
 
             "submission" = {
-              bind = "[::]:587";
+              bind = "0.0.0.0:587";
               protocol = "smtp";
+              proxy-protocol = true;
+              tls = {
+                enable = true;
+                implicit = false;
+                certificate = "default";
+              };
             };
 
             "imaptls" = {
-              bind = "[::]:993";
-              protocol = "smtp";
+              bind = "0.0.0.0:993";
+              protocol = "imap";
+              proxy-protocol = true;
+              tls = {
+                certificate = "default";
+                implicit = true;
+                enable = true;
+              };
             };
 
             "pop3s" = {
-              bind = "[::]:995";
+              bind = "0.0.0.0:995";
               protocol = "pop3";
+              proxy-protocol = true;
+              tls = {
+                certificate = "default";
+                implicit = true;
+                enable = true;
+              };
             };
 
             "sieve" = {
-              bind = "[::]:4190";
+              bind = "0.0.0.0:4190";
+              proxy-protocol = true;
               protocol = "managesieve";
             };
 
             "management" = {
               protocol = "http";
               bind = [
-                "127.0.0.1:8980"
+                "0.0.0.0:8980"
               ];
             };
           };
@@ -102,18 +133,54 @@ _: {
         };
 
         store = {
-          # nope
-          # i'm not redacting my main config
-          # here to show it here
-          # refer to stalwart mail
-          # ty
+          "postgresql" = {
+            type = "postgresql";
+            host = "localhost";
+            timeout = "15s";
+
+            tls = {
+              enable = false;
+              allow-invalid-certs = false;
+            };
+
+            pool = {
+              max-connections = 10;
+            };
+          };
+
+          "redis" = {
+            type = "redis";
+            redis-type = "single";
+            urls = ''redis+unix:///run/redis-stalwart/redis.sock?password=${config.services."stalwart".settings.requirePass}'';
+            timeout = "180s";
+          };
+        };
+
+        oauth = {
+          "zitadel" = {
+            type = "oidc";
+            issuer = "http://zitadel.hand7s.org:8443/.well-known/openid-configuration";
+            tls-allow-invalid-certs = true;
+          };
+        };
+
+        directory = {
+          "zitadel" = {
+            type = "oidc";
+            timeout = "1s";
+            issuer = "http://zitadel.hand7s.org:8443/.well-known/openid-configuration";
+            tls-allow-invalid-certs = true;
+          };
         };
 
         authentication = {
-          fallback-admin = {
-            user = "admin";
-            secret = "admin";
-          };
+          directories = [
+            "zitadel"
+          ];
+
+          oauth = [
+            "zitadel"
+          ];
         };
 
         tracer = {
@@ -121,6 +188,14 @@ _: {
             enable = true;
             type = "journal";
             level = "debug";
+          };
+
+          otlp = {
+            enable = true;
+            type = "open-telemetry";
+            endpoint = "http://127.0.0.1:4317";
+            transport = "grpc";
+            level = "info";
           };
 
           console = {

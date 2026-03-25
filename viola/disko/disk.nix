@@ -2,7 +2,7 @@
   disko = {
     devices = {
       disk = {
-        main = {
+        "main" = {
           device = "/dev/disk/by-id/ata-EAGET_SSD_256GB_EAGET20250505V00003";
           type = "disk";
           content = {

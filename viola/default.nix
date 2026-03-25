@@ -23,7 +23,6 @@
 
     "${self}/viola/i18n/locales.nix"
 
-    "${self}/viola/networking/dhcp.nix"
     "${self}/viola/networking/firewall.nix"
     "${self}/viola/networking/hostname.nix"
     "${self}/viola/networking/networkmanager.nix"
@@ -64,16 +63,26 @@
     "${self}/viola/services/forgejo.nix"
     "${self}/viola/services/postgresql.nix"
     "${self}/viola/services/vaultwarden.nix"
-    "${self}/viola/services/privatebin.nix"
     "${self}/viola/services/woodpecker.nix"
     "${self}/viola/services/stalwart.nix"
     "${self}/viola/services/homepage.nix"
     "${self}/viola/services/redis.nix"
     "${self}/viola/services/zitadel.nix"
     "${self}/viola/services/garage.nix"
+    "${self}/viola/services/traefik.nix"
+    "${self}/viola/services/resolved.nix"
+    "${self}/viola/services/alloy.nix"
+    "${self}/viola/services/grafana.nix"
+    "${self}/viola/services/loki.nix"
+    "${self}/viola/services/tempo.nix"
+    "${self}/viola/services/mimir.nix"
+    "${self}/viola/services/sws.nix"
+    "${self}/viola/services/alertmanager.nix"
 
+    "${self}/viola/sops/age.nix"
     "${self}/viola/sops/defaults.nix"
     "${self}/viola/sops/secrets.nix"
+    "${self}/viola/sops/templates.nix"
 
     "${self}/hand7s/stylix/base16Scheme.nix"
     "${self}/hand7s/stylix/cursor.nix"
@@ -85,6 +94,7 @@
     "${self}/viola/system/stateVersion.nix"
 
     "${self}/viola/systemd/oomd.nix"
+    "${self}/viola/systemd/tmpfiles/rules.nix"
     "${self}/viola/systemd/slices/system-slice.nix"
     "${self}/viola/systemd/slices/user-slice.nix"
     "${self}/viola/systemd/slices/root-slice.nix"

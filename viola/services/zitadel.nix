@@ -3,7 +3,6 @@
     zitadel = {
       enable = true;
       tlsMode = "external";
-      masterKeyFile = config.sops.secrets.zitadelMasterKey;
 
       steps = {
         FirstInstance = {
@@ -24,7 +23,7 @@
               PreferredLanguage = "en";
 
               Email = {
-                Address = "me@hand7s.org";
+                Address = "admin@hand7s.org";
                 Verified = true;
               };
             };
@@ -38,8 +37,17 @@
         ExternalDomain = "zitadel.hand7s.org";
         ExternalSecure = true;
 
+        Machine = {
+          MachineID = {
+            Type = "static";
+            Static = {
+              MachineID = 1;
+            };
+          };
+        };
+
         Log = {
-          Level = "debug";
+          Level = "info";
         };
 
         Telemetry = {
@@ -48,15 +56,7 @@
 
         Database = {
           postgres = {
-            Host = "${dbhost}";
-            Port = "${dbport}";
-            Database = "zitadel";
-            User = {
-              Username = "zitadel";
-              SSL = {
-                Mode = "disable";
-              };
-            };
+            Host = "localhost";
           };
         };
 
@@ -64,8 +64,8 @@
           Connectors = {
             Redis = {
               Enabled = true;
-              Addr = "${cahceaddress}";
-              Password = "${cahcepass}";
+              Addr = "localhost:6383";
+              Password = config.services.stalwart-mail.settings.requirePass;
               PoolSize = "900";
               PoolTimeout = "1800s";
             };

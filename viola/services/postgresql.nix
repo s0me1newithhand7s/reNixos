@@ -44,12 +44,8 @@ _: {
         "zitadel"
       ];
 
-      initialScript = ""; # nope
-
-      authentication = ""; #nope
-
       settings = {
-        port = "${dbport}";
+        port = "????";
       };
     };
   };

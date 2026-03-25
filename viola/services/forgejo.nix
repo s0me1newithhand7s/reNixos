@@ -5,7 +5,7 @@ _: {
 
       database = {
         type = "postgres";
-        port = "${dbport}";
+        host = "localhost";
       };
 
       settings = {
@@ -19,9 +19,9 @@ _: {
         repository = {
           DEFAULT_PRIVATE = "last";
           PREFERRED_LICENSES = "MIT";
-          DISABLE_HTTP_GIT = true;
+          DISABLE_HTTP_GIT = false;
           USE_COMPAT_SSH_URI = true;
-          GO_GET_CLONE_URL_PROTOCOL = "ssh";
+          GO_GET_CLONE_URL_PROTOCOL = "http";
           DEFAULT_BRANCH = "master";
         };
 
@@ -45,6 +45,11 @@ _: {
           WIKI = "always";
           CRUD_ACTIONS = "always";
           MERGES = "always";
+        };
+
+        opentelemetry = {
+          EXPORTER = "otlp";
+          ENDPOINT = "http://127.0.0.1:4318";
         };
 
         badges = {
@@ -90,6 +95,13 @@ _: {
 
         service = {
           DISABLE_REGISTRATION = true;
+          ALLOW_ONLY_EXTERNAL_REGISTRATION = true;
+        };
+
+        oauth2_client = {
+          ENABLE_AUTO_REGISTER = true;
+          ACCOUNT_LINKING = "auto";
+          USERNAME = "preferred_username";
         };
 
         "service.explore" = {
