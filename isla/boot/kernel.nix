@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   boot = {
     kernel = {
       sysctl = {
@@ -16,13 +12,9 @@
       };
     };
 
-    kernelPackages = pkgs.linuxPackages_zen;
-    extraModprobeConfig = ''
-      options thinkpad_acpi  fan_control=1
-    '';
+    kernelPackages = pkgs.linuxPackages_latest;
 
     kernelParams = [
-      "i915.enable_rc6=7"
       "udev.log_priority=3"
       "quiet"
       "splash"
@@ -35,13 +27,10 @@
       "page_alloc.shuffle=1"
       "page_poison=1"
       "slab_nomerge"
+      "zswap.enabled=0"
 
       "kernel.watchdog=0"
       "oops=panic"
-    ];
-
-    kernelModules = [
-      "tp_smapi"
     ];
 
     blacklistedKernelModules = [
@@ -77,9 +66,6 @@
     supportedFilesystems = {
       vfat = true;
       btrfs = true;
-      zfs = lib.mkForce false;
     };
-
-    # consoleLogLevel = 0;
   };
 }

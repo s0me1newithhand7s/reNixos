@@ -2,7 +2,7 @@ _: {
   disko = {
     devices = {
       disk = {
-        main = {
+        "main" = {
           device = "/dev/disk/by-id/ata-ST92503010AS_5YH0CJFL";
           type = "disk";
           content = {

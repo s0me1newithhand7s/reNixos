@@ -3,7 +3,7 @@
     "${self}/isla/disko/disk.nix"
     "${self}/isla/disko/lvm_vg.nix"
 
-    "${self}/isla/boot/loader/system-boot.nix"
+    "${self}/isla/boot/loader/systemd-boot.nix"
     "${self}/isla/boot/lanzaboote.nix"
     "${self}/isla/boot/initrd.nix"
     "${self}/isla/boot/kernel.nix"
