@@ -8,16 +8,6 @@
       enable = true;
 
       services = {
-        "ssh" = {
-          short = "openssh";
-          ports = [
-            {
-              port = 60009;
-              protocol = "tcp";
-            }
-          ];
-        };
-
         "stalwart" = {
           short = "Stalwart-mail";
           ports =
