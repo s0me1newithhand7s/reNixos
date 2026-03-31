@@ -13,6 +13,8 @@ _: {
         "https://chaotic-nyx.cachix.org/"
         # nix-community
         "https://hydra.nix-community.org/"
+        # yandex mirror
+        "https://mirror.yandex.ru/nixos/"
       ];
     };
   };
