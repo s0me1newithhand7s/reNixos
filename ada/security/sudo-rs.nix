@@ -4,6 +4,9 @@ _: {
       enable = true;
       wheelNeedsPassword = true;
       execWheelOnly = true;
+      extraConfig = ''
+        Defaults !pwfeedback
+      '';
     };
   };
 }
