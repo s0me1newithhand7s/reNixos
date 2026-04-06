@@ -84,7 +84,7 @@
 
           "exfil" = [
             {
-              run = ''${lib.getExe pkgs.ouch} de "%s"'';
+              run = ''${lib.getExe pkgs.ouch} d "%s"'';
               block = true;
               for = "unix";
             }
