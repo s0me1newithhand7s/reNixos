@@ -3,14 +3,20 @@
     acme = {
       acceptTerms = true;
       defaults = {
-        email = "litvinovb0@gmail.com";
+        email = "me@hand7s.org";
       };
 
       certs = {
         "hand7s.org" = {
           dnsProvider = "cloudflare";
-          credentialsFile = config.sops.templates."acme.env".path;
-          group = "sing-box";
+          environmentFile = config.sops.templates."acme.env".path;
+          group = "mihomo";
+        };
+
+        "ntp.hand7s.org" = {
+          dnsProvider = "cloudflare";
+          environmentFile = config.sops.templates."acme.env".path;
+          group = "ntpd-rs";
         };
       };
     };
