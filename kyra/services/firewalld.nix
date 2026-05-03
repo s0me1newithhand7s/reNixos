@@ -7,7 +7,48 @@
     firewalld = {
       enable = true;
 
+      settings = {
+        IPv6_rpfilter = "strict";
+        CleanupModulesOnExit = true;
+        StrictForwardPorts = true;
+      };
+
       services = {
+        "ntp" = {
+          short = "ntpd-rs";
+          ports = [
+            {
+              port = 123;
+              protocol = "udp";
+            }
+
+            {
+              port = 4460;
+              protocol = "tcp";
+            }
+          ];
+        };
+
+        "dns" = {
+          short = "hickory-dns";
+          ports = [
+            {
+              port = 853;
+              protocol = "tcp";
+            }
+          ];
+        };
+
+        "quic" = {
+          short = "http3";
+          ports = [
+            {
+              port = 443;
+              protocol = "udp";
+            }
+          ];
+        };
+
         "stalwart" = {
           short = "Stalwart-mail";
           ports =
@@ -62,24 +103,28 @@
       };
 
       zones = {
-        "trusted" = {
+        "netbird" = {
           services = [
+            "ssh"
             "consul"
           ];
         };
 
         "wan" = {
-          ports = [
+          target = "DROP";
+
+          masquerade = true;
+
+          forwardPorts = [
             {
-              port = 2053;
+              port = 443;
               protocol = "udp";
+              to-port = 8443;
+              to-addr = "192.168.101.2";
             }
+          ];
 
-            {
-              port = 8443;
-              protocol = "tcp";
-            }
-
+          ports = [
             {
               port = 51820;
               protocol = "udp";
@@ -119,17 +164,17 @@
 
           services = lib.concatLists [
             [
-              "ssh"
+              "quic"
               "http"
               "https"
+              "ntp"
+              "dns"
             ]
 
             (
               lib.optionals (
                 lib.elem name [
                   "hazel"
-                  "lynn"
-                  "mel"
                 ]
               ) [
                 "minecraft"
