@@ -6,7 +6,6 @@ _: {
         isNormalUser = true;
         extraGroups = [
           "wheel"
-          "docker"
         ];
 
         openssh = {
