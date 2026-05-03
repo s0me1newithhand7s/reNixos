@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   environment = {
-    systemPackages = [
-      pkgs.helix
-      pkgs.comma
+    systemPackages = with pkgs; [
+      # (lib.hiPrio uutils-coreutils-noprefix)
+      # unless fix
     ];
 
     enableAllTerminfo = true;
