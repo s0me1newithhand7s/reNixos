@@ -1,22 +1,39 @@
-{
+_: {
   disko = {
     devices = {
       lvm_vg = {
-        pool = {
+        "pool" = {
           type = "lvm_vg";
           lvs = {
-            root = {
+            "root" = {
               size = "100%FREE";
               content = {
                 type = "btrfs";
-                mountpoint = "/";
                 extraArgs = [
                   "-f"
                 ];
 
-                mountOptions = [
-                  "compress=zstd"
-                ];
+                subvolumes = {
+                  "/nix" = {
+                    mountpoint = "/nix";
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                      "nodev"
+                      "nosuid"
+                    ];
+                  };
+
+                  "/persist" = {
+                    mountpoint = "/persist";
+                    mountOptions = [
+                      "compress=zstd"
+                      "noatime"
+                      "nodev"
+                      "nosuid"
+                    ];
+                  };
+                };
               };
             };
           };
