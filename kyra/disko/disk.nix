@@ -21,7 +21,7 @@
 
               ESP = {
                 name = "ESP";
-                size = "1024M";
+                size = "128M";
                 type = "EF00";
                 content = {
                   type = "filesystem";
@@ -29,15 +29,27 @@
                   mountpoint = "/boot";
                   mountOptions = [
                     "umask=0077"
+                    "noexec"
+                    "nosuid"
+                    "nodev"
+                    "ro"
                   ];
                 };
               };
 
-              root = {
+              luks = {
                 size = "100%";
                 content = {
-                  type = "lvm_pv";
-                  vg = "pool";
+                  type = "luks";
+                  name = "crypted";
+                  settings = {
+                    allowDiscards = true;
+                  };
+
+                  content = {
+                    type = "lvm_pv";
+                    vg = "pool";
+                  };
                 };
               };
             };
