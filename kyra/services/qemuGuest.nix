@@ -1,7 +1,7 @@
 _: {
   services = {
     qemuGuest = {
-      enable = true;
+      enable = false;
     };
   };
 }
