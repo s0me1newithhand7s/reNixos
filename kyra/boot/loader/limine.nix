@@ -1,7 +1,7 @@
 _: {
   boot = {
     loader = {
-      grub = {
+      liminie = {
         enable = true;
         efiSupport = true;
         efiInstallAsRemovable = true;
