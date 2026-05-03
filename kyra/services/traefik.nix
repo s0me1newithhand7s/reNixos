@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  name,
+  ...
+}: {
   services = {
     traefik = {
       enable = true;
@@ -8,6 +12,39 @@
       ];
 
       dynamicConfigOptions = {
+        providers = {
+          consulCatalog = {
+            endpoint = {
+              address = "127.0.0.1:8500";
+              exposedByDefault = false;
+              prefix = "traefik";
+            };
+          };
+        };
+
+        udp = {
+          routers = {
+            "ntp" = {
+              service = "ntp-svc";
+              entryPoints = [
+                "ntp"
+              ];
+            };
+          };
+
+          services = {
+            "ntp-svc" = {
+              loadBalancer = {
+                servers = [
+                  {
+                    address = "127.0.0.1:123";
+                  }
+                ];
+              };
+            };
+          };
+        };
+
         http = {
           routers = {
             "site" = {
@@ -18,24 +55,6 @@
                 domains = [
                   {
                     main = "hand7s.org";
-                    sans = "*.hand7s.org";
-                  }
-                ];
-              };
-
-              entryPoints = [
-                "websecure"
-              ];
-            };
-
-            "git" = {
-              rule = "Host(`git.hand7s.org`)";
-              service = "git-svc";
-              tls = {
-                certResolver = "cloudflare";
-                domains = [
-                  {
-                    main = "hand7s.org";
                     sans = [
                       "*.hand7s.org"
                     ];
@@ -45,15 +64,16 @@
 
               entryPoints = [
                 "websecure"
+                "loopback"
               ];
             };
 
-            "cicd" = {
-              rule = "Host(`woodpecker.hand7s.org`)";
-              service = "cicd-svc";
+            "ca" = {
+              rule = "Host(`ca.hand7s.org`)";
+              service = "ca-svc";
               tls = {
                 certResolver = "cloudflare";
-                domains = [
+                domain = [
                   {
                     main = "hand7s.org";
                     sans = [
@@ -62,55 +82,11 @@
                   }
                 ];
               };
-
-              entryPoints = [
-                "websecure"
-              ];
             };
 
-            "oidc" = {
-              rule = "Host(`zitadel.hand7s.org`)";
-              service = "oidc-svc";
-              tls = {
-                certResolver = "cloudflare";
-                domains = [
-                  {
-                    main = "hand7s.org";
-                    sans = [
-                      "*.hand7s.org"
-                    ];
-                  }
-                ];
-              };
-
-              entryPoints = [
-                "websecure"
-              ];
-            };
-
-            "bin" = {
-              rule = "Host(`bin.hand7s.org`)";
-              service = "bin-svc";
-              tls = {
-                certResolver = "cloudflare";
-                domains = [
-                  {
-                    main = "hand7s.org";
-                    sans = [
-                      "*.hand7s.org"
-                    ];
-                  }
-                ];
-              };
-
-              entryPoints = [
-                "websecure"
-              ];
-            };
-
-            "lgtm" = {
-              rule = "Host(`grafana.hand7s.org`)";
-              service = "lgtm-svc";
+            "doh" = {
+              rule = "Host(`dns.hand7s.org`) && PathPrefix(`/dns-query`)";
+              service = "doh-svc";
               tls = {
                 certResolver = "cloudflare";
                 domains = [
@@ -140,51 +116,21 @@
               };
             };
 
-            "git-svc" = {
+            "ca-svc" = {
               loadBalancer = {
                 servers = [
                   {
-                    url = "http://100.109.123.164:53350";
+                    url = "http://127.0.0.1:8443";
                   }
                 ];
               };
             };
 
-            "oidc-svc" = {
+            "doh-svc" = {
               loadBalancer = {
                 servers = [
                   {
-                    url = "http://100.109.123.164:8443";
-                  }
-                ];
-              };
-            };
-
-            "bin-svc" = {
-              loadBalancer = {
-                servers = [
-                  {
-                    url = "http://100.109.123.164:53352";
-                  }
-                ];
-              };
-            };
-
-            "cicd-svc" = {
-              loadBalancer = {
-                servers = [
-                  {
-                    url = "http://100.109.123.164:53351";
-                  }
-                ];
-              };
-            };
-
-            "lgtm-svc" = {
-              loadBalancer = {
-                servers = [
-                  {
-                    url = "http://100.109.123.164:3030";
+                    url = "http://127.0.0.1:8053";
                   }
                 ];
               };
@@ -194,160 +140,72 @@
 
         tcp = {
           routers = {
-            "minecraft" = {
-              rule = "HostSNI(`*`)";
-              service = "mc-svc";
+            "nts-ke" = {
+              rule = "HostSNI(`ntp.hand7s.org`)";
+              services = "nts-ke-svc";
+              tls = {
+                passthrough = true;
+              };
+
               entryPoints = [
-                "minecraft"
+                "nts-ke"
               ];
             };
 
-            "smtp" = {
-              rule = "HostSNI(`*`)";
-              service = "smtp-svc";
+            "dot" = {
+              rule = "HostSNI(`dns.hand7s.org`)";
+              services = "dot-svc";
               entryPoints = [
-                "smtp"
+                "dot"
               ];
+
+              tls = {
+                certResolver = "cloudflare";
+              };
             };
 
-            "pop3" = {
-              rule = "HostSNI(`*`)";
-              service = "pop-svc";
+            "vless" = {
+              rule = "HostSNI(`${name}.hand7s.org`)";
+              service = "vless-svc";
+              tls = {
+                passthrough = true;
+              };
+
               entryPoints = [
-                "pop3"
-              ];
-            };
-
-            "submissions" = {
-              rule = "HostSNI(`mail.hand7s.org`)";
-              service = "submissions-svc";
-              entryPoints = [
-                "submissions"
-              ];
-            };
-
-            "submission" = {
-              rule = "HostSNI(`*`)";
-              service = "submission-svc";
-              entryPoints = [
-                "submission"
-              ];
-            };
-
-            "imaptls" = {
-              rule = "HostSNI(`mail.hand7s.org`)";
-              service = "imaptls-svc";
-              entryPoints = [
-                "imaptls"
-              ];
-            };
-
-            "pop3s" = {
-              rule = "HostSNI(`mail.hand7s.org`)";
-              service = "pop3s-svc";
-              entryPoints = [
-                "pop3s"
-              ];
-            };
-
-            "managesieve" = {
-              rule = "HostSNI(`*`)";
-              service = "managesieve-svc";
-              entryPoints = [
-                "managesieve"
-              ];
-            };
-          };
-        };
-
-        services = {
-          "mc-svc" = {
-            loadBalancer = {
-              servers = [
-                {
-                  address = "100.109.123.164:25565";
-                }
+                "websecure"
               ];
             };
           };
 
-          "smtp-svc" = {
-            loadBalancer = {
-              servers = [
-                {
-                  address = "100.109.123.164:25";
-                }
-              ];
+          services = {
+            "vless-svc" = {
+              loadBalancer = {
+                servers = [
+                  {
+                    address = "192.168.101.2:8443";
+                  }
+                ];
+              };
             };
-          };
 
-          "pop3-svc" = {
-            loadBalancer = {
-              servers = [
-                {
-                  address = "100.109.123.164:110";
-                }
-              ];
+            "nts-ke-svc" = {
+              loadBalancer = {
+                servers = [
+                  {
+                    address = "127.0.0.1:4460";
+                  }
+                ];
+              };
             };
-          };
 
-          "imap-svc" = {
-            loadBalancer = {
-              servers = [
-                {
-                  address = "100.109.123.164:143";
-                }
-              ];
-            };
-          };
-
-          "submissions-svc" = {
-            loadBalancer = {
-              servers = [
-                {
-                  address = "100.109.123.164:465";
-                }
-              ];
-            };
-          };
-
-          "submission-svc" = {
-            loadBalancer = {
-              servers = [
-                {
-                  address = "100.109.123.164:587";
-                }
-              ];
-            };
-          };
-
-          "imaptls-svc" = {
-            loadBalancer = {
-              servers = [
-                {
-                  address = "100.109.123.164:993";
-                }
-              ];
-            };
-          };
-
-          "pop3s-svc" = {
-            loadBalancer = {
-              servers = [
-                {
-                  address = "100.109.123.164:995";
-                }
-              ];
-            };
-          };
-
-          "managesieve-svc" = {
-            loadBalancer = {
-              servers = [
-                {
-                  address = "100.109.123.164:4190";
-                }
-              ];
+            "dot-svc" = {
+              loadBalancer = {
+                servers = [
+                  {
+                    url = "http://127.0.0.1:8853";
+                  }
+                ];
+              };
             };
           };
         };
@@ -370,15 +228,20 @@
         certificatesResolvers = {
           "cloudflare" = {
             acme = {
-              email = "litvinovb0@gmail.com";
+              email = "me@hand7s.com";
               storage = "${config.services.traefik.dataDir}/acme.json";
               dnsChallenge = {
                 provider = "cloudflare";
-                resolvers = [
-                  "1.1.1.1:53"
-                  "8.8.8.8:53"
-                ];
               };
+            };
+          };
+
+          "step-ca" = {
+            caServer = "https://ca.hand7s.org";
+            acme = {
+              email = "me@hand7s.com";
+              storage = "${config.services.traefik.dataDir}/acme.json";
+              tlsChallenge = {};
             };
           };
         };
@@ -415,6 +278,35 @@
                 ];
               };
             };
+          };
+
+          "loopback" = {
+            address = "127.0.0.1:444";
+            http = {
+              tls = {
+                certResolver = "cloudflare";
+                domains = [
+                  {
+                    main = "hand7s.org";
+                    sans = [
+                      "*.hand7s.org"
+                    ];
+                  }
+                ];
+              };
+            };
+          };
+
+          "ntp" = {
+            address = ":123";
+          };
+
+          "nts-ke" = {
+            address = ":4460";
+          };
+
+          "dot" = {
+            address = ":853";
           };
 
           "minecraft" = {
