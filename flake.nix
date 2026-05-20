@@ -292,21 +292,11 @@
       };
     };
 
-    "nix-on-droid" = {
+    "nixos-avf" = {
       flake = true;
       type = "github";
       owner = "nix-community";
-      repo = "nix-on-droid";
-
-      inputs = {
-        "nixpkgs" = {
-          follows = "nixpkgs";
-        };
-
-        "home-manager" = {
-          follows = "home-manager";
-        };
-      };
+      repo = "nixos-avf";
     };
 
     "nixos-anywhere" = {
