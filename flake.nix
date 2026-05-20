@@ -223,6 +223,13 @@
       repo = "Hyprland";
     };
 
+    "impermanence" = {
+      flake = true;
+      type = "github";
+      owner = "nix-community";
+      repo = "impermanence";
+    };
+
     "lanzaboote" = {
       flake = true;
       type = "github";
