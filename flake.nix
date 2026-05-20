@@ -636,6 +636,11 @@
         pkgs,
         ...
       }: {
+        # agenix-rekey
+        agenix-rekey = {
+          agePackage = pkgs.ragenix;
+        };
+
         # numtide/treefmt-nix, treefmt integrated into nix
         treefmt = {
           flakeFormatter = true;
@@ -731,6 +736,7 @@
                 [
                   pkgs.just
                   config.treefmt.build.wrapper
+                  config.agenix-rekey.package
                 ]
                 ++ config.pre-commit.settings.enabledPackages;
             };
