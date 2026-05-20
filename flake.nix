@@ -404,13 +404,6 @@
       owner = "numtide";
       repo = "treefmt-nix";
     };
-
-    "vscserver" = {
-      flake = true;
-      type = "github";
-      owner = "nix-community";
-      repo = "nixos-vscode-server";
-    };
   };
 
   outputs = inputs @ {self, ...}:
