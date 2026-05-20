@@ -670,6 +670,14 @@
                 "*.nix"
               ];
             };
+
+            "mdformat" = {
+              enable = true;
+              priority = 2;
+              includes = [
+                "*.md"
+              ];
+            };
           };
 
           settings = {
@@ -712,6 +720,14 @@
               };
 
               "statix" = {
+                enable = true;
+              };
+
+              "markdownlint" = {
+                enable = true;
+              };
+
+              "gitlint" = {
                 enable = true;
               };
             };
