@@ -661,10 +661,6 @@
               includes = [
                 "*.nix"
               ];
-
-              disabled-lints = [
-                "empty_pattern"
-              ];
             };
 
             "deadnix" = {
