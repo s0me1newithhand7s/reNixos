@@ -137,6 +137,13 @@
       repo = "fenix";
     };
 
+    "finix" = {
+      flake = true;
+      type = "github";
+      owner = "finix-community";
+      repo = "finix";
+    };
+
     "github-actions-nix" = {
       flake = true;
       type = "github";
