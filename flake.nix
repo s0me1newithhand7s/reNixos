@@ -421,13 +421,13 @@
       ];
 
       imports = [
-        # modules
-        inputs.disko.flakeModules.default
-        inputs.treefmt-nix.flakeModule
-        inputs.home-manager.flakeModules.home-manager
-        inputs.git-hooks-nix.flakeModule
-        inputs.devenv.flakeModule
-        inputs.github-actions-nix.flakeModule
+        inputs."agenix-rekey".flakeModule
+        inputs."disko".flakeModules.default
+        inputs."treefmt-nix".flakeModule
+        inputs."home-manager".flakeModules."home-manager"
+        inputs."git-hooks-nix".flakeModule
+        inputs."devenv".flakeModule
+        inputs."github-actions-nix".flakeModule
       ];
 
       flake = let
@@ -630,13 +630,14 @@
 
             modules = [
               "${self}/hand7s/standalone.nix"
-              inputs.spicetify-nix.homeManagerModules.default
-              inputs.hyprland.homeManagerModules.default
-              inputs.chaotic.homeManagerModules.default
-              inputs.sops-nix.homeManagerModules.sops
-              inputs.nix-index-database.homeModules.nix-index
-              inputs.noctalia.homeModules.default
-              inputs.stylix.homeModules.stylix
+              inputs."agenix".homeManagerModules."default"
+              inputs."spicetify-nix".homeManagerModules."default"
+              inputs."hyprland".homeManagerModules."default"
+              inputs."chaotic".homeManagerModules."default"
+              inputs."sops-nix".homeManagerModules."sops"
+              inputs."nix-index-database".homeModules."nix-index"
+              inputs."noctalia".homeModules."default"
+              inputs."stylix".homeModules."stylix"
             ];
           };
         };
