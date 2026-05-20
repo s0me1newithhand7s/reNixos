@@ -313,19 +313,6 @@
       repo = "nixos-cli";
     };
 
-    "nixos-generators" = {
-      flake = true;
-      type = "github";
-      owner = "nix-community";
-      repo = "nixos-generators";
-
-      inputs = {
-        "nixpkgs" = {
-          follows = "nixpkgs";
-        };
-      };
-    };
-
     "nixos-wsl" = {
       flake = true;
       type = "github";
