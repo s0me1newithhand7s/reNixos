@@ -803,7 +803,7 @@
                         pr-title = "Update `flake.lock` GitHub Action";
                         pr-assignees = "s0me1newithhand7s";
                         pr-reviewers = "s0me1newithhand7s";
-                        pr-lables = ''
+                        pr-labels = ''
                           "CI/CD"
                         '';
                       };
@@ -816,7 +816,6 @@
             "fmt_run" = {
               name = "flake_format";
               on = {
-                workflowDispatch = {};
                 push = {};
 
                 workflowDispatch = {
