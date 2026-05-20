@@ -1,0 +1,14 @@
+[general]
+contrib=contrib-title-conventional-commits
+ignore=title-match-regex, T3
+regex-style-search=True
+
+[ignore-by-title]
+regex=^flake\.lock:.*
+
+[title-match-regex]
+regex=^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\([\w\-\.]+\))?!?: .+$
+
+[title-max-length]
+line-length=72
+
