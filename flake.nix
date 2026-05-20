@@ -251,13 +251,6 @@
       repo = "nekoflake";
     };
 
-    "nix-bwrapper" = {
-      flake = true;
-      type = "github";
-      owner = "Naxdy";
-      repo = "nix-bwrapper";
-    };
-
     "nix-darwin" = {
       flake = true;
       type = "github";
