@@ -436,185 +436,173 @@
           nixosSystem
           filesystem
           genAttrs
-          map
+          optionals
+          elem
           ;
 
-        defaultModules = [];
-
-        defaultPath = filesystem.listFilesRecursive "${self}/kyra/";
-
-        inputedModules =
+        makeModules = modulesList:
           map (
             {
               input,
               opt ? "default",
             }:
               inputs.${input}.nixosModules.${opt}
-          ) [
-            {
-              opt = "disko";
-              input = "disko";
-            }
+          )
+          modulesList;
 
-            {
-              input = "home-manager";
-            }
-
-            {
-              opt = "sops";
-              input = "sops-nix";
-            }
-
-            {
-              opt = "nix-index";
-              input = "nix-index-database";
-            }
-
-            {
-              opt = "nix-mineral";
-              input = "nix-mineral";
-            }
-          ];
-
-        kyraHost = name:
+        defaultHost = {
+          name,
+          arch ? "x86_64-linux",
+          ...
+        }:
           nixosSystem {
-            system = "x86_64-linux";
-            modules = defaultModules ++ defaultPath ++ inputedModules;
+            system = let
+              arches = {
+                "mabel" = "aarch64-linux";
+                "blossom" = "riscv64-linux";
+              };
+            in
+              arches.${name} or arch;
+
             specialArgs = {
               inherit
                 inputs
-                name
                 self
                 ;
             };
+
+            modules =
+              [
+                "${self}/${name}"
+              ]
+              ++ defaultModules
+              ++ optionals (
+                name == "wanda"
+              )
+              extraModules.wanda
+              ++ optionals (
+                name == "mabel"
+              )
+              extraModules.mabel
+              ++ optionals (
+                elem name [
+                  "hazel"
+                  "lynn"
+                  "yara"
+                  "ivy"
+                  "mel"
+                ]
+              ) (
+                extraModules.kyra ++ filesystem.listFilesRecursive "${self}/kyra/"
+              );
           };
 
-        kyraStack =
+        defaultModules = makeModules [
+          {
+            input = "agenix";
+          }
+
+          {
+            input = "agenix-rekey";
+          }
+
+          {
+            input = "disko";
+            opt = "disko";
+          }
+
+          {
+            input = "home-manager";
+          }
+
+          {
+            input = "stylix";
+            opt = "stylix";
+          }
+
+          {
+            input = "sops-nix";
+            opt = "sops";
+          }
+
+          {
+            input = "lanzaboote";
+            opt = "lanzaboote";
+          }
+
+          {
+            input = "nix-index-database";
+            opt = "nix-index";
+          }
+
+          {
+            input = "nixos-cli";
+            opt = "nixos-cli";
+          }
+        ];
+
+        extraModules = {
+          wanda = makeModules [
+            {
+              input = "nixos-wsl";
+            }
+          ];
+
+          mabel = makeModules [
+            {
+              input = "nixos-avf";
+              opt = "avf";
+            }
+          ];
+
+          kyra = makeModules [
+            {
+              input = "impermanence";
+              opt = "impermanence";
+            }
+          ];
+        };
+
+        defaultSystems =
           genAttrs [
+            "ada"
+            "isla"
+            "viola"
+            "mabel"
+            "wanda"
+            "florence"
             "hazel"
             "lynn"
             "yara"
             "ivy"
             "mel"
-          ]
-          kyraHost;
+          ] (
+            name:
+              defaultHost {
+                inherit
+                  name
+                  ;
+              }
+          );
       in {
         # Main PC
         nixosConfigurations =
-          {
-            "ada" = inputs.nixpkgs.lib.nixosSystem {
-              system = "x86_64-linux";
+          defaultSystems
+          // {
+            # olive, blossom and maybe  gonna be routers and etc
+
+            "fawn" = inputs.finix.lib.finixSystem {
+              inherit (self.inputs.nixpkgs) lib;
               specialArgs = {
                 inherit
                   inputs
-                  self
                   ;
               };
 
               modules = [
-                "${self}/ada/"
-                inputs.chaotic.nixosModules.default
-                inputs.stylix.nixosModules.stylix
-                inputs.sops-nix.nixosModules.sops
-                inputs.disko.nixosModules.disko
-                inputs.lanzaboote.nixosModules.lanzaboote
-                inputs.home-manager.nixosModules.default
-                inputs.nix-index-database.nixosModules.nix-index
-                inputs.nix-bwrapper.nixosModules.default
-                inputs.nix-mineral.nixosModules.nix-mineral
               ];
             };
-
-            # Main Laptop
-            "isla" = inputs.nixpkgs.lib.nixosSystem {
-              system = "x86_64-linux";
-              specialArgs = {
-                inherit
-                  inputs
-                  self
-                  ;
-              };
-
-              modules = [
-                "${self}/isla/"
-                inputs.chaotic.nixosModules.default
-                inputs.stylix.nixosModules.stylix
-                inputs.sops-nix.nixosModules.sops
-                inputs.disko.nixosModules.disko
-                inputs.home-manager.nixosModules.home-manager
-                inputs.lanzaboote.nixosModules.lanzaboote
-                inputs.nix-index-database.nixosModules.nix-index
-                inputs.nix-bwrapper.nixosModules.default
-                inputs.nix-mineral.nixosModules.nix-mineral
-              ];
-            };
-
-            # homelab
-            "viola" = inputs.nixpkgs.lib.nixosSystem {
-              system = "x86_64-linux";
-              specialArgs = {
-                inherit
-                  inputs
-                  self
-                  ;
-              };
-
-              modules = [
-                "${self}/viola"
-                inputs.chaotic.nixosModules.default
-                inputs.stylix.nixosModules.stylix
-                inputs.sops-nix.nixosModules.sops
-                inputs.disko.nixosModules.disko
-                inputs.lanzaboote.nixosModules.lanzaboote
-                inputs.home-manager.nixosModules.default
-                inputs.nix-index-database.nixosModules.nix-index
-                inputs.nix-mineral.nixosModules.nix-mineral
-              ];
-            };
-
-            # WSL2
-            "wanda" = inputs.nixpkgs.lib.nixosSystem {
-              system = "x86_64-linux";
-              specialArgs = {
-                inherit
-                  inputs
-                  self
-                  ;
-              };
-
-              modules = [
-                "${self}/wanda/"
-                inputs.nixos-wsl.nixosModules.default
-                inputs.stylix.nixosModules.stylix
-                inputs.home-manager.nixosModules.default
-                inputs.sops-nix.nixosModules.sops
-                inputs.nix-index-database.nixosModules.nix-index
-                inputs.nix-bwrapper.nixosModules.default
-                inputs.nix-mineral.nixosModules.nix-mineral
-              ];
-            };
-
-            # custom ISO
-            "florence" = inputs.nixpkgs.lib.nixosSystem {
-              system = "x86_64-linux";
-              specialArgs = {
-                inherit
-                  inputs
-                  self
-                  ;
-              };
-
-              modules = [
-                "${self}/florence/"
-              ];
-            };
-          }
-          // kyraStack;
-        # few words about kyraStack:
-        # it's my little fleet, 5 identical VPSes
-        # really nice that all of them are 2 vCPU 2GB
-        # tho ssd/nvme/hdd memory is nothing important
-        # and being KVM VPS / pure VPS too
+          };
 
         # home-manager
         homeConfigurations = {
