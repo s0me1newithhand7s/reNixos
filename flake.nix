@@ -585,7 +585,6 @@
               }
           );
       in {
-        # Main PC
         nixosConfigurations =
           defaultSystems
           // {
