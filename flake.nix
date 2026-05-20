@@ -158,6 +158,30 @@
       repo = "git-hooks.nix";
     };
 
+    "hjem" = {
+      flake = true;
+      type = "github";
+      owner = "feel-co";
+      repo = "hjem";
+    };
+
+    "hjem-rum" = {
+      flake = true;
+      type = "github";
+      owner = "snugnug";
+      repo = "hjem-rum";
+
+      inputs = {
+        "nixpkgs" = {
+          follows = "nixpkgs";
+        };
+
+        "hjem" = {
+          follows = "hjem";
+        };
+      };
+    };
+
     "home-manager" = {
       flake = true;
       type = "github";
