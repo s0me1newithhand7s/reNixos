@@ -272,13 +272,6 @@
       ref = "release";
     };
 
-    "nix-mineral" = {
-      flake = true;
-      type = "github";
-      owner = "cynicsketch";
-      repo = "nix-mineral";
-    };
-
     "nix-homebrew" = {
       flake = true;
       type = "github";
