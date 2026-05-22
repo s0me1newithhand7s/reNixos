@@ -633,8 +633,27 @@
       perSystem = {
         config,
         pkgs,
+        lib,
         ...
       }: {
+        packages = {
+          "zide" = pkgs.writeShellApplication {
+            name = "zellij-ide";
+            runtimeInputs = with pkgs; [
+              uutils-coreutils-noprefix
+              zellij
+            ];
+
+            text = ''
+              if [ -z "''${ZELLIJ:-}" ]; then
+                SESSION_NAME=$(basename "''${PWD}")
+
+                ${lib.getExe pkgs.zellij} attach "''${SESSION_NAME}" || ${lib.getExe pkgs.zellij} --layout zide --session "''${SESSION_NAME}"
+              fi
+            '';
+          };
+        };
+
         # agenix-rekey
         agenix-rekey = {
           agePackage = pkgs.ragenix;
@@ -737,7 +756,7 @@
         devenv = {
           shells = {
             "default" = {
-              enterShell = config.pre-commit.shellHook;
+              enterShell = "${lib.getExe config.packages."zide"} && ${config.pre-commit.shellHook}";
 
               devenv = {
                 root = toString /home/hand7s/Projects/flake;
