@@ -1,11 +1,8 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   environment = {
     systemPackages = with pkgs; [
-      (lib.hiPrio uutils-coreutils-noprefix)
+      # (lib.hiPrio uutils-coreutils-noprefix)
+      uutils-util-linux
       uutils-findutils
       uutils-diffutils
       xdg-desktop-portal
