@@ -2,11 +2,11 @@ _: {
   boot = {
     lanzaboote = {
       enable = true;
-      configurationLimit = 7;
+      configurationLimit = 2;
       pkiBundle = "/var/lib/sbctl";
       settings = {
         timeout = 2;
-        sortKey = "lanza";
+        sortKey = "nixos";
       };
     };
   };
