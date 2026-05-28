@@ -8,12 +8,12 @@ _: {
         CleanupModulesOnExit = true;
         StrictForwardPorts = true;
         logDenied = "off";
-        FlushAllOnReload = "yes";
+        FlushAllOnReload = true;
         ReloadPolicy = "DROP";
-        RFC3964_IPv4 = "yes";
-        NftablesCounters = "no";
-        NftablesTableOwner = "yes";
-        IndividualCalls = "no";
+        RFC3964_IPv4 = true;
+        NftablesCounters = false;
+        NftablesTableOwner = true;
+        IndividualCalls = false;
       };
 
       zones = {
