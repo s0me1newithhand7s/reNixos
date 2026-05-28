@@ -2,38 +2,28 @@ _: {
   services = {
     resolved = {
       enable = true;
-      dnsovertls = "true";
-      dnssec = "true";
-      llmnr = "true";
-      domains = [
-        "~."
-      ];
+      settings = {
+        Resolve = {
+          DNSOverTLS = "false";
+          DNSSEC = "false";
+          LLMNR = "false";
+          MulticastDNS = false;
 
-      fallbackDns = [
-        # cf dns
-        "1.1.1.1"
-        "1.0.0.1"
-        "2606:4700:4700::1111"
-        "2606:4700:4700::1001"
+          DNS = [
+            "127.0.0.1:5353"
+            "[::1]:5353"
+          ];
 
-        # google dns
-        "8.8.8.8"
-        "8.8.4.4"
-        "2001:4860:4860::8888"
-        "2001:4860:4860::8844"
+          FallbackDNS = [
+            "127.0.0.1:5353"
+            "[::1]:5353"
+          ];
 
-        # q9 dns
-        "9.9.9.9"
-        "149.112.112.112"
-        "2620:fe::fe"
-        "2620:fe::9"
-
-        # open dns
-        "208.67.222.222"
-        "208.67.220.220"
-        "2620:119:35::35"
-        "2620:119:53::53"
-      ];
+          Domains = [
+            "~."
+          ];
+        };
+      };
     };
   };
 }
