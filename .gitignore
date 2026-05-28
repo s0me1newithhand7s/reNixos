@@ -8,6 +8,7 @@ secrets/
 # env shit
 .env/
 .direnv/
+.devenv/
 .vscode/
 .obsidian/
 .trash/
