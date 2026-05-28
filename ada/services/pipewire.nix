@@ -25,38 +25,25 @@ _: {
 
       extraConfig = {
         pipewire = {
-          # PIPEWIRE_PROPS=node.force-rate=0
-          "92-low-latency" = {
+          "99-audio-fix" = {
+            "stream.properties" = {
+              "channelmix.upmix" = false;
+              "resample.quality" = 10;
+            };
+
             "context.properties" = {
-              "default.clock.rate" = 48000;
+              "default.clock.rate" = 44100;
+              "default.clock.min-quantum" = 512;
+              "default.clock.quantum" = 1024;
+              "default.clock.max-quantum" = 4096;
               "default.clock.allowed-rates" = [
                 44100
                 48000
                 88200
                 96000
-              ];
-
-              "default.clock.min-quantum" = 512;
-              "default.clock.quantum" = 4096;
-              "default.clock.max-quantum" = 8192;
-            };
-          };
-
-          "93-no-resampling" = {
-            "context.properties" = {
-              "default.clock.rate" = 48000;
-              "default.clock.allowed-rates" = [
-                44100
-                48000
-                96000
+                176400
                 192000
               ];
-            };
-          };
-
-          "94-no-upmixing" = {
-            "stream.properties" = {
-              "channelmix.upmix" = false;
             };
           };
         };
