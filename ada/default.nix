@@ -34,14 +34,13 @@
     "${self}/ada/networking/networkmanager.nix"
     "${self}/ada/networking/wireguard.nix"
     "${self}/ada/networking/nameservers.nix"
-    "${self}/ada/networking/hosts.nix"
     "${self}/ada/networking/hostId.nix"
 
     "${self}/ada/nix/package.nix"
     "${self}/ada/nix/settings/allowed-users.nix"
     "${self}/ada/nix/settings/experimental-features.nix"
     "${self}/ada/nix/settings/trusted-public-keys.nix"
-    "${self}/ada/nix/settings/trusted-substituters.nix"
+    "${self}/ada/nix/settings/substituters.nix"
     "${self}/ada/nix/settings/trusted-users.nix"
     "${self}/ada/nix/settings/auto-optimise-store.nix"
 
@@ -61,6 +60,7 @@
     "${self}/ada/security/sudo.nix"
     "${self}/ada/security/sudo-rs.nix"
     "${self}/ada/security/pam/yubico.nix"
+    "${self}/ada/security/pam/u2f.nix"
 
     "${self}/ada/services/greetd.nix"
     "${self}/ada/services/libinput.nix"
@@ -70,7 +70,6 @@
     "${self}/ada/services/qmk.nix"
     "${self}/ada/services/scx.nix"
     "${self}/ada/services/xserver.nix"
-    "${self}/ada/services/yggdrasil.nix"
     "${self}/ada/services/sunshine.nix"
     "${self}/ada/services/usbmuxd.nix"
     "${self}/ada/services/irqbalance.nix"
@@ -78,6 +77,12 @@
     "${self}/ada/services/resolved.nix"
     "${self}/ada/services/firewalld.nix"
     "${self}/ada/services/zerotier.nix"
+    "${self}/ada/services/gpm.nix"
+    "${self}/ada/services/udev.nix"
+    "${self}/ada/services/pcscd.nix"
+    "${self}/ada/services/dnsproxy.nix"
+    "${self}/ada/services/timesyncd.nix"
+    "${self}/ada/services/ntpd-rs.nix"
 
     "${self}/ada/sops/defaults.nix"
     "${self}/ada/sops/secrets.nix"
@@ -92,6 +97,7 @@
     "${self}/ada/system/stateVersion.nix"
 
     "${self}/ada/systemd/oomd.nix"
+    "${self}/ada/systemd/coredump.nix"
     "${self}/ada/systemd/slices/system-slice.nix"
     "${self}/ada/systemd/slices/user-slice.nix"
     "${self}/ada/systemd/slices/root-slice.nix"
