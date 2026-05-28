@@ -5,6 +5,7 @@
 }: {
   environment = {
     variables = {
+      PROTON_ENABLE_WAYLAND = 1;
       HOSTNAME = config.networking.hostName;
       QT_QPA_PLATFORMTHEME = lib.mkForce "xdgdesktopportal";
       TDESKTOP_USE_GTK_FILE_DIALOG = 1;
