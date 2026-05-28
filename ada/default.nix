@@ -1,12 +1,11 @@
 {self, ...}: {
   imports = [
-    "${self}/ada/age/rekey.nix"
-
     "${self}/ada/boot/initrd.nix"
     "${self}/ada/boot/kernel.nix"
     "${self}/ada/boot/lanzaboote.nix"
     "${self}/ada/boot/plymouth.nix"
     "${self}/ada/boot/tmp.nix"
+    "${self}/ada/boot/bootspec.nix"
     "${self}/ada/boot/loader/systemd-boot.nix"
 
     "${self}/ada/disko/disk.nix"
