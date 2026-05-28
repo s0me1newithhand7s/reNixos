@@ -9,9 +9,6 @@
               size = "100%";
               content = {
                 type = "btrfs";
-                extraArgs = [
-                  "-f"
-                ];
 
                 subvolumes = {
                   "/root" = {
