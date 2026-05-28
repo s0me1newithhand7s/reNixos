@@ -27,15 +27,21 @@ _: {
         upstream = [
           "https://1.1.1.1/dns-query?host=cloudflare-dns.com"
           "https://1.0.0.1/dns-query?host=cloudflare-dns.com"
+          "tls://1.1.1.1#cloudflare-dns.com"
+          "tls://1.0.0.1#cloudflare-dns.com"
 
           "https://8.8.8.8/dns-query?host=dns.google"
           "https://8.8.4.4/dns-query?host=dns.google"
+          "tls://8.8.8.8#dns.google"
+          "tls://8.8.4.4#dns.google"
 
-          "https://9.9.9.9/dns-query?quad9.net"
-          "https://149.112.112.112/dns-query?host=quad9.net"
+          "https://9.9.9.9/dns-query?dns.quad9.net"
+          "https://149.112.112.112/dns-query?host=dns.quad9.net"
+          "tls://9.9.9.9#dns.quad9.net"
+          "tls://149.112.112.112#dns.quad9.net"
 
-          "https://208.67.222.222/dns-query?host=dns.google"
-          "https://208.67.220.220/dns-query?host=dns.google"
+          "https://208.67.222.222/dns-query?host=opendns.com"
+          "https://208.67.220.220/dns-query?host=opendns.com"
         ];
       };
     };
