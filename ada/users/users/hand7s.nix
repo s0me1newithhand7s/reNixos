@@ -1,4 +1,4 @@
-_: {
+{lib, ...}: {
   users = {
     users = {
       "hand7s" = {
