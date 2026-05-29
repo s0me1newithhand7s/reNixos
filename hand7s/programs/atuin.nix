@@ -7,6 +7,7 @@ _: {
 
       settings = {
         keymap_mode = "vim-normal";
+        cursor_style = "blink-block";
       };
 
       flags = [
