@@ -12,6 +12,13 @@
           body = "${lib.getExe' pkgs.uutils-coreutils-noprefix "echo"} ' ~ 𝑠𝑛𝑜𝑤𝑦 𝑝𝑙𝑎𝑐𝑒, 𝑓𝑢𝑙𝑙 𝑜𝑓 𝑓𝑙𝑎𝑘𝑒𝑠! '";
         };
       };
+
+      plugins = [
+        {
+          name = "autopair";
+          src = pkgs.fishPlugins.autopair;
+        }
+      ];
     };
   };
 }
