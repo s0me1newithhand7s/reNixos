@@ -756,7 +756,7 @@
         devenv = {
           shells = {
             "default" = {
-              enterShell = "${lib.getExe config.packages."zide"} && ${config.pre-commit.shellHook}";
+              enterShell = "${lib.getExe config.packages."zide"} |& ${config.pre-commit.shellHook}";
 
               devenv = {
                 root = toString /home/hand7s/Projects/flake;
