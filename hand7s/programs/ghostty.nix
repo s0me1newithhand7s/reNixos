@@ -1,5 +1,5 @@
 {
-  pkgs,
+  config,
   lib,
   ...
 }: {
@@ -12,7 +12,7 @@
 
         bell-features = "system";
 
-        command = "${lib.getExe pkgs.nushell}";
+        command = "${lib.getExe config.programs.nushell.package}";
 
         confirm-close-surface = false;
 
