@@ -8,8 +8,8 @@
       enable = true;
       enableFishIntegration = true;
       enableNushellIntegration = true;
-
       shellWrapperName = "yz";
+
       settings = {
         mgr = {
           sort_by = "natural";
@@ -39,14 +39,14 @@
 
         preview = {
           tab_size = 4;
-          image_filter = "lanczos3";
-          image_quality = 90;
+          image_filter = "catmull-rom";
+          image_quality = 75;
         };
 
         opener = {
           "play" = [
             {
-              run = ''${lib.getExe pkgs.mpv} --vo=tct "%s"'';
+              run = ''mpv --vo=tct "$@"'';
               block = true;
               for = "unix";
             }
@@ -54,7 +54,7 @@
 
           "view" = [
             {
-              run = ''${lib.getExe pkgs.viu} -t "%s"'';
+              run = ''${lib.getExe pkgs.viu} -t "$@"'';
               block = true;
               for = "unix";
             }
@@ -62,7 +62,7 @@
 
           "edit" = [
             {
-              run = ''${lib.getExe pkgs.helix} "%s"'';
+              run = ''hx "$@"'';
               block = true;
               for = "unix";
             }
@@ -70,7 +70,7 @@
 
           "doc" = [
             {
-              run = ''${lib.getExe pkgs.tdf} "%s"'';
+              run = ''${lib.getExe pkgs.tdf} "$@"'';
               block = true;
               for = "unix";
             }
@@ -84,7 +84,7 @@
 
           "exfil" = [
             {
-              run = ''${lib.getExe pkgs.ouch} d "%s"'';
+              run = ''${lib.getExe pkgs.ouch} d "$@"'';
               block = true;
               for = "unix";
             }
@@ -92,7 +92,15 @@
 
           "book" = [
             {
-              run = ''${lib.getExe pkgs.epr} "%s"'';
+              run = ''${lib.getExe pkgs.epr} "$@"'';
+              block = true;
+              for = "unix";
+            }
+          ];
+
+          "dir" = [
+            {
+              run = ''${lib.getExe pkgs.broot} "$@"'';
               block = true;
               for = "unix";
             }
@@ -100,7 +108,7 @@
 
           "open" = [
             {
-              run = ''${lib.getExe' pkgs.xdg-utils "xdg-open"} "%s"'';
+              run = ''${lib.getExe' pkgs.xdg-utils "xdg-open"} "$@"'';
               orphan = true;
               for = "unix";
             }
@@ -184,7 +192,7 @@
             {
               mime = "*";
               use = [
-                "edit"
+                "dir"
                 "open"
               ];
             }
@@ -193,22 +201,6 @@
 
         input = {
           cursor_blink = true;
-        };
-
-        plugin = {
-          prepend_fetchers = [
-            {
-              id = "git";
-              name = "*";
-              run = "git";
-            }
-
-            {
-              id = "git";
-              name = "*/";
-              run = "git";
-            }
-          ];
         };
       };
 
