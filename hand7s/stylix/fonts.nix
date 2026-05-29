@@ -2,10 +2,10 @@
   stylix = {
     fonts = {
       sizes = {
-        applications = 12;
-        desktop = 11;
-        popups = 11;
-        terminal = 12;
+        applications = 10;
+        desktop = 9;
+        popups = 9;
+        terminal = 10;
       };
 
       monospace = {

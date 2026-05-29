@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   stylix = {
     cursor = {
-      name = "material_light_cursors";
-      package = pkgs.material-cursors;
+      name = "Bibata-Modern-Amber";
+      package = pkgs.bibata-cursors;
       size = 20;
     };
   };
