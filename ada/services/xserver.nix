@@ -1,21 +1,7 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+_: {
   services = {
     xserver = {
-      display = lib.mkForce 0;
-      enable = true;
-
-      excludePackages = with pkgs; [
-        xterm
-      ];
-
-      videoDrivers = [
-        "amdgpu"
-      ];
-
+      enable = false;
       xkb = {
         layout = "us, ru";
         variant = "";
