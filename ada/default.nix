@@ -1,5 +1,7 @@
 {self, ...}: {
   imports = [
+    "${self}/ada/age/rekey.nix"
+
     "${self}/ada/boot/initrd.nix"
     "${self}/ada/boot/kernel.nix"
     "${self}/ada/boot/lanzaboote.nix"
@@ -54,6 +56,7 @@
     "${self}/ada/programs/ssh.nix"
     "${self}/ada/programs/yubikey-touch-detector.nix"
     "${self}/ada/programs/nekoray.nix"
+    "${self}/ada/programs/uwsm.nix"
 
     "${self}/ada/security/polkit.nix"
     "${self}/ada/security/rtkit.nix"
@@ -77,12 +80,14 @@
     "${self}/ada/services/resolved.nix"
     "${self}/ada/services/firewalld.nix"
     "${self}/ada/services/zerotier.nix"
-    "${self}/ada/services/gpm.nix"
     "${self}/ada/services/udev.nix"
     "${self}/ada/services/pcscd.nix"
     "${self}/ada/services/dnsproxy.nix"
     "${self}/ada/services/timesyncd.nix"
     "${self}/ada/services/ntpd-rs.nix"
+    "${self}/ada/services/kmscon.nix"
+    "${self}/ada/services/logind.nix"
+    "${self}/ada/services/usbguard.nix"
 
     "${self}/ada/sops/defaults.nix"
     "${self}/ada/sops/secrets.nix"
