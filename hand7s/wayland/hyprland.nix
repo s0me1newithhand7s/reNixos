@@ -14,12 +14,13 @@
           )
           true;
 
+        # configType = "lua";
+        configType = "hyprlang";
+
         package = self.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.hyprland;
         portalPackage = self.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
 
         settings = {
-          monitor = ", 2560x1440@165.00Hz, 0x0, 1";
-
           general = {
             gaps_in = 8;
             gaps_out = 20;
@@ -93,21 +94,25 @@
           execr-once = [
             "${lib.getExe' pkgs.systemd "systemctl"} --user start hyprpaper.service"
             "${lib.getExe' pkgs.systemd "systemctl"} --user start hypridle.service"
-            "${lib.getExe' pkgs.systemd "systemctl"} --user start hyprpolkitagent.service"
+
+            "${lib.getExe pkgs.soteria}"
             "${lib.getExe self.inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default}"
 
-            "${lib.getExe' pkgs.hyprland "hyprctl"} setcursor material_light_cursors 20"
+            "${lib.getExe' pkgs.hyprland "hyprctl"} setcursor Bibata-Modern-Amber 20"
           ];
 
           bind = [
-            "ALT, return, exec, ${lib.getExe pkgs.ghostty}"
+            "ALT, return, exec, ${lib.getExe config.programs.ghostty.package}"
             "ALT, Q, killactive,"
             "ALT, S, exec, ${lib.getExe self.inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default} ipc call launcher toggle"
+
             "ALT, F, fullscreen, 0"
+
             "ALT, L, exec, ${lib.getExe pkgs.hyprlock}"
+            "ALT, E, exec, ${lib.getExe config.programs.ghostty.package} -e ${lib.getExe' pkgs.yazi "yz"}"
 
             "ALT SHIFT, space, togglefloating, active"
-            "ALT SHIFT, S, exec, ${lib.getExe pkgs.grimblast} --notify --freeze copysave area /home/hand7s/Pictures/Screenshots/$(date '+%y%m%d_%H-%M-%s').png || ,  killall -9 hyprpicker"
+            "ALT SHIFT, S, exec, ${lib.getExe pkgs.grimblast} --notify --freeze copysave area /home/hand7s/Pictures/Screenshots/$(date '+%y%m%d_%H-%M-%s').png || killall -9 hyprpicker"
 
             "ALT, left, movefocus, l"
             "ALT, right, movefocus, r"
@@ -189,10 +194,10 @@
           ];
 
           windowrulev2 = [
-            "float, class:^(yazi-picker)$"
-            "center, class:^(yazi-picker)$"
-            "size 1000 600, class:^(yazi-picker)$"
-            "stayfocused, class:^(yazi-picker)$"
+            "float, title:^(yazi-picker)$, class:^(com.mitchellh.ghostty)$"
+            "center, title:^(yazi-picker)$, class:^(com.mitchellh.ghostty)$"
+            "size 1000 600, title:^(yazi-picker)$, class:^(com.mitchellh.ghostty)$"
+            "stayfocused, title:^(yazi-picker)$, class:^(com.mitchellh.ghostty)$"
           ];
 
           misc = {
@@ -203,7 +208,7 @@
             animate_mouse_windowdragging = true;
             focus_on_activate = true;
             close_special_on_empty = true;
-            vrr = "3";
+            vrr = 3;
           };
 
           render = {
@@ -249,7 +254,7 @@
 
             dynamic-cursors = {
               enabled = true;
-              mode = "strech";
+              mode = "stretch";
               threshold = 2;
               stretch = {
                 limit = 4000;
@@ -282,8 +287,7 @@
         };
 
         plugins = with pkgs.hyprlandPlugins; [
-          hypr-dynamic-cursors
-          hyprspace
+          # hypr-dynamic-cursors
         ];
       };
     };
