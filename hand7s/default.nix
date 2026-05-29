@@ -13,7 +13,6 @@
     "${self}/hand7s/home/gui.nix"
     "${self}/hand7s/home/keyboard.nix"
     "${self}/hand7s/home/packages.nix"
-    "${self}/hand7s/home/shellAliases.nix"
     "${self}/hand7s/home/variables.nix"
     "${self}/hand7s/home/shell.nix"
 
@@ -23,8 +22,7 @@
     "${self}/hand7s/services/hypridle.nix"
     "${self}/hand7s/services/hyprsunset.nix"
     "${self}/hand7s/services/kdeconnect.nix"
-
-    "${self}/hand7s/systemd/hyprpolkitagent-service.nix"
+    "${self}/hand7s/services/kanshi.nix"
 
     "${self}/hand7s/programs/bat.nix"
     "${self}/hand7s/programs/eza.nix"
@@ -39,7 +37,6 @@
     "${self}/hand7s/programs/starship.nix"
     "${self}/hand7s/programs/yazi.nix"
     "${self}/hand7s/programs/zoxide.nix"
-    "${self}/hand7s/programs/chrome.nix"
     "${self}/hand7s/programs/hyprlock.nix"
     "${self}/hand7s/programs/spicetify.nix"
     "${self}/hand7s/programs/zellij.nix"
@@ -51,6 +48,13 @@
     "${self}/hand7s/programs/broot.nix"
     "${self}/hand7s/programs/atuin.nix"
     "${self}/hand7s/programs/gitui.nix"
+    "${self}/hand7s/programs/bottom.nix"
+    "${self}/hand7s/programs/ripgrep-all.nix"
+    "${self}/hand7s/programs/fd.nix"
+    "${self}/hand7s/programs/teeldear.nix"
+    "${self}/hand7s/programs/trippy.nix"
+    "${self}/hand7s/programs/k9s.nix"
+    "${self}/hand7s/programs/retroarch.nix"
 
     "${self}/hand7s/xdg/portal.nix"
     "${self}/hand7s/xdg/mime.nix"
