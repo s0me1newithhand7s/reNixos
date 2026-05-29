@@ -21,17 +21,12 @@ in {
     sessionType = lib.mkOption {
       default = "None";
       type = lib.types.enum [
-        "DWL"
-        "Sway"
-        "River"
         "Hyprland"
-        "None"
+        "Niri"
       ];
 
       description = ''
-        This option allows to choose current desktop session. All
-        three: riverwm, sway and Hyprland has their own config. Almost
-        all of them - their respectful software. WIP.
+        This option allows to choose current desktop session.
       '';
     };
   };
@@ -42,8 +37,10 @@ in {
         [
           throne
           heroic
+          scrcpy
           vesktop
           ayugram
+          soteria
           anki-bin
           mindustry
           lan-mouse
@@ -55,9 +52,9 @@ in {
           thunderbird
           chatterino7
           tetrio-desktop
-          hyprpolkitagent
           freesm-launcher
           bitwarden-desktop
+          steam-rom-manager
           qbittorrent-enhanced
 
           (discord.override {
@@ -66,13 +63,12 @@ in {
           })
         ]
         ++ lib.optionals (
-          cfg.sessionType == "Hyprland"
+          cfg.sessionType == "Hyprland" || cfg.sessionType == "Niri"
         ) [
           fum
           dconf
           iwgtk
           tokei
-          gajim
           ifuse
           yt-dlp
           termusic
@@ -85,7 +81,6 @@ in {
           yubico-piv-tool
           yubikey-manager
           libimobiledevice
-          ungoogled-chromium
           yubikey-touch-detector
           yubikey-personalization
           self.inputs.noctalia.packages.${system}.default
@@ -96,13 +91,14 @@ in {
 
     programs = {
       chromium.enable = true;
+      firefox.enable = true;
       spicetify.enable = true;
       ghostty.enable = true;
       git.enable = true;
       obsidian.enable = true;
     };
 
-    services = with lib.mkDefault; {
+    services = {
       hyprpaper.enable = true;
       kdeconnect.enable = true;
     };
