@@ -1,11 +1,73 @@
 {
-  pkgs,
+  config,
   lib,
   ...
 }: {
   programs = {
     zellij = {
       enable = true;
+
+      layouts = {
+        "workspace" = {
+          layout = {
+            default_tab_template = {
+              children = [
+                {
+                  pane = {
+                    size = 1;
+                    plugin = {
+                      location = "zellij:tab-bar";
+                    };
+                  };
+                }
+
+                {"children" = {};}
+
+                {
+                  pane = {
+                    size = 2;
+                    plugin = {
+                      location = "zellij:tab-bar";
+                    };
+                  };
+                }
+              ];
+            };
+
+            tab = {
+              name = "workspace";
+              focus = true;
+              pane = {
+                split_direction = "vertical";
+                children = [
+                  {
+                    pane = {
+                      size = "30%";
+                      split_direction = "horizontal";
+                      children = [
+                        {
+                          command = "${lib.getExe config.programs.gitui.package}";
+                          size = "50%";
+                        }
+
+                        {
+                          focus = true;
+                          size = "50%";
+                        }
+                      ];
+                    };
+                  }
+
+                  {
+                    command = "${lib.getExe' config.programs.yazi.package "yz"}";
+                    size = "70%";
+                  }
+                ];
+              };
+            };
+          };
+        };
+      };
 
       settings = {
         options = {
@@ -31,7 +93,7 @@
           ];
         };
 
-        default_shell = "${lib.getExe pkgs.nushell}";
+        default_shell = "${lib.getExe config.programs.nushell.package}";
         show_startup_tips = false;
         show_release_notes = false;
         simplified_ui = true;
