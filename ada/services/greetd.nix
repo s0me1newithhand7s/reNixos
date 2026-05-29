@@ -9,7 +9,7 @@
       restart = false;
       settings = {
         default_session = {
-          command = "${lib.getExe pkgs.tuigreet} -r -t -c ${lib.getExe' pkgs.hyprland "start-hyprland"} --greet-align center";
+          command = "${lib.getExe pkgs.tuigreet} --greet-align center -r -t -c ${lib.getExe pkgs.uwsm} start default";
           user = "greeter";
         };
       };
