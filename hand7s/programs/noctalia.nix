@@ -41,7 +41,7 @@
           };
 
           bar = {
-            floating = true;
+            floating = false;
             density = "comfortable";
             position = "right";
             showCapsule = true;
@@ -50,7 +50,7 @@
             marginVertical = 1;
             marginHorizontal = 0.6;
             monitors = [
-              "DP-3"
+              "DP-2"
             ];
 
             widgets = {
@@ -156,7 +156,7 @@
             onlySameOutput = true;
             colorizeIcons = true;
             monitors = [
-              "DP-3"
+              "DP-2"
             ];
           };
 
@@ -197,7 +197,7 @@
             autoHideMs = 2500;
             location = "bottom_center";
             monitors = [
-              "DP-3"
+              "DP-2"
             ];
           };
 
