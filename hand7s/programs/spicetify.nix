@@ -13,7 +13,7 @@
       ];
 
       theme = lib.mkForce self.inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system}.themes.text;
-      colorScheme = lib.mkForce "TokyoNight";
+      colorScheme = lib.mkForce "TokyoNightStorm";
     };
   };
 }
