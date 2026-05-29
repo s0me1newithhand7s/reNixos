@@ -57,6 +57,7 @@
     "${self}/ada/programs/yubikey-touch-detector.nix"
     "${self}/ada/programs/nekoray.nix"
     "${self}/ada/programs/uwsm.nix"
+    "${self}/ada/programs/nixos-cli.nix"
 
     "${self}/ada/security/polkit.nix"
     "${self}/ada/security/rtkit.nix"
