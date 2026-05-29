@@ -17,6 +17,16 @@
           signByDefault = true;
           key = osConfig.sops.secrets.sshKey.path;
         };
+
+        extraConfig = {
+          push = {
+            autoSetupRemote = true;
+          };
+
+          fetch = {
+            prune = true;
+          };
+        };
       };
     };
   };
