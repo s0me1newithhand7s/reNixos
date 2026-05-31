@@ -18,8 +18,7 @@
                   mountpoint = "/boot";
                   mountOptions = [
                     "dmask=0077"
-                    "fmask=0177"
-                    "noexec"
+                    "fmask=0077"
                     "nosuid"
                     "nodev"
                     "rw"
