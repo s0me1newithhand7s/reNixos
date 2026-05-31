@@ -17,8 +17,12 @@ _: {
                   format = "vfat";
                   mountpoint = "/boot";
                   mountOptions = [
-                    "fmask=0022"
-                    "dmask=0022"
+                    "dmask=0077"
+                    "fmask=0177"
+                    "noexec"
+                    "nosuid"
+                    "nodev"
+                    "rw"
                   ];
                 };
               };

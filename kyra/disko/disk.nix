@@ -28,7 +28,8 @@
                   format = "vfat";
                   mountpoint = "/boot";
                   mountOptions = [
-                    "umask=0077"
+                    "dmask=0077"
+                    "fmask=0177"
                     "noexec"
                     "nosuid"
                     "nodev"
