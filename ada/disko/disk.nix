@@ -23,6 +23,7 @@
                     "nosuid"
                     "nodev"
                     "rw"
+
                   ];
                 };
               };
