@@ -24,6 +24,38 @@
 
 <div>
 
+> [!NOTE]
+> quick guide about my naming
+
+**all** my hosts are essentially british women names (besides Yara, intentionally), no other logic behind naming.
+
+| hostname | host type | status |
+| - | - | - |
+| ada | main pc | operational |
+| isla | notebook | dead h/w |
+| viola | homelab | operational |
+| kyra | meta-config | - |
+| hazel | VPS, kyra-type | moving to new host |
+| lynn | VPS, kyra-type | frozen |
+| mel | VPS, kyra-type | frozen | 
+| yara | VPS, kyra-type | operational |
+| ivy | VPS, kyra-type | moving to new host |
+| fawn | VM / copy of `ada` but [finix](https://github.com/finix-community/finix) | running |
+| wanda | VM / WSL2 | no host for WSL2 |
+| florence | ISO | - |
+
+not incuded:
+* olivia - my router
+* evie - my phone
+
+
+
+</div>
+
+<hr/>
+
+<div>
+
 <h3 align="center">Special Thanks: </h3>
 
 [TheMaxMur](https://maxmur.info/) :star:
