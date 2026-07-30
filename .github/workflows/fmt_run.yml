@@ -21,7 +21,8 @@ jobs:
           nix develop .#default \
             --no-pure-eval \
             --override-input devenv-root "file+file://$(pwd)/.devenv/root" \
-            --command "prek run --all-files --fail-fast"
+            --command devenv test 
+
 name: flake_format
 "on":
   push: {}
