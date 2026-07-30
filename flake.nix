@@ -882,14 +882,6 @@
                 "*.typ"
               ];
             };
-
-            "mdformat" = {
-              enable = true;
-              priority = 2;
-              includes = [
-                "*.md"
-              ];
-            };
           };
 
           settings = {
@@ -933,14 +925,6 @@
 
               "statix" = {
                 enable = true;
-              };
-
-              "markdownlint" = {
-                enable = true;
-                package = pkgs.markdownlint-cli;
-                excludes = [
-                  "AGENTS.md"
-                ];
               };
 
               "typstyle" = {
