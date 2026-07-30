@@ -938,6 +938,9 @@
               "markdownlint" = {
                 enable = true;
                 package = pkgs.markdownlint-cli;
+                excludes = [
+                  "AGENTS.md"
+                ];
               };
 
               "typstyle" = {
@@ -957,7 +960,13 @@
             "default" = {
               enterShell = config.pre-commit.shellHook;
 
+              enterTest = ''
+                prek run --all-files --fail-fast ;
+              '';
+
               cachix = {
+                enable = true;
+
                 pull = [
                   "nix-community"
                   "chaotic-cx"
