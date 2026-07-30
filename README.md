@@ -22,8 +22,6 @@
 
 <hr/>
 
-<div>
-
 > [!NOTE]
 > quick guide about my naming
 
@@ -44,13 +42,10 @@
 | wanda | VM / WSL2 | no host for WSL2 |
 | florence | ISO | - |
 
-not incuded:
+
+### not incuded:
 * olivia - my router
 * evie - my phone
-
-
-
-</div>
 
 <hr/>
 
