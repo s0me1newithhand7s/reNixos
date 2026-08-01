@@ -1,47 +1,39 @@
 _: {
   boot = {
     initrd = {
-      availableKernelModules = [
-        "nvme"
-        "xhci_pci"
-        "ahci"
-        "usbhid"
-        "usb_storage"
-        "sd_mod"
+      compressor = "zstd";
+      compressorArgs = [
+        "-22"
+        "--ultra"
+        "-T8"
+      ];
+
+      includeDefaultModules = false;
+
+      kernelModules = [
+        "af_packet"
+        "amdgpu"
         "btrfs"
-        "cryptd"
-        "tpm"
+        "dm-snapshot"
+        "dm_mod"
         "hid_generic"
+        "nls_cp437"
+        "nls_iso8859-1"
+        "nvme"
+        "r8169"
+        "tpm_crb"
+        "tpm_tis"
+        "usbhid"
+        "vfat"
+        "xhci_pci"
       ];
 
       supportedFilesystems = {
-        bcachefs = true;
         vfat = true;
         btrfs = true;
       };
 
-      kernelModules = [
-        "amdgpu"
-        "i2c-dev"
-      ];
-
-      luks = {
-        devices = {
-          cryptroot = {
-            device = "/dev/disk/by-id/nvme-KINGSTON_SKC3000S_1024G_AA000000000000000013-part2";
-            crypttabExtraOpts = [
-              "fido2-device=auto"
-              "fido2-pin=true"
-              "tpm2-device=auto"
-              "tpm2-pin=true"
-              # "headless=true"
-            ];
-          };
-        };
-      };
-
       systemd = {
-        enable = true;
         network = {
           enable = true;
         };
