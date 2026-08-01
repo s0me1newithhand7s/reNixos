@@ -1,4 +1,4 @@
-{
+_: {
   disko = {
     devices = {
       disk = {
@@ -33,6 +33,14 @@
                   name = "lvm-crypted";
                   settings = {
                     allowDiscards = true;
+                    crypttabExtraOpts = [
+                      "fido2-device=auto"
+                      "fido-pin=true"
+                      "tpm2-device=auto"
+                      "tpm2-pin=true"
+                      "tpm-pcrs=0+2+7"
+                      "token-timeout=10s"
+                    ];
                   };
 
                   content = {
