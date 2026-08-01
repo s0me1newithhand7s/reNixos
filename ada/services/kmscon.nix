@@ -2,9 +2,11 @@ _: {
   services = {
     kmscon = {
       enable = true;
-      hwRender = true;
       useXkbConfig = true;
-      term = "xterm-256color";
+      config = {
+        hwaccel = true;
+        term = "xterm-256color";
+      };
     };
   };
 }

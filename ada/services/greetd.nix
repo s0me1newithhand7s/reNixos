@@ -9,7 +9,7 @@
       restart = false;
       settings = {
         default_session = {
-          command = "${lib.getExe pkgs.tuigreet} --greet-align center -r -t -c ${lib.getExe pkgs.uwsm} start default";
+          command = "${lib.getExe pkgs.tuigreet} --greet-align center -r -t -c '${lib.getExe pkgs.uwsm} start select'";
           user = "greeter";
         };
       };
