@@ -6,14 +6,6 @@
         pkgs.proton-ge-bin
       ];
 
-      remotePlay = {
-        openFirewall = true;
-      };
-
-      localNetworkGameTransfers = {
-        openFirewall = true;
-      };
-
       protontricks = {
         enable = true;
       };
