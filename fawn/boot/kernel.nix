@@ -54,7 +54,7 @@
       };
     };
 
-    kernelPackages = inputs."nix-cachyos-kernel".legacyPackages.x86_64-linux.linux-cachyos-hardened-lto;
+    kernelPackages = inputs."nix-cachyos-kernel".legacyPackages.x86_64-linux.linuxPackages-cachyos-hardened-lto;
 
     kernelModules = [
       "amdgpu"
