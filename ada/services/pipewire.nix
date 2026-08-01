@@ -46,6 +46,32 @@ _: {
               ];
             };
           };
+
+          "99-combined-stream" = {
+            "context.modules" = [
+              {
+                name = "libpipewire-module-combine-stream";
+                args = {
+                  "combine.mode" = "sink";
+                  "node.name" = "combined_sink";
+                  "node.description" = "Combined Output (Starship + Truthear)";
+                  "stream.rules" = [
+                    {
+                      matches = [
+                        {
+                          "media.class" = "Audio/Sink";
+                        }
+                      ];
+
+                      actions = {
+                        "create-stream" = {};
+                      };
+                    }
+                  ];
+                };
+              }
+            ];
+          };
         };
       };
     };
