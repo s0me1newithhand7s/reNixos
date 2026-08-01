@@ -1,10 +1,12 @@
-_: {
+{config, ...}: {
   security = {
     pam = {
       u2f = {
         enable = true;
-        cue = true;
-        # control = "required";
+        settings = {
+          cue = true;
+          authfile = config.sops.secrets."u2fKeys".path;
+        };
       };
     };
   };
