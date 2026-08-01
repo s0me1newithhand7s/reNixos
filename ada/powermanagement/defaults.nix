@@ -1,0 +1,5 @@
+_: {
+  powerManagement = {
+    cpuFreqGovernor = "performance";
+  };
+}
