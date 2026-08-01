@@ -7,10 +7,25 @@
     uwsm = {
       enable = true;
       waylandCompositors = {
+        "gamescope" = {
+          prettyName = "Gamsescope";
+          binPath = "${lib.getExe pkgs.gamescope}";
+          extraArgs = [
+            "-e"
+          ];
+        };
+
+        "niri" = {
+          prettyName = "Niri";
+          binPath = "${lib.getExe pkgs.niri}";
+          extraArgs = [
+            "--session"
+          ];
+        };
+
         "hyprland" = {
           prettyName = "Hyprland";
-          comment = "Hyprland compositor managed by UWSM";
-          binPath = "${lib.getExe' pkgs.hyprland "start-hyprland"}";
+          binPath = ''${lib.getExe' pkgs.hyprland "start-hyprland"}'';
         };
       };
     };
