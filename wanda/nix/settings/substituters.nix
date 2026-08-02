@@ -4,17 +4,20 @@ _: {
       substituters = [
         # cache.nixos.org
         "https://cache.nixos.org"
-        # cache.garnix.org
-        "https://cache.garnix.io"
+        # "https://mirror.yandex.ru/nixos"
+
         # cachix
-        "https://nix-community.cachix.org/"
-        "https://chaotic-nyx.cachix.org/"
+        "https://nix-community.cachix.org"
+        "https://chaotic-nyx.cachix.org"
         "https://hyprland.cachix.org"
-        "https://chaotic-nyx.cachix.org/"
-        # nix-community
-        "https://hydra.nix-community.org/"
-        # yandex mirror
-        "https://mirror.yandex.ru/nixos/"
+        "https://devenv.cachix.org"
+        "https://ghostty.cachix.org"
+        "https://yazi.cachix.org"
+        "https://helix.cachix.org"
+        "https://zellij.cachix.org"
+
+        # cachyos kernels
+        "https://attic.xuyh0120.win/lantian"
       ];
     };
   };
