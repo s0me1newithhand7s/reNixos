@@ -2,8 +2,13 @@ _: {
   networking = {
     firewall = {
       allowPing = true;
-      enable = true;
+      enable = false;
       checkReversePath = false;
+    };
+
+    nftables = {
+      enable = true;
+      flattenRulesetFile = true;
     };
   };
 }
