@@ -1,17 +1,31 @@
 _: {
   boot = {
     initrd = {
-      availableKernelModules = [
-        "ehci_pci"
-        "ahci"
-        "usbhid"
-        "usb_storage"
-        "sd_mod"
-        "sdhci_pci"
+      compressor = "zstd";
+      compressorArgs = [
+        "-22"
+        "--ultra"
+        "-T8"
+      ];
+
+      includeDefaultModules = false;
+
+      kernelModules = [
+        "af_packet"
+        "amdgpu"
         "btrfs"
-        "battery"
-        "thinkpad_acpi"
-        "cryptd"
+        "dm-snapshot"
+        "dm_mod"
+        "hid_generic"
+        "nls_cp437"
+        "nls_iso8859-1"
+        "nvme"
+        "r8169"
+        "tpm_crb"
+        "tpm_tis"
+        "usbhid"
+        "vfat"
+        "xhci_pci"
       ];
 
       supportedFilesystems = {
@@ -19,16 +33,10 @@ _: {
         btrfs = true;
       };
 
-      luks = {
-        devices = {
-          cryptroot = {
-            device = "/dev/disk/by-id/ata-ST92503010AS_5YH0CJFL-part2";
-          };
-        };
-      };
-
       systemd = {
-        enable = true;
+        network = {
+          enable = true;
+        };
       };
 
       verbose = false;
