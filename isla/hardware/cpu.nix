@@ -1,8 +1,7 @@
 _: {
   hardware = {
-    enableRedistributableFirmware = true;
     cpu = {
-      intel = {
+      amd = {
         updateMicrocode = true;
       };
     };
