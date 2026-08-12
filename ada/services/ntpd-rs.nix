@@ -24,18 +24,18 @@ _: {
 
         source = [
           {
+            mode = "server";
+            address = "162.159.200.1";
+          }
+
+          {
+            mode = "server";
+            address = "2606:4700:f1::1";
+          }
+
+          {
             mode = "nts";
             address = "time.cloudflare.com";
-          }
-
-          {
-            mode = "nts";
-            address = "nts.netnod.se";
-          }
-
-          {
-            mode = "nts";
-            address = "nts.ntp.se";
           }
         ];
       };
