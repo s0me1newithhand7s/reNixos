@@ -10,7 +10,6 @@ _: {
 
         trusted-users = [
           "root"
-          "@wheel"
         ];
 
         experimental-features = [

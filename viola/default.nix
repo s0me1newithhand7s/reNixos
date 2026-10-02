@@ -37,7 +37,6 @@
     "${self}/viola/nix/settings/experimental-features.nix"
     "${self}/viola/nix/settings/substituters.nix"
     "${self}/viola/nix/settings/trusted-public-keys.nix"
-    "${self}/viola/nix/settings/trusted-users.nix"
     "${self}/viola/nix/settings/auto-optimise-store.nix"
 
     "${self}/viola/nixpkgs/config.nix"
